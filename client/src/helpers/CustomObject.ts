@@ -9,8 +9,11 @@ export class CustomObject {
     return clone;
   }
 
-  static resetAllFields = (obj: Record<string, string | string[] | null>) => {
+  static resetAllFields = (obj: Record<string, string | string[] | [] | null>) => {
     Object.keys(obj).forEach((key) => {
+      if (Array.isArray(obj[key])) {
+        obj[key] = [];
+      }
       obj[key] = '';
     });
   };

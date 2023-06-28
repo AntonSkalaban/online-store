@@ -6,65 +6,45 @@ import './style.css';
 
 export interface CheckboxesListProps {
   blockName: keyof FormFilterValues;
-  checkedCheckboxes?: string[] | string;
-}
-
-export interface Checkbox {
-  id: string;
-  name: string;
-  checked: boolean;
+  checkedCheckboxes: string[];
 }
 
 export const CheckboxesBlock = ({ blockName, checkedCheckboxes }: CheckboxesListProps) => {
-  const [checkboxes, setCheckboxes] = useState([] as Checkbox[]);
-
-  const { data, isLoading } = checkboxAPI.useGetCheckboxesNameQuery();
-
   const dispatch = useDispatch();
   const changeFilterFormState = (state: FormFilterValues) => dispatch(updateFormState(state));
 
-  const createInitialState = useCallback(() => {
-    if (!data) return;
-
-    setCheckboxes(
-      data.map((item) => {
-        return {
-          id: item._id,
-          name: item.name,
-          checked: checkedCheckboxes?.includes(item.name) ?? false,
-        };
-      })
-    );
-  }, [checkedCheckboxes, data]);
-
-  useEffect(() => {
-    createInitialState();
-  }, [createInitialState]);
+  const { data, isFetching } = checkboxAPI.useGetCheckboxesNameQuery();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
+    const checkedCheckboxesCopy = [...checkedCheckboxes];
+    const itemIndex = checkedCheckboxes.indexOf(name);
 
-    const newState = checkboxes.map((item) => {
-      return item.name === name ? { ...item, checked: !item.checked } : item;
-    });
+    if (itemIndex === -1) {
+      checkedCheckboxesCopy.push(name);
+    } else {
+      checkedCheckboxesCopy.splice(itemIndex, 1);
+    }
 
-    setCheckboxes(newState);
-    changeFilterFormState({
-      [blockName]: newState.filter((el) => el.checked).map((el) => el.name),
-    });
+    changeFilterFormState({ [blockName]: checkedCheckboxesCopy });
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isFetching) return <div>Loading...</div>;
 
   return (
     <div className="checkboxes-block">
       <p className="checkboxes__title">{blockName}</p>
       <ul className="checkboxes__list">
-        {checkboxes.map(({ id, name, checked }) => {
+        {data?.map(({ _id, name }) => {
           return (
-            <li className="checkboxes__item" key={id}>
+            <li className="checkboxes__item" key={_id}>
               <label className="checkboxes__label">
-                <input type="checkbox" name={name} checked={checked} onChange={handleChange} />
+                <input
+                  type="checkbox"
+                  name={name}
+                  checked={checkedCheckboxes.includes(name)}
+                  onChange={handleChange}
+                />
                 {name}
               </label>
             </li>

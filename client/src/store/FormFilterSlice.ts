@@ -1,16 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export enum FormFilterFields {
-  Category = 'category',
-}
+// export enum FormFilterFields {
+//   Category = 'category',
+//   SortBy = 'sortBy',
+// }
 
 export interface FormFilterValues {
-  [FormFilterFields.Category]?: string[] | string;
+  category?: string[];
+  sortBy?: string;
 }
 
 const initialState: FormFilterValues = {
   category: [],
+  sortBy: '',
 };
 
 export const FormFilterValuesSlice = createSlice({

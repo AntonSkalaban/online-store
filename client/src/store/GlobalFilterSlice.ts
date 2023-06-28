@@ -13,10 +13,12 @@ export interface GlobalFilterValues extends FormFilterValues {
 const searchParams = SearchParams.create(window.location.search);
 
 const initialState: GlobalFilterValues = {
-  category: searchParams.get('category')?.split(',') ?? '',
+  category: searchParams.get('category')?.split(',') ?? [],
+  sortBy: searchParams.get('sortBy') ?? '',
   searchValue: searchParams.get('searchValue') ?? '',
 };
 
+console.log(searchParams, initialState);
 export const GlobalFilterSlice = createSlice({
   name: 'globalFilterValues',
   initialState,
