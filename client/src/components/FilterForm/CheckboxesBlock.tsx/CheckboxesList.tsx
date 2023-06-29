@@ -1,19 +1,25 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { checkboxAPI } from '../../../services/checkboxService';
-import { FormFilterValues, updateFormState } from '../../../store/FormFilterSlice';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { FormFilterValues } from '../../../store/FormFilterSlice';
+import { useSelector } from 'react-redux';
 import './style.css';
+import { Category } from '../../../types';
+import { RootState } from '../../../store/store';
 
 export interface CheckboxesListProps {
   blockName: keyof FormFilterValues;
-  checkedCheckboxes: string[];
+  data: Category[] | undefined;
+  isFetching: boolean;
+  changeFilterState: (state: FormFilterValues) => void;
 }
 
-export const CheckboxesBlock = ({ blockName, checkedCheckboxes }: CheckboxesListProps) => {
-  const dispatch = useDispatch();
-  const changeFilterFormState = (state: FormFilterValues) => dispatch(updateFormState(state));
-
-  const { data, isFetching } = checkboxAPI.useGetCheckboxesNameQuery();
+export const CheckboxesList = ({
+  blockName,
+  data,
+  isFetching,
+  changeFilterState,
+}: CheckboxesListProps) => {
+  const formFilterValues = useSelector((state: RootState) => state.formFilterValues);
+  const checkedCheckboxes = formFilterValues[blockName] ?? [];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
@@ -25,8 +31,7 @@ export const CheckboxesBlock = ({ blockName, checkedCheckboxes }: CheckboxesList
     } else {
       checkedCheckboxesCopy.splice(itemIndex, 1);
     }
-
-    changeFilterFormState({ [blockName]: checkedCheckboxesCopy });
+    changeFilterState({ [blockName]: checkedCheckboxesCopy });
   };
 
   if (isFetching) return <div>Loading...</div>;

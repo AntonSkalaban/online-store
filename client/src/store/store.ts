@@ -2,17 +2,17 @@ import { configureStore } from '@reduxjs/toolkit';
 import GlobalFilterSlice from './GlobalFilterSlice';
 import FormFilterSlice from './FormFilterSlice';
 import { productAPI } from '../services/productService';
-import { checkboxAPI } from '../services/checkboxService';
+import { categoryAPI } from '../services/categoryService';
 
 export const store = configureStore({
   reducer: {
     globalFilterValues: GlobalFilterSlice,
     formFilterValues: FormFilterSlice,
     [productAPI.reducerPath]: productAPI.reducer,
-    [checkboxAPI.reducerPath]: checkboxAPI.reducer,
+    [categoryAPI.reducerPath]: categoryAPI.reducer,
   },
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat([productAPI.middleware, checkboxAPI.middleware]);
+    return getDefaultMiddleware().concat([productAPI.middleware, categoryAPI.middleware]);
   },
 });
 

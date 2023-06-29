@@ -5,10 +5,10 @@ interface Option {
 
 export const options = [
   { value: '', label: 'select' },
-  { value: 'rating-ACS', label: 'Rating ACS' },
+  { value: 'rating-ASC', label: 'Rating ASC' },
   { value: 'rating-DESC', label: 'Rating DESC' },
-  { value: 'price-ACS', label: 'Price ACS' },
+  { value: 'price-ASC', label: 'Price ASC' },
   { value: 'price-DESC', label: 'Price DESC' },
-  { value: 'discountPercentage-ACS', label: 'Discount ACS' },
+  { value: 'discountPercentage-ASC', label: 'Discount ASC' },
   { value: 'discountPercentage-DESC', label: 'Discount DESC' },
 ] as Option[];

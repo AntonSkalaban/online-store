@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import './style.css';
-import { CheckboxesBlock } from './CheckboxesBlock.tsx/CheckboxesBlock';
-import { CustomObject } from '../../helpers/CustomObject';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { updateFormState } from '../../store/FormFilterSlice';
 import { GlobalFilterValues } from '../../store/GlobalFilterSlice';
+import { CustomObject } from '../../helpers/CustomObject';
 import { SortBlock } from './SortBlock/SortBlock';
+import { CategoryFilter } from './CheckboxesBlock.tsx/CategoryFilter';
+import './style.css';
 
 export interface FilterBlockProps {
   onSubmit: (value: GlobalFilterValues) => void;
@@ -44,7 +44,7 @@ export const FilterForm = ({ onSubmit }: FilterBlockProps) => {
       }}
     >
       <p onClick={handleResetClick}>Reset</p>
-      <CheckboxesBlock blockName={'category'} checkedCheckboxes={formFilterValues.category ?? []} />
+      <CategoryFilter />
       <SortBlock selectValue={formFilterValues.sortBy} />
       <button onClick={hanldeSubmitClick}>Apply filter</button>
     </form>
