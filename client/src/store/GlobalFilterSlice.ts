@@ -3,22 +3,19 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { FormFilterValues } from './FormFilterSlice';
 
-export enum GlobalStateFields {
-  SearchValue = 'searchValue',
-}
 export interface GlobalFilterValues extends FormFilterValues {
-  [GlobalStateFields.SearchValue]?: string;
+  searchValue?: string;
 }
 
 const searchParams = SearchParams.create(window.location.search);
 
 const initialState: GlobalFilterValues = {
   category: searchParams.get('category')?.split(',') ?? [],
+  brand: searchParams.get('brand')?.split(',') ?? [],
   sortBy: searchParams.get('sortBy') ?? '',
   searchValue: searchParams.get('searchValue') ?? '',
 };
 
-console.log(searchParams, initialState);
 export const GlobalFilterSlice = createSlice({
   name: 'globalFilterValues',
   initialState,

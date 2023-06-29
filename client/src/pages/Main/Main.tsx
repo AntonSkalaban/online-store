@@ -8,19 +8,20 @@ import { RootState } from '../../store/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { GlobalFilterValues, updateGlobalState } from '../../store/GlobalFilterSlice';
 import { productAPI } from '../../services/productService';
+import { CustomObject } from '../../helpers/CustomObject';
 import './style.css';
 
 export const Main = () => {
-  const globalfilterValues = useSelector((state: RootState) => state.globalFilterValues);
+  const globalFilterValues = useSelector((state: RootState) => state.globalFilterValues);
+  const existFilterValues = CustomObject.copyWithExistField(globalFilterValues);
   const dispatch = useDispatch();
 
-  const { data, isFetching } = productAPI.useGetFilterdProductsQuery(globalfilterValues);
+  const { data, isFetching } = productAPI.useGetFilterdProductsQuery(existFilterValues);
 
   useEffect(() => {
-    const newUrlParams = SearchParams.createFromFilterValues(globalfilterValues).toString();
-
+    const newUrlParams = SearchParams.createFromFilterValues(globalFilterValues).toString();
     PageURL.update(newUrlParams);
-  }, [globalfilterValues]);
+  }, [globalFilterValues]);
 
   const changeFilterValue = (values: GlobalFilterValues) => {
     dispatch(updateGlobalState(values));

@@ -21,7 +21,11 @@ export const FilterForm = ({ onSubmit }: FilterBlockProps) => {
   const formFilterValues = useSelector((state: RootState) => state.formFilterValues);
 
   useEffect(() => {
-    changeFormState({ category: globalFilterValues.category, sortBy: globalFilterValues.sortBy });
+    changeFormState({
+      category: globalFilterValues.category,
+      brand: globalFilterValues.brand,
+      sortBy: globalFilterValues.sortBy,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

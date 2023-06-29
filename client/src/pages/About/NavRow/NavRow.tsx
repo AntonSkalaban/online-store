@@ -23,7 +23,9 @@ export const NavRow = ({ category, brand, title }: NavRowProps) => {
         {category}
       </NavLink>
       {'>'}
-      <NavLink to={`/`}>{brand}</NavLink>
+      <NavLink to={`/`} onClick={() => hanldeNavLinkClick({ category: [], brand: [brand] })}>
+        {brand}
+      </NavLink>
       {'>'}
       <p>{title}</p>
     </div>
