@@ -9,11 +9,12 @@ export const CategoryFilter = () => {
   const changeFilterFormState = (state: FormFilterValues) => dispatch(updateFormState(state));
 
   const { data, isFetching } = categoryAPI.useGetCategoryNameQuery();
+  const categoryNames = data?.map((cat) => cat.name);
 
   return (
     <CheckboxesList
       blockName={'category'}
-      data={data}
+      data={categoryNames}
       isFetching={isFetching}
       changeFilterState={changeFilterFormState}
     />

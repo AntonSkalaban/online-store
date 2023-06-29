@@ -1,21 +1,19 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FormFilterValues, updateFormState } from '../../../store/FormFilterSlice';
+import { RootState } from '../../../store/store';
 import { options } from './const';
 
-interface SortBlockProps {
-  selectValue?: string;
-}
-
-export const SortBlock = ({ selectValue }: SortBlockProps) => {
+export const SortBlock = () => {
   const dispatch = useDispatch();
   const changeFilterFormState = (state: FormFilterValues) => dispatch(updateFormState(state));
+
+  const formFilterValues = useSelector((state: RootState) => state.formFilterValues);
+  const selectValue = formFilterValues.sortBy;
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     changeFilterFormState({ sortBy: e.target.value });
   };
-
-  console.log(selectValue);
 
   return (
     <label>

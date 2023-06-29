@@ -1,13 +1,12 @@
 import React from 'react';
 import { FormFilterValues } from '../../../store/FormFilterSlice';
 import { useSelector } from 'react-redux';
-import './style.css';
-import { Category } from '../../../types';
 import { RootState } from '../../../store/store';
+import './style.css';
 
 export interface CheckboxesListProps {
   blockName: keyof FormFilterValues;
-  data: Category[] | undefined;
+  data: string[] | undefined;
   isFetching: boolean;
   changeFilterState: (state: FormFilterValues) => void;
 }
@@ -40,9 +39,9 @@ export const CheckboxesList = ({
     <div className="checkboxes-block">
       <p className="checkboxes__title">{blockName}</p>
       <ul className="checkboxes__list">
-        {data?.map(({ _id, name }) => {
+        {data?.map((name) => {
           return (
-            <li className="checkboxes__item" key={_id}>
+            <li className="checkboxes__item" key={name}>
               <label className="checkboxes__label">
                 <input
                   type="checkbox"

@@ -7,6 +7,7 @@ import { CustomObject } from '../../helpers/CustomObject';
 import { SortBlock } from './SortBlock/SortBlock';
 import { CategoryFilter } from './CheckboxesBlock.tsx/CategoryFilter';
 import './style.css';
+import { BrandFilter } from './CheckboxesBlock.tsx/BrandFilter';
 
 export interface FilterBlockProps {
   onSubmit: (value: GlobalFilterValues) => void;
@@ -45,7 +46,8 @@ export const FilterForm = ({ onSubmit }: FilterBlockProps) => {
     >
       <p onClick={handleResetClick}>Reset</p>
       <CategoryFilter />
-      <SortBlock selectValue={formFilterValues.sortBy} />
+      <BrandFilter />
+      <SortBlock />
       <button onClick={hanldeSubmitClick}>Apply filter</button>
     </form>
   );
