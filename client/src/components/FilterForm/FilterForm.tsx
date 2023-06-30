@@ -6,9 +6,8 @@ import { GlobalFilterValues } from '../../store/GlobalFilterSlice';
 import { CustomObject } from '../../helpers/CustomObject';
 import { SortBlock } from './SortBlock/SortBlock';
 import { CategoryFilter } from './CheckboxesBlock.tsx/CategoryFilter';
-import './style.css';
 import { BrandFilter } from './CheckboxesBlock.tsx/BrandFilter';
-
+import './style.css';
 export interface FilterBlockProps {
   onSubmit: (value: GlobalFilterValues) => void;
 }

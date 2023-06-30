@@ -1,7 +1,7 @@
 import React from 'react';
-import './style.css';
 import { Product } from '../../types';
 import { ProductCard } from '../ProductCard/ProductCard';
+import './style.css';
 
 interface ProductsListProps {
   data: Product[] | undefined;
@@ -14,10 +14,13 @@ export const ProductsList = ({ data, isFetching }: ProductsListProps) => {
   if (!data?.length) return <div>Not found</div>;
 
   return (
-    <div className="proucts-list">
-      {data.map((product) => {
-        return <ProductCard key={product._id} product={product} />;
-      })}
-    </div>
+    <>
+      <h3 className="proucts-total"> {data.length} prdoducts found </h3>
+      <div className="proucts-list">
+        {data.map((product) => {
+          return <ProductCard key={product._id} product={product} />;
+        })}
+      </div>
+    </>
   );
 };

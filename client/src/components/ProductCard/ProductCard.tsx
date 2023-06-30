@@ -27,29 +27,17 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             }}
           />
           {isOnSale && (
-            <div
-              className="product-discount"
-              style={{
-                position: 'absolute',
-                top: '10%',
-                left: '0',
-                backgroundColor: 'gray',
-                color: 'red',
-              }}
-            >
+            <div className="product-card__discount">
               <p>-{Math.ceil(discountPercentage)}%</p>
             </div>
           )}
         </div>
       </NavLink>
       <div className="product-card__info-container">
-        <p className="product-price">
-          <span className="price">${price}</span>
+        <p className="product-card__price">
+          <span className={`${isOnSale ? 'price_old' : 'price'}`}>${price}</span>
           {isOnSale && (
-            <span className="discount-price">
-              {' '}
-              ${getDiscountedPrice(price, discountPercentage)}
-            </span>
+            <span className="red-text"> ${getDiscountedPrice(price, discountPercentage)}</span>
           )}
         </p>
         <p className="product-card__title">{title}</p>
