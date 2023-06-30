@@ -14,7 +14,7 @@ export const About = () => {
   if (isFetching) return <div>Loading...</div>;
   if (!id || error || !data) return <div>Not found</div>;
 
-  const { title, category, brand, description, images, price, discountPercentage } = data;
+  const { _id, title, category, brand, description, images, price, discountPercentage } = data;
 
   return (
     <div className="about-page">
@@ -23,11 +23,13 @@ export const About = () => {
       <div className="about__main">
         <ImagesContainer images={images} />
         <InfoContainer
+          id={_id}
           description={description}
           price={price}
           discountPercentage={discountPercentage}
         />
       </div>
+
       <ResentlyVewedList productId={id} />
     </div>
   );

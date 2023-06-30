@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import './style.css';
-
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { GlobalFilterValues } from '../../store/GlobalFilterSlice';
+import './style.css';
 
 interface SearchBarProps {
   onSubmit: (value: GlobalFilterValues) => void;

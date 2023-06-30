@@ -32,7 +32,7 @@ export const Main = () => {
       <FilterForm onSubmit={changeFilterValue} />
       <div className="main__main">
         <SearchBar onSubmit={changeFilterValue} />
-        <ProductsList data={data} isLoading={isFetching} />
+        <ProductsList data={data} isFetching={isFetching} />
       </div>
     </main>
   );

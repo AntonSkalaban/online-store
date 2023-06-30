@@ -1,11 +1,11 @@
 import React from 'react';
-import { ProductCard } from '../../ProductCard/ProductCard';
-import { productAPI } from '../../../services/productService';
+import { ProductCard } from '../ProductCard/ProductCard';
+import { productAPI } from '../../services/productService';
 
-interface ViewedProductProps {
+interface ProductFromLSProps {
   cardId: number;
 }
-export const ViewedProduct = ({ cardId }: ViewedProductProps) => {
+export const ProductFromLS = ({ cardId }: ProductFromLSProps) => {
   const { data, isFetching } = productAPI.useGetProductQuery(String(cardId));
 
   if (isFetching) return <div>Loading...</div>;

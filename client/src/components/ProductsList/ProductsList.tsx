@@ -5,11 +5,11 @@ import { ProductCard } from '../ProductCard/ProductCard';
 
 interface ProductsListProps {
   data: Product[] | undefined;
-  isLoading: boolean;
+  isFetching: boolean;
 }
 
-export const ProductsList = ({ data, isLoading }: ProductsListProps) => {
-  if (isLoading) return <div>Loading...</div>;
+export const ProductsList = ({ data, isFetching }: ProductsListProps) => {
+  if (isFetching) return <div>Loading...</div>;
 
   if (!data?.length) return <div>Not found</div>;
 

@@ -1,13 +1,20 @@
 import React from 'react';
 import { getDiscountedPrice } from '../../../helpers/getDiscountPrice';
+import { Bag } from '../../../helpers/Bag';
 
 interface InfoContainerProps {
+  id: string;
   description: string;
   discountPercentage: number;
   price: number;
 }
 
-export const InfoContainer = ({ description, discountPercentage, price }: InfoContainerProps) => {
+export const InfoContainer = ({
+  id,
+  description,
+  discountPercentage,
+  price,
+}: InfoContainerProps) => {
   const isOnSale = discountPercentage > 0;
 
   return (
@@ -24,6 +31,8 @@ export const InfoContainer = ({ description, discountPercentage, price }: InfoCo
       ) : (
         <p className="price">${price}</p>
       )}
+
+      <button onClick={() => Bag.save(id)}>add to bag</button>
     </div>
   );
 };

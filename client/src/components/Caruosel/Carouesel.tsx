@@ -13,7 +13,7 @@ export const Carousel = ({ children }: CarouselProps) => {
   const itemsPerSlide = 5;
   const isLeftBtnDisabled = leftShiftValue >= 0;
   const isRightBtnDisabled =
-    Math.floor(Children.count(children) / itemsPerSlide) <= leftShiftValue / -100 + 1;
+    Math.floor(Children.count(children) / itemsPerSlide) !== leftShiftValue / -100 + 1;
 
   const carueselContainerStyles = {
     left: `${leftShiftValue}%`,
