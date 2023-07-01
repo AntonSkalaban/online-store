@@ -16,7 +16,7 @@ export const SortBlock = () => {
   };
 
   return (
-    <label>
+    <label className="filter-block">
       Sort by:
       <select name="select" value={selectValue} onChange={handleChange}>
         {options.map(({ value, label }) => {

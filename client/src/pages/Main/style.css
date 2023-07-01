@@ -6,6 +6,9 @@
 }
 
 .main__main {
-    width: 79%;
+    width: calc(100% - 262px);
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }

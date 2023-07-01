@@ -1,8 +1,15 @@
+
 .proucts-list {
-    width: 80%;
+    width: 1050px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 200px);
-    gap: 2%;
+    gap: 10px;
 
     margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+    .proucts-list { 
+        width: 840px;
+    }
 }

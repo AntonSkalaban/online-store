@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { GlobalFilterValues } from '../../store/GlobalFilterSlice';
+import { FilterButton } from '../../components/UI/FilterButton/FilterButton';
 import './style.css';
-
 interface SearchBarProps {
   onSubmit: (value: GlobalFilterValues) => void;
 }
@@ -30,9 +30,7 @@ export const SearchBar = ({ onSubmit }: SearchBarProps) => {
         value={value}
         onChange={changeValue}
       />
-      <button className="search-bar__btn" onClick={handleClick}>
-        Найти
-      </button>
+      <FilterButton className="search-bar__btn" label="Find" hanldeClick={handleClick} />
     </div>
   );
 };

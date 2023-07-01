@@ -13,8 +13,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const [imageIndx, setImageIndx] = useState(0);
 
   return (
-    <div className="product-card">
-      <NavLink to={`/about/${_id}`}>
+    <NavLink to={`/about/${_id}`}>
+      <div className="product-card">
         <div className="product-card__image-container">
           <img
             className="product-image"
@@ -26,22 +26,19 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               setImageIndx(0);
             }}
           />
-          {isOnSale && (
-            <div className="product-card__discount">
-              <p>-{Math.ceil(discountPercentage)}%</p>
-            </div>
-          )}
+          {isOnSale && <p className="product-card__discount">-{Math.ceil(discountPercentage)}%</p>}
         </div>
-      </NavLink>
-      <div className="product-card__info-container">
-        <p className="product-card__price">
-          <span className={`${isOnSale ? 'price_old' : 'price'}`}>${price}</span>
-          {isOnSale && (
-            <span className="red-text"> ${getDiscountedPrice(price, discountPercentage)}</span>
-          )}
-        </p>
-        <p className="product-card__title">{title}</p>
+
+        <div className="product-card__info-container">
+          <p className="product-card__price">
+            <span className={`${isOnSale ? 'price_old' : 'price'}`}>${price}</span>
+            {isOnSale && (
+              <span className="red-text"> ${getDiscountedPrice(price, discountPercentage)}</span>
+            )}
+          </p>
+          <p className="product-card__title">{title}</p>
+        </div>
       </div>
-    </div>
+    </NavLink>
   );
 };

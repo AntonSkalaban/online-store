@@ -7,7 +7,9 @@ import { CustomObject } from '../../helpers/CustomObject';
 import { SortBlock } from './SortBlock/SortBlock';
 import { CategoryFilter } from './CheckboxesBlock.tsx/CategoryFilter';
 import { BrandFilter } from './CheckboxesBlock.tsx/BrandFilter';
+import { FilterButton } from '../../components/UI/FilterButton/FilterButton';
 import './style.css';
+
 export interface FilterBlockProps {
   onSubmit: (value: GlobalFilterValues) => void;
 }
@@ -47,11 +49,13 @@ export const FilterForm = ({ onSubmit }: FilterBlockProps) => {
         e.preventDefault();
       }}
     >
-      <p onClick={handleResetClick}>Reset</p>
+      <p className="filter-form__reset" onClick={handleResetClick}>
+        Reset All
+      </p>
       <CategoryFilter />
       <BrandFilter />
       <SortBlock />
-      <button onClick={hanldeSubmitClick}>Apply filter</button>
+      <FilterButton label={'Apply filter'} hanldeClick={hanldeSubmitClick} />
     </form>
   );
 };

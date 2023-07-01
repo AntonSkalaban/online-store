@@ -10,6 +10,7 @@ import { GlobalFilterValues, updateGlobalState } from '../../store/GlobalFilterS
 import { productAPI } from '../../services/productService';
 import { CustomObject } from '../../helpers/CustomObject';
 import './style.css';
+import { Wrapper } from '../../components/Wrapper/Wrapper';
 
 export const Main = () => {
   const globalFilterValues = useSelector((state: RootState) => state.globalFilterValues);
@@ -28,12 +29,14 @@ export const Main = () => {
   };
 
   return (
-    <main className="main">
-      <FilterForm onSubmit={changeFilterValue} />
-      <div className="main__main">
-        <SearchBar onSubmit={changeFilterValue} />
-        <ProductsList data={data} isFetching={isFetching} />
-      </div>
-    </main>
+    <Wrapper>
+      <main className="main">
+        <FilterForm onSubmit={changeFilterValue} />
+        <div className="main__main">
+          <SearchBar onSubmit={changeFilterValue} />
+          <ProductsList data={data} isFetching={isFetching} />
+        </div>
+      </main>
+    </Wrapper>
   );
 };
