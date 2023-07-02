@@ -2,8 +2,8 @@ import React from 'react';
 import { FormFilterValues } from '../../../store/FormFilterSlice';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
-import './style.css';
 import { firstCharToUC } from '../../../helpers/firstCharToUC';
+import './style.css';
 
 export interface CheckboxesListProps {
   blockName: keyof FormFilterValues;
@@ -34,39 +34,26 @@ export const CheckboxesList = ({
     changeFilterState({ [blockName]: checkedCheckboxesCopy });
   };
 
+  if (isFetching) return <div>Loading...</div>;
+
   return (
-    <div className="checkboxes-block filter-block">
-      <p className="checkboxes__title">{firstCharToUC(blockName)}</p>
-      {isFetching ? (
-        <div>Loading...</div>
-      ) : (
-        <ul className="checkboxes__list">
-          {data?.map((name) => {
-            return (
-              <li className="checkboxes__item" key={name}>
-                {/* <input
-                  type="checkbox"
-                  className="custom-checkbox" 
-                  name={name}
-                  checked={checkedCheckboxes.includes(name)}
-                  onChange={handleChange}
-                />
-                <label htmlFor={name}>{firstCharToUC(name)}</label> */}
-                <label className="checkboxes__label">
-                  <input
-                    className="custom-checkbox"
-                    type="checkbox"
-                    name={name}
-                    checked={checkedCheckboxes.includes(name)}
-                    onChange={handleChange}
-                  />
-                  {firstCharToUC(name)}
-                </label>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-    </div>
+    <ul className="checkboxes__list">
+      {data?.map((name) => {
+        return (
+          <li className="checkboxes__item" key={name}>
+            <label className="checkboxes__label">
+              <input
+                className="custom-checkbox"
+                type="checkbox"
+                name={name}
+                checked={checkedCheckboxes.includes(name)}
+                onChange={handleChange}
+              />
+              {firstCharToUC(name)}
+            </label>
+          </li>
+        );
+      })}
+    </ul>
   );
 };

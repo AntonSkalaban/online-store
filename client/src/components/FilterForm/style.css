@@ -20,7 +20,9 @@
 
     cursor: pointer;
 }
+
 .filter-block {
     width: 200px;
+    height: fit-content;
     margin-bottom: 20px;
 }

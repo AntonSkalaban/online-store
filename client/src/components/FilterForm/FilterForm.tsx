@@ -9,6 +9,8 @@ import { CategoryFilter } from './CheckboxesBlock.tsx/CategoryFilter';
 import { BrandFilter } from './CheckboxesBlock.tsx/BrandFilter';
 import { FilterButton } from '../../components/UI/FilterButton/FilterButton';
 import './style.css';
+import { DualRangeSlider } from './DualSliderBlock/DualSliderBlock';
+import { FilterBlock } from './FilterBlock/FilterBlock';
 
 export interface FilterBlockProps {
   onSubmit: (value: GlobalFilterValues) => void;
@@ -52,9 +54,21 @@ export const FilterForm = ({ onSubmit }: FilterBlockProps) => {
       <p className="filter-form__reset" onClick={handleResetClick}>
         Reset All
       </p>
-      <CategoryFilter />
-      <BrandFilter />
+
+      <FilterBlock title="Category">
+        <CategoryFilter />
+      </FilterBlock>
+
+      <FilterBlock title="Brand">
+        <BrandFilter />
+      </FilterBlock>
+
+      <FilterBlock title="Price">
+        <DualRangeSlider />
+      </FilterBlock>
+
       <SortBlock />
+
       <FilterButton label={'Apply filter'} hanldeClick={hanldeSubmitClick} />
     </form>
   );
