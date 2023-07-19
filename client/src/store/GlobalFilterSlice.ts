@@ -1,18 +1,20 @@
-import { SearchParams } from '../helpers/SearchParams';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { FormFilterValues } from './FormFilterSlice';
 
-export interface GlobalFilterValues extends FormFilterValues {
+interface SearchBarValue {
   searchValue?: string;
 }
 
-const searchParams = SearchParams.create(window.location.search);
+export interface GlobalFilterValues extends FormFilterValues, SearchBarValue {}
+
+const searchParams = new URLSearchParams(window.location.search);
 
 const initialState: GlobalFilterValues = {
   category: searchParams.get('category')?.split(',') ?? [],
   brand: searchParams.get('brand')?.split(',') ?? [],
-  sortBy: searchParams.get('sortBy') ?? '',
+  price: searchParams.get('price')?.split(',') ?? [],
+  sort: searchParams.get('sortBy') ?? '',
   searchValue: searchParams.get('searchValue') ?? '',
 };
 

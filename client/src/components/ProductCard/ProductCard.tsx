@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { Product } from '../../types';
 import { NavLink } from 'react-router-dom';
-import { getDiscountedPrice } from '../../helpers/getDiscountPrice';
 import './style.css';
 interface ProductCardProps {
   product: Product;
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-  const { _id, title, images, price, discountPercentage } = product;
+  const { _id, title, images, price, discountPercentage, discountPrice } = product;
   const isOnSale = discountPercentage > 0;
   const [imageIndx, setImageIndx] = useState(0);
 
   return (
-    <NavLink to={`/about/${_id}`}>
-      <div className="product-card">
+    <article className="product-card">
+      <NavLink to={`/about/${_id}`}>
         <div className="product-card__image-container">
           <img
             className="product-image"
@@ -30,15 +29,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         </div>
 
         <div className="product-card__info-container">
+          <p className="product-card__title">{title}</p>
           <p className="product-card__price">
             <span className={`${isOnSale ? 'price_old' : 'price'}`}>${price}</span>
-            {isOnSale && (
-              <span className="red-text"> ${getDiscountedPrice(price, discountPercentage)}</span>
-            )}
+            {isOnSale && <span className="red-text"> ${discountPrice}</span>}
           </p>
-          <p className="product-card__title">{title}</p>
         </div>
-      </div>
-    </NavLink>
+      </NavLink>
+    </article>
   );
 };

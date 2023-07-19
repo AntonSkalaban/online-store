@@ -8,9 +8,10 @@ import './style.css';
 interface CarouselProps {
   children?: React.ReactNode;
 }
+
 export const Carousel = ({ children }: CarouselProps) => {
   const [leftShiftValue, setLeftShiftValue] = useState(0);
-  const itemsPerSlide = 5;
+  const itemsPerSlide = 4;
   const isLeftBtnDisabled = leftShiftValue >= 0;
   const isRightBtnDisabled =
     Math.floor(Children.count(children) / itemsPerSlide) !== leftShiftValue / -100 + 1;
@@ -31,9 +32,7 @@ export const Carousel = ({ children }: CarouselProps) => {
   return (
     <div className="carousel">
       <div className="carousel__container" style={carueselContainerStyles}>
-        {Children.map(children, (child, index) => {
-          return <div key={index}>{child}</div>;
-        })}
+        {Children.toArray(children)}
       </div>
       <CarouselButtonLeft isDisabled={isLeftBtnDisabled} hanldeClick={moveLeft} />
       <CarouselButtonRight isDisabled={isRightBtnDisabled} hanldeClick={moveRight} />

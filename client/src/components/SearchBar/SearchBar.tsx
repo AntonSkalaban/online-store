@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { GlobalFilterValues } from '../../store/GlobalFilterSlice';
+import { GlobalFilterValues, updateGlobalState } from '../../store/GlobalFilterSlice';
 import { FilterButton } from '../../components/UI/FilterButton/FilterButton';
 import './style.css';
-interface SearchBarProps {
-  onSubmit: (value: GlobalFilterValues) => void;
-}
+import { FormFilterValues, updateFormState } from '../../store/FormFilterSlice';
+import { CustomObject } from '../../helpers/CustomObject';
 
-export const SearchBar = ({ onSubmit }: SearchBarProps) => {
+export const SearchBar = () => {
+  const dispatch = useDispatch();
+  const changeGlobalState = (state: GlobalFilterValues) => dispatch(updateGlobalState(state));
+  const changeFormState = (state: FormFilterValues) => dispatch(updateFormState(state));
+  const formFilterValues = useSelector((state: RootState) => state.formFilterValues);
+
   const searchedValue = useSelector((state: RootState) => state.globalFilterValues.searchValue);
   const [value, setValue] = useState(searchedValue);
 
@@ -17,8 +21,11 @@ export const SearchBar = ({ onSubmit }: SearchBarProps) => {
     setValue(value);
   };
 
-  const handleClick = () => {
-    onSubmit({ searchValue: value });
+  const hanldeBtnClick = () => {
+    const emptyState = CustomObject.resetAllFields(formFilterValues);
+
+    changeFormState(emptyState);
+    changeGlobalState({ ...emptyState, searchValue: value });
   };
 
   return (
@@ -30,7 +37,7 @@ export const SearchBar = ({ onSubmit }: SearchBarProps) => {
         value={value}
         onChange={changeValue}
       />
-      <FilterButton className="search-bar__btn" label="Find" hanldeClick={handleClick} />
+      <FilterButton className="search-bar__btn" label="Find" hanldeClick={hanldeBtnClick} />
     </div>
   );
 };

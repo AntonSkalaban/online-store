@@ -15,8 +15,8 @@ export const ProductsList = ({ data, isFetching }: ProductsListProps) => {
 
   return (
     <>
-      <p className="proucts-total"> {data.length} prdoducts found </p>
-      <div className="proucts-list">
+      <div className="products-list">
+        <p className="products-list__heaeder"> {data.length} prdoducts found </p>
         {data.map((product) => {
           return <ProductCard key={product._id} product={product} />;
         })}

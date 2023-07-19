@@ -1,11 +1,16 @@
 
-.proucts-list {
+.products-list {
     width: 1050px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 200px);
     gap: 10px;
 
     margin: 0 auto;
+}
+
+.products-list__heaeder {
+   text-align: center;
+   
+   margin-top: 10px;
+   margin-bottom: 20px;
 }
 
 @media (max-width: 1200px) {

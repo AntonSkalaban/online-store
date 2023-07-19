@@ -10,6 +10,7 @@ export interface Product {
   description: string;
   price: number;
   discountPercentage: number;
+  discountPrice: number;
   rating: number;
   stock: number;
   brand: string;

@@ -4,11 +4,10 @@ interface Option {
 }
 
 export const options = [
-  { value: '', label: 'select' },
   { value: 'rating-ASC', label: 'Rating ASC' },
   { value: 'rating-DESC', label: 'Rating DESC' },
-  { value: 'price-ASC', label: 'Price ASC' },
-  { value: 'price-DESC', label: 'Price DESC' },
+  { value: 'discountPrice-ASC', label: 'Price ASC' },
+  { value: 'discountPrice-DESC', label: 'Price DESC' },
   { value: 'discountPercentage-ASC', label: 'Discount ASC' },
   { value: 'discountPercentage-DESC', label: 'Discount DESC' },
 ] as Option[];

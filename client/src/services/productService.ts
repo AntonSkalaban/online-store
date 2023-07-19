@@ -1,4 +1,3 @@
-import { SearchParams } from '../helpers/SearchParams';
 import { GlobalFilterValues } from '../store/GlobalFilterSlice';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { Product } from '../types';
@@ -10,7 +9,7 @@ export const productAPI = createApi({
     getFilterdProducts: build.query<Product[], GlobalFilterValues>({
       query: (filterValues) => ({
         url: `/products`,
-        params: SearchParams.create(filterValues),
+        params: new URLSearchParams(filterValues as Record<string, string>),
       }),
     }),
 
@@ -23,7 +22,7 @@ export const productAPI = createApi({
     }),
 
     getProductPrices: build.query<string[], void>({
-      query: () => `/products/price`,
+      query: () => `/products/prices`,
     }),
   }),
 });

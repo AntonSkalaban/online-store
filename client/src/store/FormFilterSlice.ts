@@ -3,13 +3,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface FormFilterValues {
   category?: string[];
   brand?: string[];
-  sortBy?: string;
+  price?: string[];
+  sort?: string;
 }
 
 const initialState: FormFilterValues = {
   category: [],
   brand: [],
-  sortBy: '',
+  price: [],
+  sort: '',
 };
 
 export const FormFilterValuesSlice = createSlice({

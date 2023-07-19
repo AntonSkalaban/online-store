@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './style.css';
 import {
   CarouselButtonLeft,
   CarouselButtonRight,
 } from '../../components/UI/CarouselButton/CarouselButtons';
+import './style.css';
 
 interface CaruselProps {
   images: string[];

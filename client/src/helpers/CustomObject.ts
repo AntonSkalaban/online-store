@@ -1,7 +1,7 @@
-import { GlobalFilterValues } from '../store/GlobalFilterSlice';
+import { FormFilterValues } from './../store/FormFilterSlice';
 
 export class CustomObject {
-  static copyWithExistField(obj: GlobalFilterValues) {
+  static removeEmptyField(obj: FormFilterValues) {
     const clone = Object.fromEntries(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       Object.entries(obj).filter(([_, value]) => value && value?.length)
@@ -9,12 +9,16 @@ export class CustomObject {
     return clone;
   }
 
-  static resetAllFields = (obj: Record<string, string | string[] | [] | null>) => {
-    Object.keys(obj).forEach((key) => {
-      if (Array.isArray(obj[key])) {
-        obj[key] = [];
-      }
-      obj[key] = '';
-    });
+  static resetAllFields = (obj: FormFilterValues) => {
+    const clone = Object.fromEntries(
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      Object.entries(obj).map(([key, _]) => {
+        if (Array.isArray(obj[key as keyof FormFilterValues])) {
+          return [key, []];
+        }
+        return [key, ''];
+      })
+    );
+    return clone;
   };
 }

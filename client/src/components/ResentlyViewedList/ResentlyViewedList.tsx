@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { ResentlyViewed } from '../../helpers/ResentlyViewed';
-import { ProductFromLS } from '../ProductFromLS/ProductFromLS';
+import { ResentlyViewedProduct } from './ResentlyViewedProduct/ResentlyViewedProduct';
 import { Carousel } from '../../components/Caruosel/Carouesel';
 
 interface ResentlyVewedListProps {
@@ -23,7 +23,7 @@ export const ResentlyVewedList = ({ productId }: ResentlyVewedListProps) => {
       ) : (
         <Carousel>
           {productIds.map((id) => {
-            return <ProductFromLS key={id} cardId={id} />;
+            return <ResentlyViewedProduct key={id} cardId={id} />;
           })}
         </Carousel>
       )}

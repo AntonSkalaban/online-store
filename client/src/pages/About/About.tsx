@@ -14,7 +14,17 @@ export const About = () => {
   if (isFetching) return <div>Loading...</div>;
   if (!id || error || !data) return <div>Not found</div>;
 
-  const { _id, title, category, brand, description, images, price, discountPercentage } = data;
+  const {
+    _id,
+    title,
+    category,
+    brand,
+    description,
+    images,
+    price,
+    discountPercentage,
+    discountPrice,
+  } = data;
 
   return (
     <div className="about-page">
@@ -26,6 +36,7 @@ export const About = () => {
           id={_id}
           description={description}
           price={price}
+          discountPrice={discountPrice}
           discountPercentage={discountPercentage}
         />
       </div>

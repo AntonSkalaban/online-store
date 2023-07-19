@@ -1,41 +1,33 @@
 import React, { useEffect } from 'react';
-import { ProductsList } from '../../components/ProductsList/ProductsList';
-import { SearchBar } from '../../components/SearchBar/SearchBar';
-import { FilterForm } from '../../components/FilterForm/FilterForm';
-import { PageURL } from '../../helpers/PageURL';
-import { SearchParams } from '../../helpers/SearchParams';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { useSelector, useDispatch } from 'react-redux';
-import { GlobalFilterValues, updateGlobalState } from '../../store/GlobalFilterSlice';
 import { productAPI } from '../../services/productService';
+import { PageURL } from '../../helpers/PageURL';
 import { CustomObject } from '../../helpers/CustomObject';
-import './style.css';
+import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { Wrapper } from '../../components/Wrapper/Wrapper';
+import { ProductsList } from '../../components/ProductsList/ProductsList';
+import { Filter } from '../../components/Filter/Filter';
+import './style.css';
 
 export const Main = () => {
   const globalFilterValues = useSelector((state: RootState) => state.globalFilterValues);
-  const existFilterValues = CustomObject.copyWithExistField(globalFilterValues);
-  const dispatch = useDispatch();
 
-  const { data, isFetching } = productAPI.useGetFilterdProductsQuery(existFilterValues);
+  const { data, isFetching } = productAPI.useGetFilterdProductsQuery(globalFilterValues);
 
   useEffect(() => {
-    const newUrlParams = SearchParams.createFromFilterValues(globalFilterValues).toString();
-    PageURL.update(newUrlParams);
-  }, [globalFilterValues]);
+    const existGlobalValues = CustomObject.removeEmptyField(globalFilterValues);
+    const newUrlParams = new URLSearchParams(existGlobalValues as Record<string, string>);
 
-  const changeFilterValue = (values: GlobalFilterValues) => {
-    dispatch(updateGlobalState(values));
-  };
+    PageURL.update(newUrlParams.toString());
+  }, [globalFilterValues]);
 
   return (
     <Wrapper>
       <main className="main">
-        <FilterForm onSubmit={changeFilterValue} />
-        <div className="main__main">
-          <SearchBar onSubmit={changeFilterValue} />
-          <ProductsList data={data} isFetching={isFetching} />
-        </div>
+        <SearchBar />
+        <Filter />
+        <ProductsList data={data} isFetching={isFetching} />
       </main>
     </Wrapper>
   );

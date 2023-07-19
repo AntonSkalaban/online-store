@@ -1,7 +1,7 @@
 import { LocalStorage } from './LocalStorage';
 
 export class Bag {
-  static save(id: string) {
+  static add(id: string) {
     const productIds = LocalStorage.getArray('bag');
 
     const index = productIds.indexOf(id);
@@ -17,7 +17,7 @@ export class Bag {
     localStorage.setItem('bag', JSON.stringify(productIds));
   }
 
-  static get(): { id: string; quantity: number }[] | [] {
+  static get(): { id: string } {
     return LocalStorage.getArray('bag');
   }
 }
