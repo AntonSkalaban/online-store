@@ -50,18 +50,16 @@ export const Dropdown = ({ title, children }: DropdownProps) => {
   return (
     <div className="dropdown">
       <button className={filterDropdownBtnClass} onClick={dropdownToggle}>
-        <span className="dropdown__btn-title">
-          {firstCharToUC(title)}
-          {isSelect > 0 && (
-            <span className="dropdown__clear-btn" onClick={handleClearBtnClick}>
-              X
-            </span>
-          )}{' '}
-        </span>
+        <p className="dropdown__btn-title">{firstCharToUC(title)}</p>
         {isOpen ? <span>&#8964;</span> : <span>&#8963;</span>}
       </button>
       {isOpen && (
         <div className="dropdown__body">
+          {isSelect > 0 && (
+            <p className="dropdown__clear-btn" onClick={handleClearBtnClick}>
+              Clear
+            </p>
+          )}
           {children}
           <FilterButton label={'Apply filter'} hanldeClick={hanldeApplyBtnClick} />
         </div>

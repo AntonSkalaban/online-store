@@ -1,5 +1,6 @@
 import React from 'react';
 import { productAPI } from '../../../services/productService';
+import './style.css';
 
 interface ProductFromLSProps {
   cardId: number;
@@ -11,7 +12,7 @@ export const ResentlyViewedProduct = ({ cardId }: ProductFromLSProps) => {
   if (data)
     return (
       <div className="resently-viewed-product">
-        <img src={data.images[0]}></img>
+        <img className="resently-viewed-product-img" src={data.images[0]}></img>
       </div>
     );
   return <></>;
