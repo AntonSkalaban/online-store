@@ -12,8 +12,9 @@ export const ResentlyViewedProduct = ({ cardId }: ProductFromLSProps) => {
   if (data)
     return (
       <div className="resently-viewed-product">
-        <img className="resently-viewed-product-img" src={data.images[0]}></img>
+        <img className="product-image" src={data.images[0]} />
       </div>
     );
-  return <></>;
+
+  return null;
 };

@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import {
-  CarouselButtonLeft,
-  CarouselButtonRight,
-} from '../../components/UI/CarouselButton/CarouselButtons';
+import { CarouselButtonLeft, CarouselButtonRight } from '../../components/UI';
 import './style.css';
 
 interface CaruselProps {
@@ -11,11 +8,11 @@ interface CaruselProps {
   changeActiveImgIndex: (index: number) => void;
 }
 
-export const InfinityCarousel = ({
+export const InfinityCarousel: React.FC<CaruselProps> = ({
   images,
   activeImgIndex,
   changeActiveImgIndex,
-}: CaruselProps) => {
+}) => {
   const [leftShiftValue, setLeftShiftValue] = useState(-100);
   const [showTransition, setShowTransition] = useState(false);
 

@@ -6,6 +6,7 @@ import { ImagesContainer } from './ImagesContainer/ImagesContainer';
 import { InfoContainer } from './InfoContainer/InfoContainer';
 import { ResentlyVewedList } from '../../components/ResentlyViewedList/ResentlyViewedList';
 import './style.css';
+import { AlsoLike } from '../../components/AlsoLike/AlsoLike';
 
 export const About = () => {
   const { id } = useParams();
@@ -41,6 +42,7 @@ export const About = () => {
         />
       </div>
 
+      <AlsoLike productId={id} category={category} brand={brand} />
       <ResentlyVewedList productId={id} />
     </div>
   );

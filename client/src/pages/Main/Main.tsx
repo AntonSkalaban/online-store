@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
 import { productAPI } from '../../services/productService';
 import { PageURL } from '../../helpers/PageURL';
 import { CustomObject } from '../../helpers/CustomObject';
-import { SearchBar } from '../../components/SearchBar/SearchBar';
-import { Wrapper } from '../../components/Wrapper/Wrapper';
-import { ProductsList } from '../../components/ProductsList/ProductsList';
-import { Filter } from '../../components/Filter/Filter';
+import { Wrapper, Filter, ProductsList, SearchBar } from '../../components';
 import './style.css';
+import { getGlobalFilterValues } from '../../store/selectors/inedx';
 
 export const Main = () => {
-  const globalFilterValues = useSelector((state: RootState) => state.globalFilterValues);
+  const globalFilterValues = useSelector(getGlobalFilterValues);
 
   const { data, isFetching } = productAPI.useGetFilterdProductsQuery(globalFilterValues);
 
@@ -24,8 +21,8 @@ export const Main = () => {
 
   return (
     <Wrapper>
+      <SearchBar />
       <main className="main">
-        <SearchBar />
         <Filter />
         <ProductsList data={data} isFetching={isFetching} />
       </main>

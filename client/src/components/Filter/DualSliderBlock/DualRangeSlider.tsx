@@ -1,18 +1,16 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormFilterValues, updateFormState } from '../../../store/FormFilterSlice';
-import { RootState } from '../../../store/store';
+import { getFormFilterValues } from '../../../store/selectors/inedx';
+import { updateFormState } from '../../../store/slice';
 
 interface DualRangeSliderProps {
   data: string[];
 }
 
-export const DualRangeSlider = ({ data }: DualRangeSliderProps) => {
+export const DualRangeSlider: React.FC<DualRangeSliderProps> = ({ data }) => {
   const dispatch = useDispatch();
-  const changeFilterFormState = (state: FormFilterValues) => dispatch(updateFormState(state));
 
-  const formFilterValues = useSelector((state: RootState) => state.formFilterValues);
-  const selectValues = formFilterValues.price;
+  const selectValues = useSelector(getFormFilterValues).price;
 
   const [min, max] = [data[0], data[data.length - 1]];
   const [minVal, maxVal] = selectValues?.length ? selectValues : [min, max];
@@ -29,10 +27,10 @@ export const DualRangeSlider = ({ data }: DualRangeSliderProps) => {
 
     if (name === 'min') {
       if (+value > +maxVal) return;
-      changeFilterFormState({ price: [newValue, maxVal] });
+      dispatch(updateFormState({ price: [newValue, maxVal] }));
     } else {
       if (+value < +minVal) return;
-      changeFilterFormState({ price: [minVal, newValue] });
+      dispatch(updateFormState({ price: [minVal, newValue] }));
     }
   };
 

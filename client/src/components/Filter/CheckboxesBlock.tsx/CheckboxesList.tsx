@@ -1,8 +1,8 @@
 import React from 'react';
-import { FormFilterValues, updateFormState } from '../../../store/FormFilterSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../store/store';
-import { firstCharToUC } from '../../../helpers/firstCharToUC';
+import { getFormFilterValues } from '../../../store/selectors/inedx';
+import { FormFilterValues, updateFormState } from '../../../store/slice';
+import { firstCharToUC } from '../../../helpers';
 import './style.css';
 
 export interface CheckboxesListProps {
@@ -10,12 +10,10 @@ export interface CheckboxesListProps {
   data: string[];
 }
 
-export const CheckboxesList = ({ blockName, data }: CheckboxesListProps) => {
+export const CheckboxesList: React.FC<CheckboxesListProps> = ({ blockName, data }) => {
   const dispatch = useDispatch();
-  const changeFilterForm = (state: FormFilterValues) => dispatch(updateFormState(state));
 
-  const formFilterValues = useSelector((state: RootState) => state.formFilterValues);
-  const checkedCheckboxes = formFilterValues[blockName] ?? [];
+  const checkedCheckboxes = useSelector(getFormFilterValues)[blockName] ?? [];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
@@ -27,7 +25,7 @@ export const CheckboxesList = ({ blockName, data }: CheckboxesListProps) => {
     } else {
       stateCopy.splice(itemIndex, 1);
     }
-    changeFilterForm({ [blockName]: stateCopy });
+    dispatch(updateFormState({ [blockName]: stateCopy }));
   };
 
   return (

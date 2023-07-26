@@ -25,3 +25,7 @@ export interface Category {
   name: string;
   __v: number;
 }
+export interface BagItem {
+  id: number;
+  quantity: number;
+}

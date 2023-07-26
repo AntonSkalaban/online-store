@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;800&display=swap');
 
-.main {
+body {
     font-family: 'Nunito Sans', sans-serif;
     font-size: 14px;
     font-weight: 200;
@@ -13,4 +13,13 @@
 
 .active-image{
     border: 1px solid blue;
+}
+
+.section-title {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: .8px;
+    line-height: 24px;
+    color: #2d2d2d;
 }

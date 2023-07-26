@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { GlobalFilterValues, updateGlobalState } from '../../../store/GlobalFilterSlice';
+import { GlobalFilterValues, updateGlobalState } from '../../../store/slice/GlobalFilterSlice';
 import './style.css';
 
 interface NavRowProps {

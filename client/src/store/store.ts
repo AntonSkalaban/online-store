@@ -1,8 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import GlobalFilterSlice from './GlobalFilterSlice';
-import FormFilterSlice from './FormFilterSlice';
-import { productAPI } from '../services/productService';
-import { categoryAPI } from '../services/categoryService';
+import { productAPI, categoryAPI } from '../services';
+import { FormFilterSlice, GlobalFilterSlice } from './slice';
 
 export const store = configureStore({
   reducer: {

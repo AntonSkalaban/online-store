@@ -1,28 +1,27 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../store/store';
-import { FormFilterValues } from '../../../store/FormFilterSlice';
-import { productAPI } from '../../../services/productService';
-import { CheckboxesList } from './CheckboxesList';
+import { FormFilterValues } from '../../../store/slice';
+import { getGlobalFilterValues } from '../../../store/selectors/inedx';
+import { productAPI } from '../../../services';
 import { Product } from '../../../types';
-
+import { CheckboxesList } from './CheckboxesList';
 interface CheckboxesBlockProps {
   title: keyof FormFilterValues;
 }
 
 export const CheckboxesBlock = ({ title }: CheckboxesBlockProps) => {
-  const globalFilterValues = useSelector((state: RootState) => state.globalFilterValues);
+  const globalFilterValues = useSelector(getGlobalFilterValues);
 
   const { data, isFetching } = productAPI.useGetFilterdProductsQuery({
     ...globalFilterValues,
     [title]: [],
   });
 
-  const names = [
+  const availableNames = [
     ...new Set(data?.map((product) => product[title as keyof Product])),
   ].sort() as string[];
 
   if (isFetching) return <div>Loading...</div>;
 
-  return <CheckboxesList blockName={title} data={names} />;
+  return <CheckboxesList blockName={title} data={availableNames} />;
 };

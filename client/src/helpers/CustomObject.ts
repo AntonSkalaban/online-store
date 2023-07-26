@@ -1,4 +1,4 @@
-import { FormFilterValues } from './../store/FormFilterSlice';
+import { FormFilterValues } from '../store/slice';
 
 export class CustomObject {
   static removeEmptyField(obj: FormFilterValues) {
@@ -9,7 +9,7 @@ export class CustomObject {
     return clone;
   }
 
-  static resetAllFields = (obj: FormFilterValues) => {
+  static resetAllFields = (obj: FormFilterValues): FormFilterValues => {
     const clone = Object.fromEntries(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       Object.entries(obj).map(([key, _]) => {

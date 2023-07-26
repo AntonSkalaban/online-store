@@ -1,4 +1,4 @@
-import { GlobalFilterValues } from '../store/GlobalFilterSlice';
+import { GlobalFilterValues } from '../store/slice/GlobalFilterSlice';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { Product } from '../types';
 
@@ -17,12 +17,12 @@ export const productAPI = createApi({
       query: (id) => `/products/${id}`,
     }),
 
-    getProductBrands: build.query<string[], void>({
-      query: () => `/products/brands`,
-    }),
+    // getProductBrands: build.query<string[], void>({
+    //   query: () => `/products/brands`,
+    // }),
 
-    getProductPrices: build.query<string[], void>({
-      query: () => `/products/prices`,
-    }),
+    // getProductPrices: build.query<string[], void>({
+    //   query: () => `/products/prices`,
+    // }),
   }),
 });

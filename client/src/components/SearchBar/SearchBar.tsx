@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-import { GlobalFilterValues, updateGlobalState } from '../../store/GlobalFilterSlice';
-import { FilterButton } from '../../components/UI/FilterButton/FilterButton';
+import { updateFormState, updateGlobalState } from '../../store/slice';
+import { getFormFilterValues, getGlobalFilterValues } from '../../store/selectors/inedx';
+import { CustomObject } from '../../helpers';
+import { Button } from '../../components/UI';
 import './style.css';
-import { FormFilterValues, updateFormState } from '../../store/FormFilterSlice';
-import { CustomObject } from '../../helpers/CustomObject';
 
 export const SearchBar = () => {
   const dispatch = useDispatch();
-  const changeGlobalState = (state: GlobalFilterValues) => dispatch(updateGlobalState(state));
-  const changeFormState = (state: FormFilterValues) => dispatch(updateFormState(state));
-  const formFilterValues = useSelector((state: RootState) => state.formFilterValues);
+  const formFilterValues = useSelector(getFormFilterValues);
+  const searchedValue = useSelector(getGlobalFilterValues).searchValue;
 
-  const searchedValue = useSelector((state: RootState) => state.globalFilterValues.searchValue);
   const [value, setValue] = useState(searchedValue);
 
   const changeValue = (e: React.FormEvent<HTMLInputElement>) => {
@@ -24,8 +21,8 @@ export const SearchBar = () => {
   const hanldeBtnClick = () => {
     const emptyState = CustomObject.resetAllFields(formFilterValues);
 
-    changeFormState(emptyState);
-    changeGlobalState({ ...emptyState, searchValue: value });
+    dispatch(updateFormState(emptyState));
+    dispatch(updateGlobalState(emptyState));
   };
 
   return (
@@ -37,7 +34,7 @@ export const SearchBar = () => {
         value={value}
         onChange={changeValue}
       />
-      <FilterButton className="search-bar__btn" label="Find" hanldeClick={hanldeBtnClick} />
+      <Button className="filter-btn search-bar__btn" label="Find" hanldeClick={hanldeBtnClick} />
     </div>
   );
 };

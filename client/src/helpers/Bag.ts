@@ -1,23 +1,21 @@
+import { BagItem } from '../types';
 import { LocalStorage } from './LocalStorage';
 
 export class Bag {
   static add(id: string) {
-    const productIds = LocalStorage.getArray('bag');
+    const products = LocalStorage.getArray<BagItem>('bag');
+    const productIds = products.map((product) => product.id);
 
-    const index = productIds.indexOf(id);
+    const index = productIds.indexOf(+id);
 
     if (index === -1) {
-      productIds.unshift({ id: id, quantity: 1 });
-    } else {
-      const product = productIds.splice(index, 1);
-      product.quantity++;
-      productIds.unshift(product);
-    }
+      products.unshift({ id: +id, quantity: 1 });
+    } else products[index].quantity++;
 
-    localStorage.setItem('bag', JSON.stringify(productIds));
+    LocalStorage.setArray('bag', products);
   }
 
-  static get(): { id: string } {
+  static get(): BagItem[] {
     return LocalStorage.getArray('bag');
   }
 }

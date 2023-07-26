@@ -3,7 +3,7 @@ import { LocalStorage } from './LocalStorage';
 export class ResentlyViewed {
   static save(id: string) {
     const limit = 12;
-    const productIds = LocalStorage.getArray('recentlyViewed');
+    const productIds = LocalStorage.getArray<string>('recentlyViewed');
 
     const index = productIds.indexOf(id);
 
@@ -15,10 +15,10 @@ export class ResentlyViewed {
       productIds.unshift(id);
     }
 
-    localStorage.setItem('recentlyViewed', JSON.stringify(productIds));
+    LocalStorage.setArray('recentlyViewed', productIds);
   }
 
-  static get(): number[] | [] {
-    return LocalStorage.getArray('recentlyViewed');
+  static get(): number[] {
+    return LocalStorage.getArray<number>('recentlyViewed');
   }
 }

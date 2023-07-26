@@ -4,17 +4,18 @@ import { NavLink } from 'react-router-dom';
 import './style.css';
 interface ProductCardProps {
   product: Product;
+  className: string;
 }
 
-export const ProductCard = ({ product }: ProductCardProps) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
+  const [imageIndx, setImageIndx] = useState(0);
   const { _id, title, images, price, discountPercentage, discountPrice } = product;
   const isOnSale = discountPercentage > 0;
-  const [imageIndx, setImageIndx] = useState(0);
 
   return (
-    <article className="product-card">
+    <article className={`product-card ${className}`}>
       <NavLink to={`/about/${_id}`}>
-        <div className="product-card__image-container">
+        <div className={`product-card__image-container ${className}__img-container`}>
           <img
             className="product-image"
             src={images[imageIndx]}

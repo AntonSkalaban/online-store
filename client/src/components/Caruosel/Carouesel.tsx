@@ -1,15 +1,12 @@
 import React, { Children, useState } from 'react';
-import {
-  CarouselButtonLeft,
-  CarouselButtonRight,
-} from '../../components/UI/CarouselButton/CarouselButtons';
+import { CarouselButtonLeft, CarouselButtonRight } from '../../components/UI';
 import './style.css';
 
 interface CarouselProps {
   children?: React.ReactNode;
 }
 
-export const Carousel = ({ children }: CarouselProps) => {
+export const Carousel: React.FC<CarouselProps> = ({ children }) => {
   const [leftShiftValue, setLeftShiftValue] = useState(0);
   const itemsPerSlide = 4;
   const isLeftBtnDisabled = leftShiftValue >= 0;

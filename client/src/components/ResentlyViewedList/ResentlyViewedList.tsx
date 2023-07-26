@@ -17,7 +17,7 @@ export const ResentlyVewedList = ({ productId }: ResentlyVewedListProps) => {
 
   return (
     <div className="resently-viewed">
-      <p>Resently</p>
+      <h4 className="section-title">Resently</h4>
       {!productIds?.length ? (
         <p>No products</p>
       ) : (

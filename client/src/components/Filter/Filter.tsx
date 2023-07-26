@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-import { FormFilterValues, updateFormState } from '../../store/FormFilterSlice';
-import { updateGlobalState } from '../../store/GlobalFilterSlice';
-import { CustomObject } from '../../helpers/CustomObject';
+import { updateFormState, updateGlobalState } from '../../store/slice';
+import { getFormFilterValues, getGlobalFilterValues } from '../../store/selectors/inedx';
+import { CustomObject } from '../../helpers';
 import { Dropdown } from './Dropdown/Dropdown';
 import { CheckboxesBlock } from './CheckboxesBlock.tsx/CheckboxesBlock';
 import { RadioBlock } from './RadioBlock/RadioBlock';
@@ -12,22 +11,23 @@ import './style.css';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const changeFormState = (state: FormFilterValues) => dispatch(updateFormState(state));
-  const changeGlobalState = (state: FormFilterValues) => dispatch(updateGlobalState(state));
 
-  const globalFilterValues = useSelector((state: RootState) => state.globalFilterValues);
-  const formFilterValues = useSelector((state: RootState) => state.formFilterValues);
+  const globalFilterValues = useSelector(getGlobalFilterValues);
+  const formFilterValues = useSelector(getFormFilterValues);
 
   useEffect(() => {
-    changeFormState(globalFilterValues);
+    const filterValues = { ...globalFilterValues };
+    delete filterValues.searchValue;
+    dispatch(updateFormState(filterValues));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleResetClick = () => {
     const emptyState = CustomObject.resetAllFields(formFilterValues);
-
-    changeFormState(emptyState);
-    changeGlobalState(emptyState);
+    console.log(emptyState);
+    dispatch(updateFormState(emptyState));
+    dispatch(updateGlobalState(emptyState));
   };
 
   return (

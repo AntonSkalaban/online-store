@@ -8,7 +8,7 @@ interface ProductsListProps {
   isFetching: boolean;
 }
 
-export const ProductsList = ({ data, isFetching }: ProductsListProps) => {
+export const ProductsList: React.FC<ProductsListProps> = ({ data, isFetching }) => {
   if (isFetching) return <div>Loading...</div>;
 
   if (!data?.length) return <div>Not found</div>;
@@ -18,7 +18,7 @@ export const ProductsList = ({ data, isFetching }: ProductsListProps) => {
       <div className="products-list">
         <p className="products-list__heaeder"> {data.length} prdoducts found </p>
         {data.map((product) => {
-          return <ProductCard key={product._id} product={product} />;
+          return <ProductCard key={product._id} className="big-card" product={product} />;
         })}
       </div>
     </>

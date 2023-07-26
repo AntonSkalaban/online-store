@@ -1,6 +1,7 @@
 import React from 'react';
-import { Bag } from '../../../helpers/Bag';
-
+import { Bag } from '../../../helpers';
+import { Button } from '../../../components/UI';
+import './style.css';
 interface InfoContainerProps {
   id: string;
   description: string;
@@ -20,20 +21,20 @@ export const InfoContainer = ({
 
   return (
     <div className="poduct__info-container">
-      <p>{description}</p>
+      <p className="product__description">{description}</p>
 
       {isOnSale ? (
         <>
-          <p className="price_new">Now {discountPrice} </p>
-          <p>
-            Was ${price} <span className="discount">({discountPercentage}%)</span>
+          <p className="product__price_now">Now ${discountPrice} </p>
+          <p className="product__price_old">
+            Was ${price} <span className="product__discount">({discountPercentage}%)</span>
           </p>
         </>
       ) : (
         <p className="price">${price}</p>
       )}
 
-      <button onClick={() => Bag.add(id)}>add to bag</button>
+      <Button className="bag-btn" label="add to bag" hanldeClick={() => Bag.add(id)} />
     </div>
   );
 };

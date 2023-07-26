@@ -1,11 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { FilterButton } from '../../UI/FilterButton/FilterButton';
 import React, { useRef, useState } from 'react';
-import { FormFilterValues, updateFormState } from '../../../store/FormFilterSlice';
-import { updateGlobalState } from '../../../store/GlobalFilterSlice';
-import { RootState } from '../../../store/store';
-import { firstCharToUC } from '../../../helpers/firstCharToUC';
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFormFilterValues, getGlobalFilterValues } from '../../../store/selectors/inedx';
+import { FormFilterValues, updateFormState, updateGlobalState } from '../../../store/slice';
+import { useOnClickOutside } from '../../../hooks';
+import { firstCharToUC } from '../../../helpers';
+import { Button } from '../../../components/UI';
 import './style.css';
 
 interface DropdownProps {
@@ -13,32 +12,32 @@ interface DropdownProps {
   children: React.ReactNode;
 }
 
-export const Dropdown = ({ title, children }: DropdownProps) => {
+export const Dropdown: React.FC<DropdownProps> = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const dropDownRef = useRef<HTMLDivElement>(null);
 
+  const dispatch = useDispatch();
+
+  const formFilterValues = useSelector(getFormFilterValues);
+  const globalFilterValues = useSelector(getGlobalFilterValues);
+
   const dropdownToggle = () => setIsOpen((value) => !value);
 
   const hanldeApplyBtnClick = () => {
-    changeGlobalState(formFilterValues);
+    dispatch(
+      updateGlobalState({ ...formFilterValues, searchValue: globalFilterValues.searchValue })
+    );
     setIsOpen(false);
   };
 
   const handleClearBtnClick = () => {
     const obj = { ...globalFilterValues, [title]: [] };
-    changeGlobalState(obj);
-    changeFilterState(obj);
+    dispatch(updateGlobalState(obj));
+    dispatch(updateFormState(obj));
   };
 
   useOnClickOutside(dropDownRef, hanldeApplyBtnClick);
-
-  const dispatch = useDispatch();
-  const changeGlobalState = (state: FormFilterValues) => dispatch(updateGlobalState(state));
-  const changeFilterState = (state: FormFilterValues) => dispatch(updateFormState(state));
-
-  const formFilterValues = useSelector((state: RootState) => state.formFilterValues);
-  const globalFilterValues = useSelector((state: RootState) => state.globalFilterValues);
 
   const isSelect = formFilterValues[title]?.length ?? 0;
 
@@ -61,7 +60,7 @@ export const Dropdown = ({ title, children }: DropdownProps) => {
             </p>
           )}
           {children}
-          <FilterButton label={'Apply filter'} hanldeClick={hanldeApplyBtnClick} />
+          <Button className="filter-btn" label={'Apply filter'} hanldeClick={hanldeApplyBtnClick} />
         </div>
       )}
     </div>

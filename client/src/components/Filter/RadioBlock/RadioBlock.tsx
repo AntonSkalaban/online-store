@@ -1,22 +1,20 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormFilterValues, updateFormState } from '../../../store/FormFilterSlice';
-import { RootState } from '../../../store/store';
+import { getFormFilterValues } from '../../../store/selectors/inedx';
+import { FormFilterValues, updateFormState } from '../../../store/slice';
 import { options } from './const';
 
 interface RadioBlockProps {
   title: keyof FormFilterValues;
 }
 
-export const RadioBlock = ({ title }: RadioBlockProps) => {
+export const RadioBlock: React.FC<RadioBlockProps> = ({ title }) => {
   const dispatch = useDispatch();
-  const changeFilterFormState = (state: FormFilterValues) => dispatch(updateFormState(state));
 
-  const formFilterValues = useSelector((state: RootState) => state.formFilterValues);
-  const selectValue = formFilterValues[title];
+  const selectValue = useSelector(getFormFilterValues)[title];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    changeFilterFormState({ [title]: e.target.value });
+    dispatch(updateFormState({ [title]: e.target.value }));
   };
 
   return (
