@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { productAPI } from '../../services/api/productService';
 import { Wrapper } from '../../components';

@@ -5,15 +5,26 @@
     align-items: center;
     justify-content: center;
     /* gap: 20px; */
+    position: relative;
 }
 
 .product__small-images-container{
     width: 10%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    align-items: center;
+}
+
+.product__small-images-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
+
 
 .product__small-image-container{
     width: 90%;

@@ -8,3 +8,4 @@ export * from './ProductCard';
 export * from './Caruosel';
 export * from './CardsList';
 export * from './Banner';
+export * from './InfinityCarousel';

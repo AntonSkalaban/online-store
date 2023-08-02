@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getResentlyVewedItems } from '../../../store/selectors';
-import { addResentlyViewedItem, initResentlyViewedState } from '../../../store/slice';
+import { addResentlyViewedItem } from '../../../store/slice';
 import { LocalStorage } from '../../../services';
 import { ResentlyViewedProduct } from './ResentlyViewedProduct/ResentlyViewedProduct';
 import { Carousel } from '../../../components';
@@ -20,11 +20,11 @@ export const ResentlyViewed: React.FC<ResentlyViewedProps> = ({ productId }) => 
     return () => {
       dispatch(addResentlyViewedItem(productId));
     };
-  }, []);
+  }, [productId]);
 
   useEffect(() => {
     return () => LocalStorage.setArray<string>('recentlyViewed', productIds);
-  }, []);
+  }, [productIds]);
 
   if (!productIds.length) return null;
 

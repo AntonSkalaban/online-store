@@ -1,0 +1,27 @@
+.share-tringle {
+    width: 0;
+    height: 0;
+    border-left: 12px solid rgba(0,0,0,0);
+    border-right: 12px solid rgba(0,0,0,0);
+    border-bottom: 12px solid #fff;
+    filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.16));
+    -webkit-filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.16));
+    position: relative;
+    left: 15px;
+    top: 0;
+}
+
+.share-wrapper {
+    position: absolute;
+    z-index: 2;
+    top: 100%;
+    left: 5px; 
+}
+
+.share-list {
+    display: inline-flex;
+    padding: 15px;
+    box-shadow: 0 0 8px 1px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+    background-color: #fff;
+    gap: 15px;
+}
