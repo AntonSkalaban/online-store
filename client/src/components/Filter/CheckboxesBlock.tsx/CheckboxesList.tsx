@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFormFilterValues } from '../../../store/selectors/inedx';
+import { getFormFilterValues } from '../../../store/selectors';
 import { FormFilterValues, updateFormState } from '../../../store/slice';
 import { firstCharToUC } from '../../../helpers';
 import './style.css';

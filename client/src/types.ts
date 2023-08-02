@@ -1,9 +1,3 @@
-export enum Pages {
-  Main = 'Main',
-  About = 'About',
-  Cart = 'Cart',
-}
-
 export interface Product {
   _id: string;
   title: string;

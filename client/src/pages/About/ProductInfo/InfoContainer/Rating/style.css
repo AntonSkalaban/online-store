@@ -1,0 +1,10 @@
+.rating {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+.rating__value {
+    margin-left: 15px;
+    font-size: 16px;
+}

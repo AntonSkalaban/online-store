@@ -1,10 +1,10 @@
 
-.products-list {
+/* .products-list {
     width: 1050px;
-    gap: 10px;
-
+  
+    padding-right: 12px;
     margin: 0 auto;
-}
+} */
 
 .products-list__heaeder {
    text-align: center;

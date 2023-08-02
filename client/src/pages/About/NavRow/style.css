@@ -1,4 +1,14 @@
-.about__nav {
+.nav-row {
     display: flex;
-    
+    gap: 8px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.nav-row__link {
+    font-size: .875rem;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    color: #2d2d2d;
 }

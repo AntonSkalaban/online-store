@@ -1,2 +1,2 @@
-export * from './CategoryService';
-export * from './productService';
+export { productAPI, categoryAPI } from './api';
+export { LocalStorage } from './localSorage';

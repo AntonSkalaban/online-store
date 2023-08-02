@@ -3,15 +3,18 @@ import { CarouselButtonLeft, CarouselButtonRight } from '../../components/UI';
 import './style.css';
 
 interface CarouselProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export const Carousel: React.FC<CarouselProps> = ({ children }) => {
   const [leftShiftValue, setLeftShiftValue] = useState(0);
+
   const itemsPerSlide = 4;
-  const isLeftBtnDisabled = leftShiftValue >= 0;
-  const isRightBtnDisabled =
-    Math.floor(Children.count(children) / itemsPerSlide) !== leftShiftValue / -100 + 1;
+  const slidesAmount = Math.floor(Children.count(children) / itemsPerSlide);
+  const currentSlideNumber = Math.floor(leftShiftValue / -100);
+
+  const isLeftBtnDisabled = leftShiftValue === 0;
+  const isRightBtnDisabled = !(currentSlideNumber < slidesAmount - 1);
 
   const carueselContainerStyles = {
     left: `${leftShiftValue}%`,
@@ -28,11 +31,21 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
 
   return (
     <div className="carousel">
-      <div className="carousel__container" style={carueselContainerStyles}>
-        {Children.toArray(children)}
+      <div className="carousel__container">
+        <div className="images__container" style={carueselContainerStyles}>
+          {Children.toArray(children)}
+        </div>
       </div>
-      <CarouselButtonLeft isDisabled={isLeftBtnDisabled} hanldeClick={moveLeft} />
-      <CarouselButtonRight isDisabled={isRightBtnDisabled} hanldeClick={moveRight} />
+      <CarouselButtonLeft
+        className="out-side__btn"
+        isDisabled={isLeftBtnDisabled}
+        hanldeClick={moveLeft}
+      />
+      <CarouselButtonRight
+        className="out-side__btn_next"
+        isDisabled={isRightBtnDisabled}
+        hanldeClick={moveRight}
+      />
     </div>
   );
 };

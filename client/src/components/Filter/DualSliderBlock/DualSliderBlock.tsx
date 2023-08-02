@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getGlobalFilterValues } from '../../../store/selectors/inedx';
-import { productAPI } from '../../../services';
+import { getGlobalFilterValues } from '../../../store/selectors';
+import { productAPI } from '../../../services/api';
 import { DualRangeSlider } from './DualRangeSlider';
 import './style.css';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { FormFilterValues } from '../../../store/slice';
-import { getGlobalFilterValues } from '../../../store/selectors/inedx';
-import { productAPI } from '../../../services';
+import { getGlobalFilterValues } from '../../../store/selectors';
+import { productAPI } from '../../../services/api';
 import { Product } from '../../../types';
 import { CheckboxesList } from './CheckboxesList';
 interface CheckboxesBlockProps {

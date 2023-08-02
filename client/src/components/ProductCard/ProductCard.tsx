@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Product } from '../../types';
 import { NavLink } from 'react-router-dom';
 import './style.css';
+
 interface ProductCardProps {
   product: Product;
   className: string;

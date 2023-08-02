@@ -1,9 +1,26 @@
 .carusel__btn {
+    width: 30px;
+    height: 30px;
     position: absolute;
-    top: 0;
+    top: calc(50% - 10px);
+    background-image: url('../../../assets/svg/arrow-prev.svg');
     z-index: 2;
+}
+
+.carusel__btn:disabled {
+    opacity: .4;
 }
 
 .carusel__btn_next {
     right: 0;
+    background-image: url('../../../assets/svg/arrow-next.svg');
+    z-index: 2;
+}
+
+.out-side__btn {
+    left: 0px;
+}
+
+.out-side__next {
+    right: -30px;
 }

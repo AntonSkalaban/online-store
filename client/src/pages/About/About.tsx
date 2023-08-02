@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { productAPI } from '../../services/productService';
+import { productAPI } from '../../services/api/productService';
+import { Wrapper } from '../../components';
 import { NavRow } from './NavRow/NavRow';
-import { ImagesContainer } from './ImagesContainer/ImagesContainer';
-import { InfoContainer } from './InfoContainer/InfoContainer';
-import { ResentlyVewedList } from '../../components/ResentlyViewedList/ResentlyViewedList';
+import { ProductInfo } from './ProductInfo';
+import { AlsoLike } from './AlsoLike';
+import { ResentlyViewed } from './ResentlyViewed';
 import './style.css';
-import { AlsoLike } from '../../components/AlsoLike/AlsoLike';
 
 export const About = () => {
   const { id } = useParams();
@@ -15,35 +15,18 @@ export const About = () => {
   if (isFetching) return <div>Loading...</div>;
   if (!id || error || !data) return <div>Not found</div>;
 
-  const {
-    _id,
-    title,
-    category,
-    brand,
-    description,
-    images,
-    price,
-    discountPercentage,
-    discountPrice,
-  } = data;
+  const { title, category, brand } = data;
 
   return (
-    <div className="about-page">
-      <NavRow category={category} brand={brand} title={title} />
+    <Wrapper>
+      <div className="about-page">
+        <NavRow category={category} brand={brand} title={title} />
 
-      <div className="about__main">
-        <ImagesContainer images={images} />
-        <InfoContainer
-          id={_id}
-          description={description}
-          price={price}
-          discountPrice={discountPrice}
-          discountPercentage={discountPercentage}
-        />
+        <ProductInfo product={data} />
+
+        <AlsoLike productId={id} category={category} brand={brand} />
+        <ResentlyViewed productId={id} />
       </div>
-
-      <AlsoLike productId={id} category={category} brand={brand} />
-      <ResentlyVewedList productId={id} />
-    </div>
+    </Wrapper>
   );
 };

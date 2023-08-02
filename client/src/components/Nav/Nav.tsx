@@ -1,20 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Pages } from '../../types';
+import { useSelector } from 'react-redux';
+import { getBagItemsQuantity } from '../../store/selectors';
+import BagLogo from '../../assets/svg/bag.svg';
 import './style.css';
 
 export const Nav = () => {
-  const setActive = ({ isActive }: { isActive: boolean }) => {
-    return { color: isActive ? 'blue' : 'gray' };
-  };
+  const itemsInBag = useSelector(getBagItemsQuantity);
 
   return (
     <nav className="nav">
-      <NavLink to="/" style={setActive}>
-        {Pages.Main}
-      </NavLink>
-      <NavLink to="/cart" style={setActive}>
-        {Pages.Cart}
+      <NavLink className="bag__link" to="/cart">
+        <img src={BagLogo} />
+        {itemsInBag > 0 && <span className="bag__quantity">{itemsInBag}</span>}
       </NavLink>
     </nav>
   );

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { updateFormState, updateGlobalState } from '../../store/slice';
-import { getFormFilterValues, getGlobalFilterValues } from '../../store/selectors/inedx';
+import { getFormFilterValues, getGlobalFilterValues } from '../../store/selectors';
 import { CustomObject } from '../../helpers';
-import { Button } from '../../components/UI';
+import Search from '../../assets/svg/search.svg';
 import './style.css';
 
 export const SearchBar = () => {
@@ -13,16 +14,24 @@ export const SearchBar = () => {
 
   const [value, setValue] = useState(searchedValue);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const changeValue = (e: React.FormEvent<HTMLInputElement>) => {
     const value = (e.target as HTMLInputElement)?.value;
     setValue(value);
   };
 
-  const hanldeBtnClick = () => {
+  const findProduct = () => {
     const emptyState = CustomObject.resetAllFields(formFilterValues);
 
     dispatch(updateFormState(emptyState));
-    dispatch(updateGlobalState(emptyState));
+    dispatch(updateGlobalState({ ...emptyState, searchValue: value }));
+    if (location.pathname !== '/') navigate('/');
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (e.key === 'Enter') findProduct();
   };
 
   return (
@@ -30,11 +39,12 @@ export const SearchBar = () => {
       <input
         type="text"
         className="input search-bar__input"
-        placeholder="Введите название..."
+        placeholder="Search for items and brands"
         value={value}
         onChange={changeValue}
+        onKeyDown={handleKeyDown}
       />
-      <Button className="filter-btn search-bar__btn" label="Find" hanldeClick={hanldeBtnClick} />
+      <img src={Search} className="search-bar__btn" onClick={findProduct} />
     </div>
   );
 };

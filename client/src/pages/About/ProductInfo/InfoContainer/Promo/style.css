@@ -1,0 +1,21 @@
+.promo {
+    width: 100%;
+    position: relative;
+    background-color: #cde2f5;;
+
+    letter-spacing: 1px;
+    
+    box-sizing: border-box;
+    padding: 15px 10px  20px 50px ;
+    margin-bottom: 20px;
+}
+
+.promo__label {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}
+
+.promo__promocode {
+    cursor: pointer;
+}

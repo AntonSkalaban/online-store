@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFormFilterValues, getGlobalFilterValues } from '../../../store/selectors/inedx';
+import { getFormFilterValues, getGlobalFilterValues } from '../../../store/selectors';
 import { FormFilterValues, updateFormState, updateGlobalState } from '../../../store/slice';
 import { useOnClickOutside } from '../../../hooks';
 import { firstCharToUC } from '../../../helpers';
@@ -24,20 +24,20 @@ export const Dropdown: React.FC<DropdownProps> = ({ title, children }) => {
 
   const dropdownToggle = () => setIsOpen((value) => !value);
 
-  const hanldeApplyBtnClick = () => {
+  const applyFilter = () => {
     dispatch(
       updateGlobalState({ ...formFilterValues, searchValue: globalFilterValues.searchValue })
     );
     setIsOpen(false);
   };
 
-  const handleClearBtnClick = () => {
+  const resetFilter = () => {
     const obj = { ...globalFilterValues, [title]: [] };
     dispatch(updateGlobalState(obj));
     dispatch(updateFormState(obj));
   };
 
-  useOnClickOutside(dropDownRef, hanldeApplyBtnClick);
+  useOnClickOutside(dropDownRef, applyFilter);
 
   const isSelect = formFilterValues[title]?.length ?? 0;
 
@@ -55,12 +55,12 @@ export const Dropdown: React.FC<DropdownProps> = ({ title, children }) => {
       {isOpen && (
         <div className="dropdown__body">
           {isSelect > 0 && (
-            <p className="dropdown__clear-btn" onClick={handleClearBtnClick}>
+            <p className="dropdown__clear-btn" onClick={resetFilter}>
               Clear
             </p>
           )}
           {children}
-          <Button className="filter-btn" label={'Apply filter'} hanldeClick={hanldeApplyBtnClick} />
+          <Button className="filter-btn" label={'Apply filter'} hanldeClick={applyFilter} />
         </div>
       )}
     </div>

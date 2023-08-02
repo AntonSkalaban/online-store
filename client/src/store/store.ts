@@ -1,11 +1,14 @@
+import { ResentlyVewed } from './../pages/About/ResentlyViewed/ResentlyViewed';
 import { configureStore } from '@reduxjs/toolkit';
-import { productAPI, categoryAPI } from '../services';
-import { FormFilterSlice, GlobalFilterSlice } from './slice';
+import { productAPI, categoryAPI } from '../services/api';
+import { BagSlice, FormFilterSlice, GlobalFilterSlice, ResentlyViewedSlice } from './slice';
 
 export const store = configureStore({
   reducer: {
     globalFilterValues: GlobalFilterSlice,
     formFilterValues: FormFilterSlice,
+    BagItems: BagSlice,
+    ResentlyVewedItems: ResentlyViewedSlice,
     [productAPI.reducerPath]: productAPI.reducer,
     [categoryAPI.reducerPath]: categoryAPI.reducer,
   },

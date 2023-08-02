@@ -22,7 +22,6 @@
 }
 
 
-
 .bag-btn {
     width: 200px;
     background-color: #018849;
@@ -30,11 +29,4 @@
     border: none;
 
     text-transform: uppercase;
-}
-
-.search-bar__btn {
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translate(0, -50%);
 }

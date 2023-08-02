@@ -4,11 +4,17 @@ import './style.css';
 interface ButtonProps {
   label: string;
   className?: string;
+  disabled?: boolean;
   hanldeClick: () => void;
 }
-export const Button: React.FC<ButtonProps> = ({ label, className, hanldeClick }) => {
+export const Button: React.FC<ButtonProps> = ({
+  label,
+  className,
+  disabled = false,
+  hanldeClick,
+}) => {
   return (
-    <button className={'btn ' + className} onClick={hanldeClick}>
+    <button className={'btn ' + className} disabled={disabled} onClick={hanldeClick}>
       {label}
     </button>
   );

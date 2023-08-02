@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { productAPI } from '../../services/productService';
+import { productAPI } from '../../services/api/productService';
 import { PageURL } from '../../helpers/PageURL';
 import { CustomObject } from '../../helpers/CustomObject';
-import { Wrapper, Filter, ProductsList, SearchBar } from '../../components';
+import { Filter, ProductsList } from '../../components';
 import './style.css';
-import { getGlobalFilterValues } from '../../store/selectors/inedx';
+import { getGlobalFilterValues } from '../../store/selectors';
 
 export const Main = () => {
   const globalFilterValues = useSelector(getGlobalFilterValues);
@@ -20,12 +20,11 @@ export const Main = () => {
   }, [globalFilterValues]);
 
   return (
-    <Wrapper>
-      <SearchBar />
+    <div className="page" style={{ width: '100%' }}>
       <main className="main">
         <Filter />
         <ProductsList data={data} isFetching={isFetching} />
       </main>
-    </Wrapper>
+    </div>
   );
 };
