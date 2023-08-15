@@ -14,8 +14,9 @@ interface AlsoLikeParams {
 export const AlsoLike: React.FC<AlsoLikeParams> = ({ productId, category, brand }) => {
   const [products, setData] = useState([] as Product[]);
 
-  const sameByCategory = productAPI.useGetFilterdProductsQuery({ category: [category] }).data;
-  const sameByBrand = productAPI.useGetFilterdProductsQuery({ brand: [brand] }).data;
+  const sameByCategory = productAPI.useGetFilterdProductsQuery({ category: [category] }).data
+    ?.products;
+  const sameByBrand = productAPI.useGetFilterdProductsQuery({ brand: [brand] }).data?.products;
 
   useEffect(() => {
     if (sameByCategory?.length && sameByBrand?.length) {

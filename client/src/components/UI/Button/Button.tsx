@@ -9,7 +9,7 @@ interface ButtonProps {
 }
 export const Button: React.FC<ButtonProps> = ({
   label,
-  className,
+  className = '',
   disabled = false,
   hanldeClick,
 }) => {

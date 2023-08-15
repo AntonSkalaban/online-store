@@ -13,7 +13,7 @@ export const DualSliderBlock = () => {
     sort: 'discountPrice-ASC',
   });
 
-  const availablePrices = [...new Set(data?.map((i) => String(i.discountPrice)))];
+  const availablePrices = [...new Set(data?.products.map((i) => String(i.discountPrice)))];
 
   if (isFetching) return <div>Loading...</div>;
 

@@ -1,12 +1,11 @@
 
-/* .products-list {
-    width: 1050px;
-  
-    padding-right: 12px;
-    margin: 0 auto;
-} */
+.products-list {
+   display: flex;
+   flex-direction: column;
+}
 
-.products-list__heaeder {
+.products-list__text {
+
    text-align: center;
    
    margin-top: 10px;

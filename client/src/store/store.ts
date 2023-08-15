@@ -1,4 +1,3 @@
-import { ResentlyVewed } from './../pages/About/ResentlyViewed/ResentlyViewed';
 import { configureStore } from '@reduxjs/toolkit';
 import { productAPI, categoryAPI } from '../services/api';
 import { BagSlice, FormFilterSlice, GlobalFilterSlice, ResentlyViewedSlice } from './slice';

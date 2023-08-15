@@ -13,16 +13,15 @@ interface DropdownProps {
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({ title, children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const dropDownRef = useRef<HTMLDivElement>(null);
-
   const dispatch = useDispatch();
 
   const formFilterValues = useSelector(getFormFilterValues);
   const globalFilterValues = useSelector(getGlobalFilterValues);
 
-  const dropdownToggle = () => setIsOpen((value) => !value);
+  const dropDownRef = useRef<HTMLDivElement>(null);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const isSelect = formFilterValues[title]?.length ?? 0;
 
   const applyFilter = () => {
     dispatch(
@@ -31,15 +30,15 @@ export const Dropdown: React.FC<DropdownProps> = ({ title, children }) => {
     setIsOpen(false);
   };
 
+  useOnClickOutside(dropDownRef, applyFilter);
+
+  const dropdownToggle = () => setIsOpen((value) => !value);
+
   const resetFilter = () => {
     const obj = { ...globalFilterValues, [title]: [] };
     dispatch(updateGlobalState(obj));
     dispatch(updateFormState(obj));
   };
-
-  useOnClickOutside(dropDownRef, applyFilter);
-
-  const isSelect = formFilterValues[title]?.length ?? 0;
 
   const filterDropdownBtnClass =
     'dropdown__btn' +

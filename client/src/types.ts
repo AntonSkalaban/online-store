@@ -14,6 +14,12 @@ export interface Product {
   __v: number;
 }
 
+export interface ResponceData {
+  products: Product[];
+  searchCount: number;
+  total: number;
+}
+
 export interface Category {
   _id: string;
   name: string;

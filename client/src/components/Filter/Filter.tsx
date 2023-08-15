@@ -26,7 +26,7 @@ export const Filter = () => {
 
   const handleResetClick = () => {
     const emptyState = CustomObject.resetAllFields(formFilterValues);
-    console.log(emptyState);
+
     dispatch(updateFormState(emptyState));
     dispatch(updateGlobalState(emptyState));
   };

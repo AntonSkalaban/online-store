@@ -18,7 +18,7 @@ export const CheckboxesBlock = ({ title }: CheckboxesBlockProps) => {
   });
 
   const availableNames = [
-    ...new Set(data?.map((product) => product[title as keyof Product])),
+    ...new Set(data?.products.map((product) => product[title as keyof Product])),
   ].sort() as string[];
 
   if (isFetching) return <div>Loading...</div>;
