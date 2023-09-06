@@ -17,6 +17,8 @@
 
 .product__description {
     width: 100%;
+    
+    letter-spacing: .6px;
     margin-bottom: 20px;
 }
 

@@ -1,8 +1,12 @@
 export { default as GlobalFilterSlice } from './GlobalFilterSlice';
 export { default as FormFilterSlice } from './FormFilterSlice';
+export { default as ProductSlice } from './ProductSlice';
 export { default as BagSlice } from './BagSlice';
 export { default as ResentlyViewedSlice } from './ResentlyViewedSlice';
+export { default as DeliverySlice } from './DeliverySlice';
 export * from './GlobalFilterSlice';
 export * from './FormFilterSlice';
+export * from './ProductSlice';
 export * from './BagSlice';
 export * from './ResentlyViewedSlice';
+export * from './DeliverySlice';

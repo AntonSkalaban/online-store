@@ -18,12 +18,14 @@ export const RadioBlock: React.FC<RadioBlockProps> = ({ title }) => {
   };
 
   return (
-    <ul className="filter-list">
+    <ul className="input-list">
       {options.map(({ value, label }) => {
         const isChecked = selectValue === value;
         return (
           <li
-            className={`filter-list__item ${isChecked ? 'filter-list__item_checked' : ''}`}
+            className={`filter-list__item ${
+              isChecked ? 'filter-list__item_checked' : ''
+            } input-list__item`}
             key={value}
           >
             <label className="filter-list__label">

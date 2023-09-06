@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../../types';
 import { NavLink } from 'react-router-dom';
+import { ProductCardPrice } from './ProductCardPrice';
 import './style.css';
 
 interface ProductCardProps {
@@ -31,11 +32,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className }) 
         </div>
 
         <div className="product-card__info-container">
-          <p className="product-card__title">{title}</p>
-          <p className="product-card__price">
-            <span className={`${isOnSale ? 'price_old' : 'price'}`}>${price}</span>
-            {isOnSale && <span className="red-text"> ${discountPrice}</span>}
-          </p>
+          <p className="product-card__title text text_bag ">{title}</p>
+          <ProductCardPrice
+            price={price}
+            discountPrice={discountPrice}
+            discountPercentage={discountPercentage}
+          />
         </div>
       </NavLink>
     </article>

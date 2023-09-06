@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { initResentlyViewedState } from './store/slice';
+import { changeDelivery, initBagState, initResentlyViewedState } from './store/slice';
 import { LocalStorage } from './services';
+import { delivery } from './const';
+import { BagItem } from './types';
 import { Main, About, Bag, NotFound } from './pages';
 import { Layout } from './components/Layout';
 import './App.css';
@@ -12,6 +14,8 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(initResentlyViewedState(LocalStorage.getArray<string>('recentlyViewed')));
+    dispatch(initBagState(LocalStorage.getArray<BagItem>('bagItems')));
+    dispatch(changeDelivery(delivery[0]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

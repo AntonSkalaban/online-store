@@ -25,7 +25,13 @@ export interface Category {
   name: string;
   __v: number;
 }
-export interface BagItem {
-  id: number;
+
+export interface BagItem extends Product {
   quantity: number;
+  isDeleted: boolean;
+}
+
+export interface Delivery {
+  name: string;
+  price: number;
 }

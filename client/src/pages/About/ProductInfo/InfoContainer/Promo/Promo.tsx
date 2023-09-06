@@ -19,7 +19,7 @@ export const Promo = () => {
     <div className="promo">
       {isCopyed && createPortal(<Banner title="Copyed" />, document.body)}
       <img className="promo__label" src={Label} />
-      <p>
+      <p className="text text_bag">
         NEW HERE? <br />
         Get 15% off almost everything! <br />
         With code:{' '}

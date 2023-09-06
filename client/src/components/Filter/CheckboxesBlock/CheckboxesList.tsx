@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getFormFilterValues } from '../../../store/selectors';
 import { FormFilterValues, updateFormState } from '../../../store/slice';
 import { firstCharToUC } from '../../../helpers';
-import './style.css';
 
 export interface CheckboxesListProps {
   blockName: keyof FormFilterValues;
@@ -29,12 +28,14 @@ export const CheckboxesList: React.FC<CheckboxesListProps> = ({ blockName, data 
   };
 
   return (
-    <ul className="filter-list">
+    <ul className="input-list">
       {data.map((name) => {
         const isChecked = checkedCheckboxes.includes(name);
         return (
           <li
-            className={`filter-list__item ${isChecked ? 'filter-list__item_checked' : ''}`}
+            className={`filter-list__item ${
+              isChecked ? 'filter-list__item_checked' : ''
+            } input-list__item`}
             key={name}
           >
             <label className="filter-list__label">

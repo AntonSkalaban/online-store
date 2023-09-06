@@ -1,6 +1,16 @@
+.product-card {
+    display: inline-block;
+    margin-bottom: 20px; 
+}
+
+
 .big-card {
     width: calc(25% - 12px);
     margin-left: 12px;
+}
+
+.big-card:nth-of-type(4n+1) {
+    margin-left: 0;
 }
 
 .big-card__img-container {
@@ -9,38 +19,36 @@
 
 .small-card {
     width: calc(20% - 12px);
-    margin-left: 12px;
 }
 
 .small-card__img-container {
     height: 200px;
 }
 
-.product-card {
-    display: inline-block;
+.slider-card {
+    box-sizing: content-box;
+    width: 180px;
+    padding: 10px;
+}
 
-   
-    margin-bottom: 20px; 
+.slider-card__img-container {
+    height: 200px;
 }
 
 .product-card__image-container {
-    width: 100%;
     position: relative;
-
-    cursor: pointer;
-
     padding-bottom: 10px;
 }
 
 .product-card__discount {
     position: absolute;
     top: 10%;
-    left: 0;
     background-color: whitesmoke;
     color: red;
     font-size: 12px;
     line-height: 16px;
 }
+
 .product-card__price{
     font-size: 14px;
     font-weight: 600;

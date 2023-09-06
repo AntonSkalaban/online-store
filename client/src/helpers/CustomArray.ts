@@ -1,15 +1,26 @@
 import { Product } from '../types';
 
 export class CustomArray {
-  static removeDublicateObjects(arr: Product[]) {
-    const unicObjects = [] as Product[];
-    const unicIds = [] as string[];
+  static create(length: number, from: number) {
+    return Array.from({ length: length }, (_, i) => i + from);
+  }
+
+  static removeDublicateObjects(arr: Product[], uniqKey: keyof Product) {
+    const uniqObjects = [] as Product[];
+    const uniqKeys = [] as (string | number | string[])[];
+
     arr.forEach((obj) => {
-      if (!unicIds.includes(obj._id)) {
-        unicIds.push(obj._id);
-        unicObjects.push(obj);
+      if (!uniqKeys.includes(obj[uniqKey])) {
+        uniqKeys.push(obj[uniqKey]);
+        uniqObjects.push(obj);
       }
     });
-    return unicObjects;
+    return uniqObjects;
+  }
+
+  static removeDublicateKeys<T>(arr: T[], uniqKey: keyof T): string[] {
+    const keysArr = arr.map((key) => key[uniqKey]);
+
+    return [...new Set(keysArr)] as string[];
   }
 }

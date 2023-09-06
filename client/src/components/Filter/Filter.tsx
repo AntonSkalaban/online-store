@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateFormState, updateGlobalState } from '../../store/slice';
+import { deleteAllProducts, updateFormState, updateGlobalState } from '../../store/slice';
 import { getFormFilterValues, getGlobalFilterValues } from '../../store/selectors';
 import { CustomObject } from '../../helpers';
-import { Dropdown } from './Dropdown/Dropdown';
-import { CheckboxesBlock } from './CheckboxesBlock.tsx/CheckboxesBlock';
+import { Wrapper } from '../../components/';
+import { FilterDropdown } from './FilterDropdown/FilterDropdown';
+import { CheckboxesBlock } from './CheckboxesBlock/CheckboxesBlock';
 import { RadioBlock } from './RadioBlock/RadioBlock';
 import { DualSliderBlock } from './DualSliderBlock/DualSliderBlock';
 import './style.css';
-import { Wrapper } from '../../components/';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -26,9 +26,9 @@ export const Filter = () => {
 
   const handleResetClick = () => {
     const emptyState = CustomObject.resetAllFields(formFilterValues);
-
+    dispatch(deleteAllProducts());
     dispatch(updateFormState(emptyState));
-    dispatch(updateGlobalState(emptyState));
+    dispatch(updateGlobalState({ ...emptyState, page: 0 }));
   };
 
   return (
@@ -40,21 +40,21 @@ export const Filter = () => {
           </p>
 
           <div className="filter__dropdown-container">
-            <Dropdown title="category">
+            <FilterDropdown title="category" classNameMod="filter">
               <CheckboxesBlock title="category" />
-            </Dropdown>
+            </FilterDropdown>
 
-            <Dropdown title="brand">
+            <FilterDropdown title="brand" classNameMod="filter">
               <CheckboxesBlock title="brand" />
-            </Dropdown>
+            </FilterDropdown>
 
-            <Dropdown title="sort">
+            <FilterDropdown title="sort" classNameMod="filter">
               <RadioBlock title="sort" />
-            </Dropdown>
+            </FilterDropdown>
 
-            <Dropdown title="price">
+            <FilterDropdown title="price" classNameMod="filter">
               <DualSliderBlock />
-            </Dropdown>
+            </FilterDropdown>
           </div>
         </div>
       </Wrapper>

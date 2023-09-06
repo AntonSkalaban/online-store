@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBagItem } from '../../../../store/slice';
 import { Product } from 'types';
 import { Button } from '../../../../components/UI';
 import { Banner } from '../../../../components';
+import { LocalStorage } from '../../../../services';
+import { getBagItems } from '../../../../store/selectors';
 import { Rating } from './Rating/Rating';
 import { Price } from './Price/Price';
 import { Promo } from './Promo/Promo';
@@ -16,16 +18,22 @@ interface InfoContainerProps {
 
 export const InfoContainer: React.FC<InfoContainerProps> = ({ product }) => {
   const dispatch = useDispatch();
+  const bagItems = useSelector(getBagItems);
 
   const [isAddedToBag, setIsAddedToBag] = useState(false);
-  const { _id, title, description, rating, discountPercentage, discountPrice, price } = product;
+  const { title, description, rating, discountPercentage, discountPrice, price } = product;
 
   const addToBag = () => {
     if (isAddedToBag) return;
-    dispatch(addBagItem(_id));
+    dispatch(addBagItem(product));
     setIsAddedToBag(true);
     setTimeout(() => setIsAddedToBag(false), 2000);
   };
+
+  useEffect(() => {
+    LocalStorage.setArray('bagItems', bagItems);
+    console.log(bagItems);
+  }, [bagItems]);
 
   return (
     <div className="poduct__info-container">
@@ -34,7 +42,7 @@ export const InfoContainer: React.FC<InfoContainerProps> = ({ product }) => {
       <Price price={price} discountPercentage={discountPercentage} discountPrice={discountPrice} />
       <Rating rating={rating} />
 
-      <p className="product__description">{description}</p>
+      <p className="product__description text text_about">{description}</p>
 
       <Promo />
 

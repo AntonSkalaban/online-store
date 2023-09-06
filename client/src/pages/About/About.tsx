@@ -4,7 +4,7 @@ import { productAPI } from '../../services/api/productService';
 import { Wrapper } from '../../components';
 import { NavRow } from './NavRow/NavRow';
 import { ProductInfo } from './ProductInfo';
-import { AlsoLike } from './AlsoLike';
+import { AlsoLikeSection } from './AlsoLikeSection';
 import { ResentlyViewed } from './ResentlyViewed';
 import './style.css';
 
@@ -24,7 +24,8 @@ export const About = () => {
 
         <ProductInfo product={data} />
 
-        <AlsoLike productId={id} category={category} brand={brand} />
+        <AlsoLikeSection productId={id} category={category} brand={brand} />
+
         <ResentlyViewed productId={id} />
       </div>
     </Wrapper>

@@ -16,7 +16,7 @@ export const Main = () => {
   }, [globalFilterValues]);
 
   return (
-    <div className="page" style={{ width: '100%' }}>
+    <div className="page">
       <main className="main">
         <Filter />
         <ProductsList />

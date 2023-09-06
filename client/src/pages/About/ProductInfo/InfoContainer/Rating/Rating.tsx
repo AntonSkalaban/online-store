@@ -33,7 +33,7 @@ export const Rating: React.FC<RatingProps> = ({ rating }) => {
       {starRating.map((star, index) => {
         return <React.Fragment key={index}>{star}</React.Fragment>;
       })}
-      <span className="rating__value">{rating}</span>
+      <span className="rating__value text text_about">{rating}</span>
     </div>
   );
 };

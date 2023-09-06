@@ -1,6 +1,7 @@
 import { RefObject, useEffect, useRef } from 'react';
 
 export const useOnClickOutside = (
+  isOpen: boolean,
   ref: RefObject<HTMLElement | null>,
   onClickAway: (event: MouseEvent | TouchEvent) => void
 ) => {
@@ -13,7 +14,8 @@ export const useOnClickOutside = (
   useEffect(() => {
     const handler = (event: MouseEvent | TouchEvent) => {
       const { current } = ref;
-      current && !current.contains(event.target as Node) && savedCallback.current(event);
+
+      current && isOpen && !current.contains(event.target as Node) && savedCallback.current(event);
     };
 
     document.addEventListener('click', handler);
@@ -23,5 +25,5 @@ export const useOnClickOutside = (
       document.removeEventListener('click', handler);
       document.removeEventListener('touchstart', handler);
     };
-  }, [ref]);
+  }, [isOpen, ref]);
 };

@@ -1,40 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGlobalFilterValues } from '../../store/selectors';
+import { getGlobalFilterValues, getProducst } from '../../store/selectors';
+import { addNextProducts, addPrevProducts, updateGlobalState } from '../../store/slice';
 import { productAPI } from '../../services';
 import { CardsList, Wrapper } from '../../components';
-import './style.css';
-import { Product } from '../../types';
-import { updateGlobalState } from '../../store/slice';
 import { PaginationButton } from '../../components/UI/PaginationButton';
+import './style.css';
 
 export const ProductsList = () => {
   const dispatch = useDispatch();
+
   const globalFilterValues = useSelector(getGlobalFilterValues);
 
-  const currPage = +(globalFilterValues.page || 0);
+  const products = useSelector(getProducst);
+
+  const currPage = globalFilterValues.page ?? 0;
   const [prevPage, setPrevPage] = useState(currPage);
-  const [products, setProducts] = useState<Product[]>([]);
 
   const { data, isFetching } = productAPI.useGetFilterdProductsQuery(globalFilterValues);
 
   useEffect(() => {
+    if (currPage === prevPage && products.length) return;
     if (data?.products && !isFetching) {
       if (currPage >= prevPage) {
-        return setProducts((prev) => [...prev, ...data?.products]);
+        dispatch(addNextProducts(data?.products));
+      } else {
+        dispatch(addPrevProducts(data?.products));
       }
-      return setProducts((prev) => [...data?.products, ...prev]);
     }
-  }, [currPage, prevPage, isFetching, data?.products]);
+  }, [currPage, prevPage, isFetching, data?.products, dispatch, products.length]);
 
   const hanldeLoadPrev = () => {
     setPrevPage(currPage);
-    dispatch(updateGlobalState({ page: String(currPage - 1) }));
+    dispatch(updateGlobalState({ page: currPage - 1 }));
   };
 
   const hanldeLoadMore = () => {
     setPrevPage(currPage);
-    dispatch(updateGlobalState({ page: String(currPage + 1) }));
+    dispatch(updateGlobalState({ page: currPage + 1 }));
   };
 
   if (!data || !data?.searchCount || !data?.products?.length) return <div>Not found</div>;
@@ -49,20 +52,20 @@ export const ProductsList = () => {
 
   return (
     <section className="products-list">
-      <p className="products-list__text">{data?.searchCount} prdoducts found </p>
-      {!isFirstPage && <PaginationButton label="Load previous" hanldeClick={hanldeLoadPrev} />}
-      {!isFirstPage && isFetching && <div>Loading...</div>}
-
       <Wrapper>
-        <CardsList products={products} cardSize="big" />
-      </Wrapper>
+        <p className="products-list__text">{data?.searchCount} prdoducts found </p>
+        {!isFirstPage && <PaginationButton label="Load previous" hanldeClick={hanldeLoadPrev} />}
+        {!isFirstPage && isFetching && <div>Loading...</div>}
 
-      {!isFirstPage && isFetching && <div>Loading...</div>}
-      <p className="products-list__text">
-        You&apos;ve viewed {!isFetching && currPage === 0 ? products.length : viewedProducts} of{' '}
-        {data?.searchCount} products
-      </p>
-      {!isLastPage && <PaginationButton label="Load more" hanldeClick={hanldeLoadMore} />}
+        <CardsList products={products} cardSize="big" />
+
+        {!isFirstPage && isFetching && <div>Loading...</div>}
+        <p className="products-list__text">
+          You&apos;ve viewed {!isFetching && currPage === 0 ? products.length : viewedProducts} of{' '}
+          {data?.searchCount} products
+        </p>
+        {!isLastPage && <PaginationButton label="Load more" hanldeClick={hanldeLoadMore} />}
+      </Wrapper>
     </section>
   );
 };

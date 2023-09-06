@@ -1,0 +1,30 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { getBagItemKeys } from '../../../store/selectors';
+import { useGetSameProducts } from '../../../hooks';
+import { Carousel, ProductCard } from '../../../components';
+import { BagSection } from '../BagSection/BagSection';
+
+export const BagAlsoLike = () => {
+  const productsCategories = useSelector((state) => getBagItemKeys(state, 'category'));
+  const productsBrands = useSelector((state) => getBagItemKeys(state, 'brand'));
+  const productsIds = useSelector((state) => getBagItemKeys(state, '_id'));
+
+  const fetchingProducts = useGetSameProducts(productsCategories, productsBrands);
+
+  if (!fetchingProducts.length) return null;
+
+  const sameProducts = fetchingProducts.filter(({ _id }) => {
+    return !productsIds.includes(_id);
+  });
+
+  return (
+    <BagSection title={'A little something extra?'} subtitle={`${sameProducts.length} items`}>
+      <Carousel>
+        {sameProducts.map((product) => {
+          return <ProductCard key={product._id} className={'slider-card'} product={product} />;
+        })}
+      </Carousel>
+    </BagSection>
+  );
+};

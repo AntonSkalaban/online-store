@@ -6,16 +6,22 @@
 }
 
 .carousel__container {
-    width:  840px;
+    width: 100%;
     overflow: hidden;
 
     margin: 0 auto;
 }
 
 .images__container {
-    width: 300%;
+    width: max-content;
+    height: 100%;
     position: relative;
 
-    height: 100%;
     display: flex;
 }
+
+/* @media (max-width: 2400px) {
+    .wrapper {
+        width: 1000px;
+    }
+} */

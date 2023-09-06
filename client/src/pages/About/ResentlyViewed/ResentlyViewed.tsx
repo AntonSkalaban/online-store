@@ -1,10 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getResentlyVewedItems } from '../../../store/selectors';
 import { addResentlyViewedItem } from '../../../store/slice';
 import { LocalStorage } from '../../../services';
-import { ResentlyViewedProduct } from './ResentlyViewedProduct/ResentlyViewedProduct';
+import { FetchingResentlyViewedProduct } from './ResentlyViewedProduct/ResentlyViewedProduct';
 import { Carousel } from '../../../components';
 import { AboutSection } from '../AboutSection';
 
@@ -20,7 +19,7 @@ export const ResentlyViewed: React.FC<ResentlyViewedProps> = ({ productId }) => 
     return () => {
       dispatch(addResentlyViewedItem(productId));
     };
-  }, [productId]);
+  }, [dispatch, productId]);
 
   useEffect(() => {
     return () => LocalStorage.setArray<string>('recentlyViewed', productIds);
@@ -32,7 +31,7 @@ export const ResentlyViewed: React.FC<ResentlyViewedProps> = ({ productId }) => 
     <AboutSection title="Resently viewed">
       <Carousel>
         {productIds.map((id) => {
-          return <ResentlyViewedProduct key={id} productId={id} />;
+          return <FetchingResentlyViewedProduct key={id} productId={id} />;
         })}
       </Carousel>
     </AboutSection>

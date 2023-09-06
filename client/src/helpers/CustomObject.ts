@@ -4,7 +4,7 @@ export class CustomObject {
   static removeEmptyField(obj: FormFilterValues) {
     const clone = Object.fromEntries(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      Object.entries(obj).filter(([_, value]) => value && value?.length)
+      Object.entries(obj).filter(([_, value]) => (value && value?.length) || value > 0)
     );
     return clone;
   }

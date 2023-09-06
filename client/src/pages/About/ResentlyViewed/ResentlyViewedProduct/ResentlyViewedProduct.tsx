@@ -1,23 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { productAPI } from '../../../../services/api/productService';
+import { Product } from '../../../../types';
+import { withProductFetching } from '../../../../hok/withProductFetching';
 import './style.css';
 
-interface ProductFromLSProps {
-  productId: string;
+interface ResentlyViewedProductProps {
+  product: Product;
 }
-export const ResentlyViewedProduct = ({ productId }: ProductFromLSProps) => {
-  const { data, isFetching } = productAPI.useGetProductQuery(productId);
 
-  if (isFetching) return <div>Loading...</div>;
-  if (data)
-    return (
-      <div className="resently-viewed-product">
-        <NavLink to={`/about/${productId}`}>
-          <img className="product-image" src={data.images[0]} />
-        </NavLink>
-      </div>
-    );
-
-  return null;
+const ResentlyViewedProduct: React.FC<ResentlyViewedProductProps> = ({ product }) => {
+  return (
+    <div className="resently-viewed-product slider-card">
+      <NavLink to={`/about/${product._id}`}>
+        <img className="product-image" src={product.images[0]} />
+      </NavLink>
+    </div>
+  );
 };
+export const FetchingResentlyViewedProduct = withProductFetching(ResentlyViewedProduct);

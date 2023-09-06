@@ -1,6 +1,5 @@
 .card-list {
-    width: 1050px;
-  
-    padding-right: 12px;
+    /* width: 1050px; */
+    width: 100%;
     margin: 0 auto;
 }
