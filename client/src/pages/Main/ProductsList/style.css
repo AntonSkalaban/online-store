@@ -12,7 +12,7 @@
    margin-bottom: 14px;
 }
 
-.pagination-block {
+.pagination-wrapper{
     width: 100%;
     display: flex;
     align-items: center;

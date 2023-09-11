@@ -11,6 +11,7 @@ import {
 import { productAPI } from '../../../services';
 import { CardsList, Wrapper } from '../../../components';
 import { PaginationButton } from '../../../components/UI/PaginationButton';
+import { LoadingSpinner } from '../../../components/UI/LodaingSpinner/LoadingSpinner';
 import './style.css';
 
 export const ProductsList = () => {
@@ -60,7 +61,7 @@ export const ProductsList = () => {
   };
 
   if (!data || !data?.searchCount || !data?.products?.length) {
-    return isFetching ? <div>Fetching</div> : <div>Not found</div>;
+    return isFetching ? <LoadingSpinner /> : <div>Not found</div>;
   }
 
   const productsPerPage = 5;
@@ -74,11 +75,13 @@ export const ProductsList = () => {
       <Wrapper>
         <p className="products-list__text">{data?.searchCount} prdoducts found </p>
 
-        {firstOpenPage === currPage && isFetching ? (
-          <div>Fetching</div>
-        ) : (
-          !isFirstPage && <PaginationButton label={'Load prev'} hanldeClick={loadPrevPage} />
-        )}
+        <div className="pagination-wrapper">
+          {firstOpenPage === currPage && isFetching ? (
+            <LoadingSpinner />
+          ) : (
+            !isFirstPage && <PaginationButton label={'Load prev'} hanldeClick={loadPrevPage} />
+          )}
+        </div>
 
         <CardsList products={products} cardSize="big" />
 
@@ -87,11 +90,13 @@ export const ProductsList = () => {
           {data?.searchCount} products
         </p>
 
-        {lastOpenPage === currPage && isFetching ? (
-          <div>Fetching</div>
-        ) : (
-          !isLastPage && <PaginationButton label={'Load more'} hanldeClick={loadNextPage} />
-        )}
+        <div className="pagination-wrapper">
+          {lastOpenPage === currPage && isFetching ? (
+            <LoadingSpinner />
+          ) : (
+            !isLastPage && <PaginationButton label={'Load more'} hanldeClick={loadNextPage} />
+          )}
+        </div>
       </Wrapper>
     </section>
   );
