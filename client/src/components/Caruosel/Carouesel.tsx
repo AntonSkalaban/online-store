@@ -14,7 +14,6 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
   const resizeHandler = () => {
     if (!blockRef.current) return;
     const width = blockRef.current.getBoundingClientRect().width;
-    console.log(width);
     setCarouselWidth(width);
   };
 
@@ -33,7 +32,7 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
 
   const isLeftBtnDisabled = leftShiftValue === 0;
   const isRightBtnDisabled = slidesAmount <= currentSlideNumber;
-  console.log(itemsPerSlide, carouselWidth);
+
   const carueselContainerStyles = {
     width: String(itemsPerSlide * 200) + 'px',
   };

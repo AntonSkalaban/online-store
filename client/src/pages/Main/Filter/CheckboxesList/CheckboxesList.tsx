@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFormFilterValues } from '../../../store/selectors';
-import { FormFilterValues, updateFormState } from '../../../store/slice';
-import { firstCharToUC } from '../../../helpers';
+import { getFormFilterValues } from '../../../../store/selectors';
+import { FormFilterValues, updateFormState } from '../../../../store/slice';
+import { firstCharToUC } from '../../../../helpers';
+import { withFetchingFilterBlock } from '../../../../hok/withFetchingFilterBlock';
 
 export interface CheckboxesListProps {
   blockName: keyof FormFilterValues;
@@ -29,7 +30,7 @@ export const CheckboxesList: React.FC<CheckboxesListProps> = ({ blockName, data 
 
   return (
     <ul className="input-list">
-      {data.map((name) => {
+      {data.sort().map((name) => {
         const isChecked = checkedCheckboxes.includes(name);
         return (
           <li
@@ -54,3 +55,5 @@ export const CheckboxesList: React.FC<CheckboxesListProps> = ({ blockName, data 
     </ul>
   );
 };
+
+export const FilterList = withFetchingFilterBlock(CheckboxesList);

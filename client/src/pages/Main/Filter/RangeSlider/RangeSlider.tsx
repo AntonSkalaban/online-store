@@ -1,13 +1,16 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFormFilterValues } from '../../../store/selectors';
-import { updateFormState } from '../../../store/slice';
+import { getFormFilterValues } from '../../../../store/selectors';
+import { FormFilterValues, updateFormState } from '../../../../store/slice';
+import { withFetchingFilterBlock } from '../../../../hok/withFetchingFilterBlock';
+import './style.css';
 
-interface DualRangeSliderProps {
+interface RangeSliderProps {
+  blockName: keyof FormFilterValues;
   data: string[];
 }
 
-export const DualRangeSlider: React.FC<DualRangeSliderProps> = ({ data }) => {
+export const RangeSlider: React.FC<RangeSliderProps> = ({ data, blockName }) => {
   const dispatch = useDispatch();
 
   const selectValues = useSelector(getFormFilterValues).price;
@@ -27,19 +30,19 @@ export const DualRangeSlider: React.FC<DualRangeSliderProps> = ({ data }) => {
 
     if (name === 'min') {
       if (+value > +maxVal) return;
-      dispatch(updateFormState({ price: [newValue, maxVal] }));
+      dispatch(updateFormState({ [blockName]: [newValue, maxVal] }));
     } else {
       if (+value < +minVal) return;
-      dispatch(updateFormState({ price: [minVal, newValue] }));
+      dispatch(updateFormState({ [blockName]: [minVal, newValue] }));
     }
   };
 
   return (
     <div className="dual-range">
       {' '}
-      <div className="range-price ">
-        <p className="min-price">${minVal}</p>
-        <p className="max-price">${maxVal}</p>
+      <div className={`range-${blockName}`}>
+        <p className={`min-${blockName}`}>${minVal}</p>
+        <p className={`max-${blockName}`}>${maxVal}</p>
       </div>
       <div className="range-input">
         <input
@@ -64,3 +67,5 @@ export const DualRangeSlider: React.FC<DualRangeSliderProps> = ({ data }) => {
     </div>
   );
 };
+
+export const FilterRange = withFetchingFilterBlock(RangeSlider);

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { InfinityCarousel } from '../../../../components';
+import { ShareDropdown } from './ShareDropdown/ShareDropdown';
 import './style.css';
-import { Share } from './Share/Share';
 
 interface ImagesContainerProps {
   images: string[];
@@ -38,7 +38,7 @@ export const ImagesContainer = ({ images }: ImagesContainerProps) => {
             );
           })}
         </div>
-        <Share />
+        <ShareDropdown />
       </div>
       <div className="product__big-image-container">
         <InfinityCarousel

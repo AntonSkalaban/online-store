@@ -32,7 +32,6 @@ export const InfoContainer: React.FC<InfoContainerProps> = ({ product }) => {
 
   useEffect(() => {
     LocalStorage.setArray('bagItems', bagItems);
-    console.log(bagItems);
   }, [bagItems]);
 
   return (

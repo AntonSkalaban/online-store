@@ -8,10 +8,16 @@
 
    text-align: center;
    
-   margin-top: 10px;
-   margin-bottom: 20px;
+   margin-top: 14px;
+   margin-bottom: 14px;
 }
 
+.pagination-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 /* @media (max-width: 1200px) {
     .proucts-list { 
         width: 840px;

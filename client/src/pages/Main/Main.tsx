@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getGlobalFilterValues } from '../../store/selectors';
 import { CustomObject, PageURL } from '../../helpers';
-import { Filter, ProductsList } from '../../components';
+import { Filter } from './Filter';
+import { ProductsList } from './ProductsList';
 import './style.css';
 
 export const Main = () => {

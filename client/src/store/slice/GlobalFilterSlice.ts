@@ -7,7 +7,7 @@ interface SearchBarValue {
 }
 
 interface Page {
-  page?: number;
+  page?: string;
 }
 
 export interface GlobalFilterValues extends FormFilterValues, SearchBarValue, Page {}
@@ -20,7 +20,7 @@ const initialState: GlobalFilterValues = {
   price: searchParams.get('price')?.split(',') ?? [],
   sort: searchParams.get('sortBy') ?? '',
   searchValue: searchParams.get('searchValue') ?? '',
-  page: +(searchParams.get('page') ?? 0),
+  page: searchParams.get('page') ?? '0',
 };
 
 export const GlobalFilterSlice = createSlice({

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFormFilterValues, getGlobalFilterValues } from '../../../store/selectors';
-import { deleteAllProducts, updateGlobalState } from '../../../store/slice';
-import { Dropdown } from '../../Dropdown/Dropdown';
+import { getFormFilterValues } from '../../../../store/selectors';
+import { updateGlobalState } from '../../../../store/slice';
+import { Dropdown } from '../../../../components/Dropdown/Dropdown';
 import './style.css';
 
 interface FilterDropdownProps {
@@ -17,16 +17,13 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
   classNameMod,
 }) => {
   const dispatch = useDispatch();
-  const globalFilterValues = useSelector(getGlobalFilterValues);
   const formFilterValues = useSelector(getFormFilterValues);
 
   const applyFilter = () => {
-    dispatch(deleteAllProducts());
     dispatch(
       updateGlobalState({
         ...formFilterValues,
-        searchValue: globalFilterValues.searchValue,
-        page: 0,
+        page: '0',
       })
     );
   };
