@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateFormState, updateGlobalState } from 'store/slice';
+import { initOpenPage, updateFormState, updateGlobalState } from 'store/slice';
 import { getFormFilterValues, getGlobalFilterValues } from 'store/selectors';
 import { CustomObject } from 'helpers';
 import { FilterDropdown } from './FilterDropdown';
@@ -29,6 +29,7 @@ export const Filter = () => {
     const emptyState = CustomObject.resetAllFields(formFilterValues);
     dispatch(updateFormState(emptyState));
     dispatch(updateGlobalState({ ...emptyState, page: '0' }));
+    dispatch(initOpenPage(0));
   };
 
   return (

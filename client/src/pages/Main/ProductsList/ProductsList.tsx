@@ -1,10 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGlobalFilterValues, getProducst } from 'store/selectors';
 import {
+  getFirstOpenPage,
+  getGlobalFilterValues,
+  getLastOpenPage,
+  getOpenPages,
+  getProducst,
+} from 'store/selectors';
+import {
+  addNextOpenPage,
   addNextProducts,
+  addPrevOpenPage,
   addPrevProducts,
   deleteAllProducts,
+  initOpenPage,
   initProducts,
   updateGlobalState,
 } from 'store/slice';
@@ -21,14 +30,14 @@ export const ProductsList = () => {
   const globalFilterValues = useSelector(getGlobalFilterValues);
   const currPage = +(globalFilterValues.page || 0);
 
-  const [openPages, setOpenPages] = useState([] as number[]);
-  const firstOpenPage = openPages[0];
-  const lastOpenPage = openPages[openPages.length - 1];
+  const openPages = useSelector(getOpenPages);
+  const firstOpenPage = useSelector(getFirstOpenPage);
+  const lastOpenPage = useSelector(getLastOpenPage);
 
   const { data, isFetching } = productAPI.useGetFilterdProductsQuery(globalFilterValues);
 
   useEffect(() => {
-    setOpenPages([currPage]);
+    dispatch(initOpenPage(currPage));
     return () => {
       dispatch(deleteAllProducts());
       dispatch(productAPI.util.resetApiState());
@@ -39,8 +48,7 @@ export const ProductsList = () => {
   useEffect(() => {
     if (isFetching || !data?.products) return;
 
-    if (openPages.length === 1 || currPage === 0) {
-      setOpenPages([currPage]);
+    if (openPages.length === 1) {
       dispatch(initProducts(data?.products));
     } else if (currPage === firstOpenPage) {
       dispatch(addPrevProducts(data?.products));
@@ -50,12 +58,12 @@ export const ProductsList = () => {
   }, [currPage, firstOpenPage, openPages.length, data?.products, isFetching, dispatch]);
 
   const loadPrevPage = () => {
-    setOpenPages((prev) => [firstOpenPage - 1, ...prev]);
+    dispatch(addPrevOpenPage());
     dispatch(updateGlobalState({ page: String(firstOpenPage - 1) }));
   };
 
   const loadNextPage = () => {
-    setOpenPages((prev) => [...prev, lastOpenPage + 1]);
+    dispatch(addNextOpenPage());
     dispatch(updateGlobalState({ page: String(lastOpenPage + 1) }));
   };
 

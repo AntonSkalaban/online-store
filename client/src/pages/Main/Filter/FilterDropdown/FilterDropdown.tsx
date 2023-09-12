@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFormFilterValues } from 'store/selectors';
-import { updateGlobalState } from 'store/slice';
+import { initOpenPage, updateGlobalState } from 'store/slice';
 import { Dropdown } from 'components';
 import './style.css';
 
@@ -26,6 +26,7 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
         page: '0',
       })
     );
+    dispatch(initOpenPage(0));
   };
 
   return (

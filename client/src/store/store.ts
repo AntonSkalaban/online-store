@@ -7,6 +7,7 @@ import {
   FormFilterSlice,
   GlobalFilterSlice,
   ResentlyViewedSlice,
+  OpenPagesSlice,
 } from './slice';
 
 export const store = configureStore({
@@ -15,6 +16,7 @@ export const store = configureStore({
     formFilterValues: FormFilterSlice,
     products: ProductSlice,
     BagItems: BagSlice,
+    openPages: OpenPagesSlice,
     delivery: DeliverySlice,
     ResentlyVewedItems: ResentlyViewedSlice,
     [productAPI.reducerPath]: productAPI.reducer,

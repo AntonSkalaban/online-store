@@ -4,6 +4,7 @@ import { getFormFilterValues } from 'store/selectors';
 import {
   FormFilterValues,
   deleteAllProducts,
+  initOpenPage,
   updateFormState,
   updateGlobalState,
 } from 'store/slice';
@@ -31,11 +32,10 @@ export function FilterDropdownBody({ title, children, applyFilter }: FilterDropd
 
   const resetFilter = () => {
     const resetedFormFilterValues = { ...formFilterValues, [title]: [] };
-
-    dispatch(deleteAllProducts());
-
     dispatch(updateGlobalState({ ...resetedFormFilterValues, page: '0' }));
+
     dispatch(updateFormState(resetedFormFilterValues));
+    dispatch(initOpenPage(0));
   };
 
   if (!isOpen) return null;
