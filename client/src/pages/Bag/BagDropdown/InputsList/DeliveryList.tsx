@@ -1,14 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeDelivery } from '../../../../store/slice';
-import { getDeliveryLabel, getDeliveryName } from '../../../../store/selectors';
+import { getDeliveryName } from '../../../../store/selectors';
 import { delivery } from '../../../../const';
 import './style.css';
 
 export const DeliveryList = () => {
   const dispatch = useDispatch();
   const selectedDelivery = useSelector(getDeliveryName);
-  const deliveryLabel = useSelector(getDeliveryLabel);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checkedDevilery = delivery.find((i) => i.name === e.target.value);
@@ -35,7 +34,7 @@ export const DeliveryList = () => {
                 checked={isChecked}
                 onChange={handleChange}
               />
-              {deliveryLabel}
+              {i.name}
             </label>
           </li>
         );

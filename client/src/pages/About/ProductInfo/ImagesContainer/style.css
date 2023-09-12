@@ -27,6 +27,7 @@
 
 .product__small-image-container{
     width: 90%;
+    margin-bottom: 10px;
 }
 
 .product__big-image-container{

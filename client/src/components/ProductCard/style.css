@@ -1,7 +1,8 @@
 .product-card {
-    display: inline-block;
+    display: inline-flex;
     margin-bottom: 20px; 
 }
+
 
 
 .big-card {
@@ -18,7 +19,12 @@
 }
 
 .small-card {
-    width: calc(20% - 12px);
+    width: calc(20% - 10px);
+    margin-left: 12px;
+}
+
+.small-card:nth-of-type(5n+1) {
+    margin-left: 0;
 }
 
 .small-card__img-container {
@@ -29,10 +35,16 @@
     box-sizing: content-box;
     width: 180px;
     padding: 10px;
+    margin: 0;
 }
+
 
 .slider-card__img-container {
     height: 200px;
+}
+
+.product-card__link {
+    width: 100%;
 }
 
 .product-card__image-container {

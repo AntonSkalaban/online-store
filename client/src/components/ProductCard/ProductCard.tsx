@@ -16,7 +16,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className }) 
 
   return (
     <article className={`product-card ${className}`}>
-      <NavLink to={`/about/${_id}`}>
+      <NavLink className="product-card__link" to={`/about/${_id}`}>
         <div className={`product-card__image-container ${className}__img-container`}>
           <img
             className="product-image"
@@ -32,7 +32,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className }) 
         </div>
 
         <div className="product-card__info-container">
-          <p className="product-card__title text text_bag ">{title}</p>
+          <p className="product-card__title text_bag ">{title}</p>
           <ProductCardPrice
             price={price}
             discountPrice={discountPrice}
