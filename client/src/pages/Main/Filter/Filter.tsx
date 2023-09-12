@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateFormState, updateGlobalState } from '../../../store/slice';
-import { getFormFilterValues, getGlobalFilterValues } from '../../../store/selectors';
-import { CustomObject } from '../../../helpers';
-import { Wrapper } from '../../../components';
-import { FilterDropdown } from './FilterDropdown/FilterDropdown';
+import { updateFormState, updateGlobalState } from 'store/slice';
+import { getFormFilterValues, getGlobalFilterValues } from 'store/selectors';
+import { CustomObject } from 'helpers';
+import { FilterDropdown } from './FilterDropdown';
 import { FilterList } from './CheckboxesList/CheckboxesList';
 import { FilterRange } from './RangeSlider/RangeSlider';
 import { RadioBlock } from './RadioList/RadioList';
+import { Wrapper } from 'components/UI';
 import './style.css';
 
 export const Filter = () => {

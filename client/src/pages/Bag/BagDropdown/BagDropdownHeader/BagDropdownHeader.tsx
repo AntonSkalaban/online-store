@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { DropdownContext, DropdownHeaderProps } from '../../../../components/Dropdown/Dropdown';
+import { DropdownContext, DropdownHeaderProps } from 'components';
 
-export const DropdownBagHeader = ({ title }: DropdownHeaderProps) => {
+export const DropdownBagHeader: React.FC<DropdownHeaderProps> = ({ title }) => {
   const { isOpen, toggleDropdown } = useContext(DropdownContext);
 
   const headerClassName = 'dropdown__header dropdown__header_bag text text_bag';

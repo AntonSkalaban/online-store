@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { BagItem, Product } from '../../types';
+import { BagItem, Product } from 'types';
 
 export interface BagItems {
   products: BagItem[];

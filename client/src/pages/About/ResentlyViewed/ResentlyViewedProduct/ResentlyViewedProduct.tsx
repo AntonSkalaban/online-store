@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Product } from '../../../../types';
+import { Product } from '../../../../types/types';
 import { withProductFetching } from '../../../../hok/withProductFetching';
 import './style.css';
 

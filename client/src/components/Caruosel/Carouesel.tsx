@@ -1,5 +1,5 @@
 import React, { Children, useEffect, useRef, useState } from 'react';
-import { CarouselButtonLeft, CarouselButtonRight } from '../../components/UI';
+import { CarouselButtonLeft, CarouselButtonRight } from 'components/UI';
 import './style.css';
 
 interface CarouselProps {

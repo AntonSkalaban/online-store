@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
-import { DropdownContext, DropdownHeaderProps } from '../../../../../components/Dropdown/Dropdown';
-import { getFormFilterValues } from '../../../../../store/selectors';
-import { FormFilterValues } from '../../../../../store/slice';
-import { firstCharToUC } from '../../../../../helpers';
+import { getFormFilterValues } from 'store/selectors';
+import { FormFilterValues } from 'store/slice';
+import { firstCharToUC } from 'helpers';
+import { DropdownContext, DropdownHeaderProps } from 'components';
 
-export const FilterDropdownHeader = ({ title }: DropdownHeaderProps) => {
+export function FilterDropdownHeader({ title }: DropdownHeaderProps) {
   const { isOpen, toggleDropdown } = useContext(DropdownContext);
 
   const formFilterValues = useSelector(getFormFilterValues);
@@ -23,4 +23,4 @@ export const FilterDropdownHeader = ({ title }: DropdownHeaderProps) => {
       {isOpen ? <span>&#8964;</span> : <span>&#8963;</span>}
     </button>
   );
-};
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Product } from '../types';
+import { Product } from '../types/types';
 import { productAPI } from '../services';
 import { CustomArray } from '../helpers';
 

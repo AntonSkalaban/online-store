@@ -1,10 +1,10 @@
 import React from 'react';
-import { Wrapper } from '../../components';
 import { BagHeader } from './BagHeader/BagHeader';
 import { BagSubtotal } from './BagSubtotal/BagSubtotal';
 import { BagAlsoLike } from './BagAlsoLike/BagAlsoLike';
 import { BagItemsList } from './BagItemsList/BagItemsList';
 import { BagTotal } from './BagTotal/BagTotal';
+import { Wrapper } from 'components/UI';
 import './style.css';
 
 export const Bag = () => {

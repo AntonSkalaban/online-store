@@ -1,7 +1,7 @@
 import React from 'react';
-import { Product } from '../types';
-import { productAPI } from '../services';
-import { LoadingSpinner } from '../components/UI/LodaingSpinner/LoadingSpinner';
+import { Product } from 'types';
+import { productAPI } from 'services';
+import { LoadingSpinner } from 'components/UI';
 
 interface FetchingProductProps {
   productId: string;

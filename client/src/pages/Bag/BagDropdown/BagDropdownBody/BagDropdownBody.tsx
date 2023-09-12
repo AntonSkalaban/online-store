@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { DropdownContext } from '../../../../components/Dropdown/Dropdown';
+import { DropdownContext } from 'components';
 
 interface BagDropdownBodyProps {
   children: React.ReactNode;
 }
 
-export const DropdownBagBody = ({ children }: BagDropdownBodyProps) => {
+export const DropdownBagBody: React.FC<BagDropdownBodyProps> = ({ children }) => {
   const { isOpen } = useContext(DropdownContext);
 
   if (!isOpen) return null;

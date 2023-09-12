@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import ShareLabel from '../../../../../../assets/svg/share.svg';
-import { DropdownContext } from '../../../../../../components/Dropdown/Dropdown';
+import ShareLabel from 'assets/svg/share.svg';
+import { DropdownContext } from 'components';
 
-export const ShareDropdownHeader = () => {
+export const ShareDropdownHeader: React.FC<object> = () => {
   const { toggleDropdown } = useContext(DropdownContext);
 
   return (

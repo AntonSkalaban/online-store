@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFormFilterValues } from '../../../../store/selectors';
-import { updateGlobalState } from '../../../../store/slice';
-import { Dropdown } from '../../../../components/Dropdown/Dropdown';
+import { getFormFilterValues } from 'store/selectors';
+import { updateGlobalState } from 'store/slice';
+import { Dropdown } from 'components';
 import './style.css';
 
 interface FilterDropdownProps {

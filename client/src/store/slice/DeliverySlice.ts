@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Delivery } from '../../types';
-import { delivery } from 'const';
+import { Delivery } from 'types';
 
 const initialState = { delivery: {} as Delivery };
 

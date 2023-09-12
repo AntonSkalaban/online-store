@@ -1,4 +1,4 @@
-import { Delivery } from './types';
+import { Delivery } from './types/types';
 
 export const delivery = [
   { name: 'Standart Delivery', price: 0 },

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { changeDelivery, initBagState, initResentlyViewedState } from './store/slice';
 import { LocalStorage } from './services';
 import { delivery } from './const';
-import { BagItem } from './types';
+import { BagItem } from './types/types';
 import { Main, About, Bag, NotFound } from './pages';
 import { Layout } from './components/Layout';
 import './App.css';

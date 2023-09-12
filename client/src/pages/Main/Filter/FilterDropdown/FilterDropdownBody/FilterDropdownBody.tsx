@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { DropdownContext } from '../../../../../components/Dropdown/Dropdown';
-import { getFormFilterValues } from '../../../../../store/selectors';
+import { getFormFilterValues } from 'store/selectors';
 import {
   FormFilterValues,
   deleteAllProducts,
   updateFormState,
   updateGlobalState,
-} from '../../../../../store/slice';
-import { Button } from '../../../../../components/UI';
+} from 'store/slice';
+import { DropdownContext } from 'components';
+import { Button } from 'components/UI';
 
 interface FilterDropdownBodyProps {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ interface FilterDropdownBodyProps {
   applyFilter: () => void;
 }
 
-export const FilterDropdownBody = ({ title, children, applyFilter }: FilterDropdownBodyProps) => {
+export function FilterDropdownBody({ title, children, applyFilter }: FilterDropdownBodyProps) {
   const { isOpen, closeDropdown } = useContext(DropdownContext);
 
   const dispatch = useDispatch();
@@ -51,4 +51,4 @@ export const FilterDropdownBody = ({ title, children, applyFilter }: FilterDropd
       <Button className="filter-btn" label={'Apply filter'} hanldeClick={hadleApplyClick} />
     </div>
   );
-};
+}

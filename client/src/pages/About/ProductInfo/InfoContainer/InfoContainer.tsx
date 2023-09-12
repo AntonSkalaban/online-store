@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBagItem } from '../../../../store/slice';
-import { Product } from 'types';
+import { Product } from 'types/types';
 import { Button } from '../../../../components/UI';
 import { Banner } from '../../../../components';
 import { LocalStorage } from '../../../../services';

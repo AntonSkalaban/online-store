@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '../../store/store';
-import { CustomArray } from '../../helpers';
-import { BagItem } from '../../types';
+import { RootState } from 'store/store';
+import { CustomArray } from 'helpers';
+import { BagItem } from 'types';
 
 export const getBagItems = (state: RootState) => state.BagItems.products;
 

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { updateFormState, updateGlobalState } from '../../store/slice';
-import { getFormFilterValues, getGlobalFilterValues } from '../../store/selectors';
-import { CustomObject } from '../../helpers';
-import Search from '../../assets/svg/search.svg';
+import { updateFormState, updateGlobalState } from 'store/slice';
+import { getFormFilterValues, getGlobalFilterValues } from 'store/selectors';
+import { CustomObject } from 'helpers';
+import Search from 'assets/svg/search.svg';
 import './style.css';
 
 export const SearchBar = () => {

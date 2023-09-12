@@ -1,10 +1,10 @@
 import React from 'react';
-import { Product } from '../types';
-import { productAPI } from '../services';
+import { Product } from 'types';
+import { productAPI } from 'services';
 import { useSelector } from 'react-redux';
-import { getGlobalFilterValues } from '../store/selectors';
-import { FormFilterValues } from '../store/slice';
-import { LoadingSpinner } from '../components/UI/LodaingSpinner/LoadingSpinner';
+import { getGlobalFilterValues } from 'store/selectors';
+import { FormFilterValues } from 'store/slice';
+import { LoadingSpinner } from 'components/UI';
 
 interface withFetchingFilterBlockProps {
   blockName: keyof FormFilterValues;

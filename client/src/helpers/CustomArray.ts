@@ -1,4 +1,4 @@
-import { Product } from '../types';
+import { Product } from '../types/types';
 
 export class CustomArray {
   static create(length: number, from: number) {

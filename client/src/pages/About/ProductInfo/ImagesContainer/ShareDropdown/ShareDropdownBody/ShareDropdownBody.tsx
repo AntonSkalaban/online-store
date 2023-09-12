@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import TelegramLabel from '../../../../../../assets/svg/telegram.svg';
-import ViberLabel from '../../../../../../assets/svg/viber.svg';
-import { DropdownContext } from '../../../../../../components/Dropdown/Dropdown';
+import TelegramLabel from 'assets/svg/telegram.svg';
+import ViberLabel from 'assets/svg/viber.svg';
+import { DropdownContext } from 'components';
 import './style.css';
 
-export const ShareDropdownBody = () => {
+export const ShareDropdownBody: React.FC<object> = () => {
   const { isOpen } = useContext(DropdownContext);
 
   const url = window.location.href;

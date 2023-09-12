@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGlobalFilterValues, getProducst } from '../../../store/selectors';
+import { getGlobalFilterValues, getProducst } from 'store/selectors';
 import {
   addNextProducts,
   addPrevProducts,
   deleteAllProducts,
   initProducts,
   updateGlobalState,
-} from '../../../store/slice';
-import { productAPI } from '../../../services';
-import { CardsList, Wrapper } from '../../../components';
-import { PaginationButton } from '../../../components/UI/PaginationButton';
-import { LoadingSpinner } from '../../../components/UI/LodaingSpinner/LoadingSpinner';
+} from 'store/slice';
+import { productAPI } from 'services';
+import { CardsList } from 'components';
+import { Wrapper, LoadingSpinner, PaginationButton } from 'components/UI';
 import './style.css';
 
 export const ProductsList = () => {

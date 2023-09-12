@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
-import { GlobalFilterValues } from '../../store/slice/GlobalFilterSlice';
-import { Product, ResponceData } from '../../types';
+import { GlobalFilterValues } from 'store/slice/';
+import { Product, ResponceData } from 'types';
 
 export const productAPI = createApi({
   reducerPath: 'productAPI',

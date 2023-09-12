@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { changeBagItemStoreState, deleteBagItem } from '../../../../store/slice';
-import { BagItem } from '../../../../types';
+import { BagItem } from '../../../../types/types';
 import { Button } from '../../../../components/UI';
 import { ProductCardPrice } from '../../../../components/ProductCard/ProductCardPrice';
 import { QuantityList } from '../../BagDropdown/InputsList/QuantityList';

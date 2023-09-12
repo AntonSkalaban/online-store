@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Product } from '../../types';
+import { Product } from 'types';
 import { NavLink } from 'react-router-dom';
 import { ProductCardPrice } from './ProductCardPrice';
 import './style.css';

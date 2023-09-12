@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { productAPI } from '../../services/api/productService';
-import { Wrapper } from '../../components';
+import { Wrapper } from 'components/UI';
 import { NavRow } from './NavRow/NavRow';
 import { ProductInfo } from './ProductInfo';
 import { AlsoLikeSection } from './AlsoLikeSection';
