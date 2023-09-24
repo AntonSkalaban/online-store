@@ -71,7 +71,7 @@ export const ProductsList = () => {
     return isFetching ? <LoadingSpinner /> : <div>Not found</div>;
   }
 
-  const productsPerPage = 5;
+  const productsPerPage = 20;
   const viewedProducts = lastOpenPage * productsPerPage + data?.products.length;
 
   const isFirstPage = firstOpenPage === 0;
