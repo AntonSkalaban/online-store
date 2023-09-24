@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
-import { createPortal } from 'react-dom';
-import Label from '../../../../../assets/svg/label.svg';
-import { Banner } from '../../../../../components';
+import { promo } from 'const';
+import { PortalBanner } from 'components';
+import Label from 'assets/svg/label.svg';
 import './style.css';
 
 export const Promo = () => {
-  const promo = 'HIFRIEND';
-
   const [isCopyed, setIsCopyed] = useState(false);
 
   const copy = async () => {
     await navigator.clipboard.writeText(promo);
     setIsCopyed(true);
-    setTimeout(() => setIsCopyed(false), 2000);
   };
 
   return (
     <div className="promo">
-      {isCopyed && createPortal(<Banner title="Copyed" />, document.body)}
+      <PortalBanner title={'Copyed'} isOpen={isCopyed} closePortal={() => setIsCopyed(false)} />
+
       <img className="promo__label" src={Label} />
       <p className="text text_bag">
         NEW HERE? <br />

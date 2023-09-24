@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import Star from '../../../../../assets/svg/star.svg';
-import StarFull from '../../../../../assets/svg/star-full.svg';
-import StarHalf from '../../../../../assets/svg/star-half.svg';
+import Star from 'assets/svg/star.svg';
+import StarFull from 'assets/svg/star-full.svg';
+import StarHalf from 'assets/svg/star-half.svg';
 import './style.css';
 
 interface RatingProps {

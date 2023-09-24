@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBagItem } from '../../../../store/slice';
+import { addBagItem } from 'store/slice';
+import { getBagItems } from 'store/selectors';
+import { LocalStorage } from 'services';
 import { Product } from 'types/types';
-import { Button } from '../../../../components/UI';
-import { Banner } from '../../../../components';
-import { LocalStorage } from '../../../../services';
-import { getBagItems } from '../../../../store/selectors';
 import { Rating } from './Rating/Rating';
 import { Price } from './Price/Price';
 import { Promo } from './Promo/Promo';
+import { Button } from 'components/UI';
+import { PortalBanner } from 'components';
 import './style.css';
 
 interface InfoContainerProps {
@@ -27,7 +26,6 @@ export const InfoContainer: React.FC<InfoContainerProps> = ({ product }) => {
     if (isAddedToBag) return;
     dispatch(addBagItem(product));
     setIsAddedToBag(true);
-    setTimeout(() => setIsAddedToBag(false), 2000);
   };
 
   useEffect(() => {
@@ -35,23 +33,33 @@ export const InfoContainer: React.FC<InfoContainerProps> = ({ product }) => {
   }, [bagItems]);
 
   return (
-    <div className="poduct__info-container">
-      <p className="product__title">{title}</p>
-
-      <Price price={price} discountPercentage={discountPercentage} discountPrice={discountPrice} />
-      <Rating rating={rating} />
-
-      <p className="product__description text text_about">{description}</p>
-
-      <Promo />
-
-      <Button
-        className="bag-btn"
-        label="add to bag"
-        disabled={isAddedToBag}
-        hanldeClick={addToBag}
+    <>
+      <PortalBanner
+        isOpen={isAddedToBag}
+        title="added to bag"
+        closePortal={() => setIsAddedToBag(false)}
       />
-      {isAddedToBag && createPortal(<Banner title="AddedToBag" />, document.body)}
-    </div>
+      <div className="poduct__info-container">
+        <p className="product__title">{title}</p>
+
+        <Price
+          price={price}
+          discountPercentage={discountPercentage}
+          discountPrice={discountPrice}
+        />
+        <Rating rating={rating} />
+
+        <p className="product__description text text_about">{description}</p>
+
+        <Promo />
+
+        <Button
+          className="bag-btn"
+          label="add to bag"
+          disabled={isAddedToBag}
+          hanldeClick={addToBag}
+        />
+      </div>
+    </>
   );
 };

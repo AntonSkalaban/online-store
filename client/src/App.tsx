@@ -5,7 +5,7 @@ import { changeDelivery, initBagState, initResentlyViewedState } from './store/s
 import { LocalStorage } from './services';
 import { delivery } from './const';
 import { BagItem } from './types/types';
-import { Main, About, Bag, NotFound } from './pages';
+import { Main, About, Bag, Checkout, NotFound } from './pages';
 import { Layout } from './components/Layout';
 import './App.css';
 
@@ -25,6 +25,7 @@ export const App = () => {
         <Route index element={<Main />} />
         <Route path="about/:id" element={<About />} />
         <Route path="bag" element={<Bag />} />
+        <Route path="checkout" element={<Checkout />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

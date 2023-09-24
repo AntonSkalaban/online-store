@@ -8,6 +8,9 @@ import {
   GlobalFilterSlice,
   ResentlyViewedSlice,
   OpenPagesSlice,
+  CheckoutSlice,
+  PromoSlice,
+  AddressSlice,
 } from './slice';
 
 export const store = configureStore({
@@ -17,7 +20,10 @@ export const store = configureStore({
     products: ProductSlice,
     BagItems: BagSlice,
     openPages: OpenPagesSlice,
+    checkoutItems: CheckoutSlice,
     delivery: DeliverySlice,
+    promo: PromoSlice,
+    address: AddressSlice,
     ResentlyVewedItems: ResentlyViewedSlice,
     [productAPI.reducerPath]: productAPI.reducer,
     [categoryAPI.reducerPath]: categoryAPI.reducer,

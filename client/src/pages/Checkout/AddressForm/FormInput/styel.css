@@ -1,0 +1,35 @@
+.form__input-wrapper {
+    margin-bottom: 20px;
+}
+
+.form-input__label {
+    max-width: 100px;
+
+    font-size: .875rem;
+    font-style: normal;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+}
+
+.form-input {
+    width: 330px;
+    display: block;
+
+    background-color: #fff;
+    border-radius: 0;
+    border: 1px solid #999;
+    padding: 0.688rem 11px;
+    margin: 6px 0;
+
+    font: inherit;
+    outline: none;
+}
+
+.form-input:focus{
+    border-radius: 0;
+    border: 1px solid #0770cf;
+    padding: 0.688rem 11px;
+}

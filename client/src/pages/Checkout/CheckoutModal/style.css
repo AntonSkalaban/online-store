@@ -1,0 +1,47 @@
+.checkout-modal-wrapper{
+    width: 80%;
+    margin: 25px auto;
+}
+
+
+.modal__input-wrapper{
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+
+    margin: 15px auto;
+}
+
+.form-input__img{
+    position: absolute;
+    top: 7px;
+    right: 0;
+}
+
+.modal__small-inputs-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal__inputs-wrapper{
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+}
+.modal__input-wrapper_small {
+    width: 50%;
+
+    justify-content:flex-start;
+    gap: 1rem;
+}
+
+.form-input_small {
+    width: 100px;
+}
+

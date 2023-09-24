@@ -3,6 +3,7 @@
     background-color: white;
     padding: 24px 30px;
     margin-top: 10px;
+    position: relative;
 }
 
 .bag-section__header {
@@ -37,7 +38,6 @@
 
     margin-top: 0.8em;
     margin-bottom: .8rem;
-
 }
 
 .bag-section__body{

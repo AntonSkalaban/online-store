@@ -44,12 +44,19 @@ export const BagSlice = createSlice({
     },
 
     changeBagItemStoreState: (state, action: PayloadAction<string>) => {
-      const products = [...state.products];
-      state.products = products.map((product) => {
+      state.products = state.products.map((product) => {
         if (product._id === action.payload) {
           product.isDeleted = !product.isDeleted;
         }
         return product;
+      });
+    },
+
+    deletePurchasedItems: (state, action: PayloadAction<BagItem[]>) => {
+      state.products = state.products.filter((product) => {
+        if (!action.payload.some(({ _id }) => _id === product._id)) {
+          return product;
+        }
       });
     },
   },
@@ -61,6 +68,7 @@ export const {
   deleteBagItem,
   changeBagItemQuantity,
   changeBagItemStoreState,
+  deletePurchasedItems,
 } = BagSlice.actions;
 
 export default BagSlice.reducer;

@@ -5,7 +5,7 @@ interface ButtonProps {
   label: string;
   className?: string;
   disabled?: boolean;
-  hanldeClick: () => void;
+  hanldeClick?: () => void;
 }
 export const Button: React.FC<ButtonProps> = ({
   label,

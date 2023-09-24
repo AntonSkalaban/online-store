@@ -3,3 +3,4 @@ export * from './Button/Button';
 export * from './LoadingSpinner/LoadingSpinner';
 export * from './PaginationButton/PaginationButton';
 export * from './Wrapper/Wrapper';
+export * from './WhiteSection/WhiteSection';

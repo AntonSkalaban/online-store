@@ -1,23 +1,15 @@
 .bag {
     width: 100%;
     height: 100%;
-    background-color: #eee;
-}
-
-.bag__container {
-    width: 100%;
-    display: flex;
-    gap: 20px;
-}
-
-.bag__main {
-    width: 66%;
-}
-.bag__asid{
-    width: 33%;
 }
 
 .text_bag {
     font-size: 14px;
     letter-spacing: .4px;
+}
+
+.bag__empty-msg {
+    position: absolute;
+    top: 40px;
+    left: 50%;
 }

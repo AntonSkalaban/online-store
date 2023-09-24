@@ -1,0 +1,20 @@
+.checkout__promo-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkout__promo-arrow {
+    position: absolute;
+    top: 24px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.arrow_close {
+    transform: rotate(-90deg);
+}
+
+.arrow_open {
+    transform: rotate(90deg);
+}

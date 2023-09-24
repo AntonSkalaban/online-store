@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { getBagItems } from 'store/selectors';
 import { BagHeader } from './BagHeader/BagHeader';
 import { BagSubtotal } from './BagSubtotal/BagSubtotal';
 import { BagAlsoLike } from './BagAlsoLike/BagAlsoLike';
@@ -8,23 +10,29 @@ import { Wrapper } from 'components/UI';
 import './style.css';
 
 export const Bag = () => {
+  const bagItems = useSelector(getBagItems);
+
   return (
-    <div className="bag">
+    <div className="bag page_gray">
       <Wrapper>
-        <div className="bag__container">
-          <div className="bag__main">
-            <BagHeader />
+        {!bagItems.length ? (
+          <p className="bag__empty-msg">No items yet..(</p>
+        ) : (
+          <div className="page-section__container">
+            <div className="page-section__main">
+              <BagHeader />
 
-            <BagItemsList />
+              <BagItemsList />
 
-            <BagSubtotal />
+              <BagSubtotal />
 
-            <BagAlsoLike />
+              <BagAlsoLike />
+            </div>
+            <div className="page-section__asid">
+              <BagTotal />
+            </div>
           </div>
-          <div className="bag__asid">
-            <BagTotal />
-          </div>
-        </div>
+        )}
       </Wrapper>
     </div>
   );

@@ -24,6 +24,7 @@
       "services/*": ["services/*"],
       "store/*": ["store/*"],
       "types/*": ["types/*"],
+      "const/*": ["const/*"],
   },
 },
   "include": ["src"],

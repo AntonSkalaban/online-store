@@ -1,3 +1,8 @@
 .total__text {
     margin-top:10px;
 }
+
+.bag-section__img-wrapper {
+    display: flex;
+    align-items: center;
+}

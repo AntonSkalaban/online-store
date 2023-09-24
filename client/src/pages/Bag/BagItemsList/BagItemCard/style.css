@@ -37,6 +37,7 @@
 .bag-card__description {
     margin-top: 10px;
 }
+
 .bag-card__info-container {
     width: calc(100% - 180px);
     display: flex;
@@ -51,12 +52,6 @@
 
 .bag-card__delete {
     width: 45px;
-   
-    /* position: relative; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    
    
 }
 

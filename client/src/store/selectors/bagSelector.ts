@@ -23,8 +23,10 @@ export const getBagItemsTotalQuantity = createSelector(getBagItems, (items) => {
 });
 
 export const getBagItemsTotalPrice = createSelector(getBagItems, (items) => {
-  return items.reduce(
-    (acc, val) => acc + (!val.isDeleted ? (val.discountPrice || val.price) * val.quantity : 0),
-    0
-  );
+  return +items
+    .reduce(
+      (acc, val) => acc + (!val.isDeleted ? (val.discountPrice || val.price) * val.quantity : 0),
+      0
+    )
+    .toFixed(2);
 });

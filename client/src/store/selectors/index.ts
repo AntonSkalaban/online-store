@@ -5,3 +5,7 @@ export * from './bagSelector';
 export * from './resentlyViewedSelector';
 export * from './deliverySelector';
 export * from './openPagesSelector';
+export * from './checkoutSelector';
+export * from './promoSelector';
+export * from './bagSelector';
+export * from './addressSelector';

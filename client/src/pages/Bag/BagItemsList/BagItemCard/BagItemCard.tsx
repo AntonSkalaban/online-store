@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { changeBagItemStoreState, deleteBagItem } from '../../../../store/slice';
-import { BagItem } from '../../../../types/types';
-import { Button } from '../../../../components/UI';
-import { ProductCardPrice } from '../../../../components/ProductCard/ProductCardPrice';
+import { changeBagItemStoreState, checkoutOneItems, deleteBagItem } from 'store/slice';
+import { BagItem } from 'types/types';
+import { Button } from 'components/UI';
+import { ProductCardPrice } from 'components/ProductCard/ProductCardPrice';
 import { QuantityList } from '../../BagDropdown/InputsList/QuantityList';
 import { BagDropdown } from '../../BagDropdown/BagDropdown';
-import CloseImg from '../../../../assets/svg/close.svg';
+import CloseImg from 'assets/svg/close.svg';
 import './style.css';
 
 interface BagItemProps {
@@ -35,6 +35,13 @@ export const BagItemCard: React.FC<BagItemProps> = ({ product }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const navigate = useNavigate();
+
+  const hanldeCheckoutClick = () => {
+    dispatch(checkoutOneItems(product));
+    navigate('/checkout');
+  };
+
   return (
     <div className="bag-item">
       <div className={`bag-item__content-box ${isDeleted ? 'bag-item__content-box_deleted' : ''}`}>
@@ -51,13 +58,13 @@ export const BagItemCard: React.FC<BagItemProps> = ({ product }) => {
             discountPrice={discountPrice}
             discountPercentage={discountPercentage}
           />
-          <p className="bag-card__description text text_bag">{description}</p>
+          <p className="bag-card__description text_bag">{description}</p>
           <div className="bag-card__controllers-box">
             {' '}
             <BagDropdown title={`Qty ${quantity}`} classNameMod="bag">
               <QuantityList quantity={quantity} productId={_id} />
             </BagDropdown>
-            <Button label="Buy now" className="bag-btn" hanldeClick={() => {}} />
+            <Button label="Buy now" className="bag-btn" hanldeClick={hanldeCheckoutClick} />
           </div>
         </div>
       </div>

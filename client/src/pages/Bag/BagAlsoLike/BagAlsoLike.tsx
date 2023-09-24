@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getBagItemKeys } from '../../../store/selectors';
-import { useGetSameProducts } from '../../../hooks';
-import { Carousel, ProductCard } from '../../../components';
-import { BagSection } from '../BagSection/BagSection';
+import { getBagItemKeys } from 'store/selectors';
+import { useGetSameProducts } from 'hooks';
+import { Carousel, ProductCard } from 'components';
+import { WhiteSection } from 'components/UI';
 
 export const BagAlsoLike = () => {
   const productsCategories = useSelector((state) => getBagItemKeys(state, 'category'));
@@ -19,12 +19,12 @@ export const BagAlsoLike = () => {
   });
 
   return (
-    <BagSection title={'A little something extra?'} subtitle={`${sameProducts.length} items`}>
+    <WhiteSection title={'A little something extra?'} subtitle={`${sameProducts.length} items`}>
       <Carousel>
         {sameProducts.map((product) => {
           return <ProductCard key={product._id} className={'slider-card'} product={product} />;
         })}
       </Carousel>
-    </BagSection>
+    </WhiteSection>
   );
 };
