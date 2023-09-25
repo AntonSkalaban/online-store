@@ -27,8 +27,8 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
 
   const itemsPerSlide = Math.floor((carouselWidth - 80) / 180);
 
-  const currentSlideNumber = Math.floor(leftShiftValue / -100);
-  const slidesAmount = Math.floor((Children.count(children) - 1) / itemsPerSlide);
+  const currentSlideNumber = Math.floor(leftShiftValue / -100) + 1;
+  const slidesAmount = Math.ceil(Children.count(children) / itemsPerSlide);
 
   const isLeftBtnDisabled = leftShiftValue === 0;
   const isRightBtnDisabled = slidesAmount <= currentSlideNumber;
@@ -49,7 +49,6 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
   const moveLeft = () => {
     setLeftShiftValue(leftShiftValue + 100);
   };
-
   return (
     <div className="carousel" ref={blockRef}>
       <div className="carousel__container" style={carueselContainerStyles}>

@@ -26,7 +26,6 @@ export const ResentlyViewed: React.FC<ResentlyViewedProps> = ({ productId }) => 
   }, [productIds]);
 
   if (!productIds.length) return null;
-
   return (
     <AboutSection title="Resently viewed">
       <Carousel>
