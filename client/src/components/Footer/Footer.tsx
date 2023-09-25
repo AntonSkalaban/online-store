@@ -9,7 +9,7 @@ export const Footer = () => {
     <footer className="header-footer">
       <Wrapper>
         <div className="header-footer__container">
-          <p className="footer-text">made by Anton Skalaban</p>
+          <p className="footer-text">Made by Anton Skalaban</p>
           <p className="footer-text footer__contact">
             Contact me:
             <a href="https://t.me/Aazzbbc" target="_blank" rel="noreferrer">

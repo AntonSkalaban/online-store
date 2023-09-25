@@ -26,7 +26,7 @@ export const SearchBar = () => {
     const emptyState = CustomObject.resetAllFields(formFilterValues);
 
     dispatch(updateFormState(emptyState));
-    dispatch(updateGlobalState({ ...emptyState, searchValue: value }));
+    dispatch(updateGlobalState({ ...emptyState, page: '0', searchValue: value }));
     if (location.pathname !== '/') navigate('/');
   };
 

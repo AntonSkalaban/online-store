@@ -3,8 +3,6 @@
     margin-bottom: 20px; 
 }
 
-
-
 .big-card {
     width: calc(25% - 9px);
     margin-left: 12px;
@@ -77,4 +75,21 @@
 
 .red-text {
     color: red
+}
+
+
+@media (max-width: 1050px) {
+.big-card {
+    width: calc(33.3% - 9px);
+    margin-left: 12px;
+}
+.big-card:nth-of-type(4n+1) {
+    margin-left: 12px;
+}
+
+.big-card:nth-of-type(3n+1) {
+    margin-left: 0px;
+}
+
+
 }
