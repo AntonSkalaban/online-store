@@ -19,7 +19,7 @@ export const About = () => {
 
   return (
     <Wrapper>
-      <div className="about-page">
+      <div className="about-page page">
         <NavRow category={category} brand={brand} title={title} />
 
         <ProductInfo product={data} />

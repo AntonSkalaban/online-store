@@ -1,0 +1,19 @@
+.footer__title {
+    color: white;
+}
+
+.footer-text {
+    color: white;
+}
+
+.footer__contact{
+    width: 300px;
+    display: flex;
+    align-items: center;
+
+}
+
+.footer__contact-logo {
+    margin-left: 20px;
+    cursor: pointer;
+}

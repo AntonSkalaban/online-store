@@ -6,9 +6,9 @@ import './style.css';
 
 export const Header = () => {
   return (
-    <header className="header">
+    <header className="header-footer">
       <Wrapper>
-        <div className="header__container">
+        <div className="header-footer__container">
           <NavLink className="logo" to="/">
             Online-store
           </NavLink>

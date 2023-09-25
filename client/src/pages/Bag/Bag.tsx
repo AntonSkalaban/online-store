@@ -13,7 +13,7 @@ export const Bag = () => {
   const bagItems = useSelector(getBagItems);
 
   return (
-    <div className="bag page_gray">
+    <div className="bag page_gray page">
       <Wrapper>
         {!bagItems.length ? (
           <p className="bag__empty-msg">No items yet..(</p>
