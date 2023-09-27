@@ -1,4 +1,5 @@
-import React, { Children, useEffect, useRef, useState } from 'react';
+import React, { Children, useRef, useState } from 'react';
+import { useGetWidth } from 'hooks';
 import { CarouselButtonLeft, CarouselButtonRight } from 'components/UI';
 import './style.css';
 
@@ -8,22 +9,9 @@ interface CarouselProps {
 
 export const Carousel: React.FC<CarouselProps> = ({ children }) => {
   const [leftShiftValue, setLeftShiftValue] = useState(0);
-  const [carouselWidth, setCarouselWidth] = useState(0);
   const blockRef = useRef<HTMLDivElement>(null);
 
-  const resizeHandler = () => {
-    if (!blockRef.current) return;
-    const width = blockRef.current.getBoundingClientRect().width;
-    setCarouselWidth(width);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', resizeHandler);
-    resizeHandler();
-    return () => {
-      window.removeEventListener('resize', resizeHandler);
-    };
-  }, []);
+  const carouselWidth = useGetWidth(blockRef);
 
   const itemsPerSlide = Math.floor((carouselWidth - 80) / 180);
 

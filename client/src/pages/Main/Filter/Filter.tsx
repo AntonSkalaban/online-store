@@ -3,10 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { initOpenPage, updateFormState, updateGlobalState } from 'store/slice';
 import { getFormFilterValues, getGlobalFilterValues } from 'store/selectors';
 import { CustomObject } from 'helpers';
-import { FilterDropdown } from './FilterDropdown';
-import { FilterList } from './CheckboxesList/CheckboxesList';
-import { FilterRange } from './RangeSlider/RangeSlider';
-import { RadioBlock } from './RadioList/RadioList';
+import { LaptopFilter } from './LaptopFilter/LaptopFilter';
+import { MobileFilter } from './MobileFilter/MobileFilter';
 import { Wrapper } from 'components/UI';
 import './style.css';
 
@@ -40,26 +38,8 @@ export const Filter = () => {
             Reset All
           </p>
 
-          <div className="filter__dropdown-container">
-            <FilterDropdown title="category" classNameMod="filter">
-              <FilterList blockName={'category'} />
-            </FilterDropdown>
-
-            <FilterDropdown title="brand" classNameMod="filter">
-              <FilterList blockName={'brand'} />
-            </FilterDropdown>
-
-            <FilterDropdown title="sort" classNameMod="filter">
-              <RadioBlock title="sort" />
-            </FilterDropdown>
-
-            <FilterDropdown title="price" classNameMod="filter">
-              <FilterRange
-                blockName={'price'}
-                additionalUrlParams={{ sort: 'discountPrice-ASC' }}
-              />
-            </FilterDropdown>
-          </div>
+          <LaptopFilter />
+          <MobileFilter />
         </div>
       </Wrapper>
     </section>

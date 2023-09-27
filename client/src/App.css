@@ -15,7 +15,6 @@ input:focus {
     position: relative;
 
     cursor: pointer;
-
 }
 
 .product-image{
@@ -27,15 +26,14 @@ input:focus {
     border: 1px solid #0770cf;;
 }
 
-
 .page {
     min-height: calc(100vh - 120px);
 }
+
 .page_gray {
     min-height: 100vh;
     background-color: #eee;
 }
-
 
 .page-section__container {
     width: 100%;
@@ -61,9 +59,18 @@ input:focus {
     margin: 0 auto;
 }
 
-/* .text {
-    font-weight: 400;
+@media (max-width: 905px) {
+    .page-section__container {
+        gap: 0px;
+        flex-direction: column;
+    }
 
-    color: #2d2d2d;
+    .page-section__main {
+        width: 100%;
+    }
+
+    .page-section__asid{
+        width: 100%;
+    }
 }
- */
+

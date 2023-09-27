@@ -7,8 +7,6 @@ import {
 } from 'pages/About/ProductInfo/ImagesContainer/ShareDropdown';
 import './style.css';
 import { FilterDropdownBody, FilterDropdownHeader } from 'pages/Main/Filter/FilterDropdown';
-// import { FilterDropdownHeader } from 'pages/Main/Filter/FilterDropdown/FilterDropdownHeader/FilterDropdownHeader';
-// import { FilterDropdownBody } from 'pages/Main/Filter/FilterDropdown/FilterDropdownBody/FilterDropdownBody';
 
 export const DropdownContext = createContext({
   isOpen: false,

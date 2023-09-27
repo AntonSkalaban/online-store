@@ -8,9 +8,14 @@ import { withFetchingFilterBlock } from 'hok';
 export interface CheckboxesListProps {
   blockName: keyof FormFilterValues;
   data: string[];
+  classMode?: string;
 }
 
-export const CheckboxesList: React.FC<CheckboxesListProps> = ({ blockName, data }) => {
+export const CheckboxesList: React.FC<CheckboxesListProps> = ({
+  blockName,
+  data,
+  classMode = '',
+}) => {
   const dispatch = useDispatch();
 
   const checkedCheckboxes = useSelector(getFormFilterValues)[blockName] ?? [];
@@ -29,7 +34,7 @@ export const CheckboxesList: React.FC<CheckboxesListProps> = ({ blockName, data 
   };
 
   return (
-    <ul className="input-list">
+    <ul className={'filter__inputs-list ' + classMode}>
       {data.sort().map((name) => {
         const isChecked = checkedCheckboxes.includes(name);
         return (

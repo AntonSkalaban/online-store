@@ -1,6 +1,5 @@
 import React from 'react';
 import { Dropdown } from '../../../components/Dropdown/Dropdown';
-import './style.css';
 
 interface BagDropdownProps {
   title: string;

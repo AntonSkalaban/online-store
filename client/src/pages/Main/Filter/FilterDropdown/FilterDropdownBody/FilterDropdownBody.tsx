@@ -1,13 +1,7 @@
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFormFilterValues } from 'store/selectors';
-import {
-  FormFilterValues,
-  deleteAllProducts,
-  initOpenPage,
-  updateFormState,
-  updateGlobalState,
-} from 'store/slice';
+import { FormFilterValues, initOpenPage, updateFormState, updateGlobalState } from 'store/slice';
 import { DropdownContext } from 'components';
 import { Button } from 'components/UI';
 
@@ -43,7 +37,7 @@ export function FilterDropdownBody({ title, children, applyFilter }: FilterDropd
   return (
     <div className="dropdown__body">
       {isSelect && (
-        <p className="dropdown__clear-btn" onClick={resetFilter}>
+        <p className="filter-clear-btn" onClick={resetFilter}>
           Clear
         </p>
       )}

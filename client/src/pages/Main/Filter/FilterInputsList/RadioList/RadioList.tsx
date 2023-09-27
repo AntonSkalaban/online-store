@@ -6,9 +6,10 @@ import { options } from './const';
 
 interface RadioBlockProps {
   title: keyof FormFilterValues;
+  classMode?: string;
 }
 
-export const RadioBlock: React.FC<RadioBlockProps> = ({ title }) => {
+export const RadioBlock: React.FC<RadioBlockProps> = ({ title, classMode = '' }) => {
   const dispatch = useDispatch();
 
   const selectValue = useSelector(getFormFilterValues)[title];
@@ -18,7 +19,7 @@ export const RadioBlock: React.FC<RadioBlockProps> = ({ title }) => {
   };
 
   return (
-    <ul className="input-list">
+    <ul className={'filter__inputs-list ' + classMode}>
       {options.map(({ value, label }) => {
         const isChecked = selectValue === value;
         return (

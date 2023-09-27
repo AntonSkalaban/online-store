@@ -11,6 +11,9 @@ align-items: center;
 justify-content: space-between;
 }
 
+ .range-input input  {
+  display: block !important; 
+}
     .range-input {
       position: relative;
       margin: 25px 0 5px;

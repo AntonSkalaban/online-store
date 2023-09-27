@@ -9,6 +9,7 @@ import { LoadingSpinner } from 'components/UI';
 interface withFetchingFilterBlockProps {
   blockName: keyof FormFilterValues;
   additionalUrlParams?: FormFilterValues;
+  classMode?: string;
 }
 
 export const withFetchingFilterBlock = (

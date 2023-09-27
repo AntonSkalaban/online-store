@@ -45,12 +45,10 @@ export const BagItemCard: React.FC<BagItemProps> = ({ product }) => {
   return (
     <div className="bag-item">
       <div className={`bag-item__content-box ${isDeleted ? 'bag-item__content-box_deleted' : ''}`}>
-        <div className="bag-card__image-container">
-          <div className="image-container">
-            <NavLink to={`/about/${_id}`}>
-              <img className="product-image" src={images[0]} />
-            </NavLink>
-          </div>
+        <div className="checkout-card__image-container">
+          <NavLink to={`/about/${_id}`}>
+            <img className="product-image" src={images[0]} />
+          </NavLink>
         </div>
         <div className="bag-card__info-container">
           <ProductCardPrice

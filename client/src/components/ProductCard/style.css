@@ -92,4 +92,16 @@
 }
 
 
+.small-card {
+    width: calc(25% - 10px);
+    margin-left: 12px;
+}
+
+.small-card:nth-of-type(5n+1) {
+    margin-left: 12px;
+}
+
+.small-card:nth-of-type(4n+1) {
+    margin-left: 0;
+}
 }

@@ -8,9 +8,10 @@ import './style.css';
 interface RangeSliderProps {
   blockName: keyof FormFilterValues;
   data: string[];
+  classMode?: string;
 }
 
-export const RangeSlider: React.FC<RangeSliderProps> = ({ data, blockName }) => {
+export const RangeSlider: React.FC<RangeSliderProps> = ({ data, blockName, classMode = '' }) => {
   const dispatch = useDispatch();
 
   const selectValues = useSelector(getFormFilterValues).price;
@@ -38,7 +39,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({ data, blockName }) => 
   };
 
   return (
-    <div className="dual-range">
+    <div className={'dual-range filter__inputs-list ' + classMode}>
       {' '}
       <div className={`range-${blockName}`}>
         <p className={`min-${blockName}`}>${minVal}</p>

@@ -16,7 +16,7 @@ export const DeliveryList = () => {
   };
 
   return (
-    <ul className="input-list">
+    <ul className="dropdown-input-list input-list">
       {delivery.map((i) => {
         const isChecked = selectedDelivery === i.name;
 

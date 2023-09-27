@@ -19,7 +19,7 @@ export const QuantityList: React.FC<BagInputListProps> = ({ productId, quantity 
   };
 
   return (
-    <ul className="input-list">
+    <ul className="dropdown-input-list_bag dropdown-input-list input-list">
       {options.map((num) => {
         const isChecked = quantity === num;
 
