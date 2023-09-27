@@ -48,3 +48,9 @@
     letter-spacing: 2px;
     font-weight: 400;
 }
+
+@media (max-width: 555px) {
+    .bag-section {
+        padding: 10px;
+    }
+}

@@ -102,3 +102,11 @@
 .mobile-filter__text:last-child {
     border-bottom: 1px solid #eee;
 }
+
+
+@media (max-width: 555px) {
+
+    .mobile-filter-list__controller-container {
+        width: 15%;
+    }
+}

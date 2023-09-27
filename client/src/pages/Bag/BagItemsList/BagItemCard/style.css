@@ -62,3 +62,10 @@
     pointer-events:all;
     cursor: pointer;
 }
+
+
+@media (max-width: 555px) {
+    .bag-card__controllers-box {
+        width: 100%;
+    }
+}

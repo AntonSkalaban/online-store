@@ -34,3 +34,16 @@
     width: 90%;
     height: 300px;
 }
+
+@media (max-width: 905px) {
+    .product__images-container{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .product__small-images-container{
+        width: 20%;
+    }
+    
+    
+}

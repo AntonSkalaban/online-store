@@ -20,8 +20,8 @@
     align-items: center;
     justify-content: center;
     
-    position: absolute;
-    top: 60px;
+    position: fixed;
+    top: 0px;
     background-color: rgb(5, 130, 5);
 
     animation: show-banner 1s forwards;

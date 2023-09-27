@@ -45,3 +45,25 @@
     width: 100px;
 }
 
+@media (max-width: 555px) {
+    .checkout-modal-wrapper {
+        margin: 5px;
+    }
+
+    .form-input__img {
+        display: none;
+    }
+
+    .modal__small-inputs-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .modal__input-wrapper_small {
+        width: 100%;
+        
+        gap: 0;
+        margin: 0;
+    }
+}

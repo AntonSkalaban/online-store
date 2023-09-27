@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { changeBagItemStoreState, checkoutOneItems, deleteBagItem } from 'store/slice';
+import { useGetWidth } from 'hooks';
 import { BagItem } from 'types/types';
 import { Button } from 'components/UI';
 import { ProductCardPrice } from 'components/ProductCard/ProductCardPrice';
@@ -17,6 +18,7 @@ interface BagItemProps {
 export const BagItemCard: React.FC<BagItemProps> = ({ product }) => {
   const {
     _id,
+    title,
     images,
     price,
     discountPercentage,
@@ -26,7 +28,11 @@ export const BagItemCard: React.FC<BagItemProps> = ({ product }) => {
     isDeleted,
   } = product;
 
+  const ref = useRef(null);
+  const witdh = useGetWidth(ref);
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     return () => {
@@ -35,15 +41,13 @@ export const BagItemCard: React.FC<BagItemProps> = ({ product }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const navigate = useNavigate();
-
   const hanldeCheckoutClick = () => {
     dispatch(checkoutOneItems(product));
     navigate('/checkout');
   };
 
   return (
-    <div className="bag-item">
+    <div className="bag-item" ref={ref}>
       <div className={`bag-item__content-box ${isDeleted ? 'bag-item__content-box_deleted' : ''}`}>
         <div className="checkout-card__image-container">
           <NavLink to={`/about/${_id}`}>
@@ -56,7 +60,13 @@ export const BagItemCard: React.FC<BagItemProps> = ({ product }) => {
             discountPrice={discountPrice}
             discountPercentage={discountPercentage}
           />
-          <p className="bag-card__description text_bag">{description}</p>
+
+          {witdh > 450 ? (
+            <p className="bag-card__description text_bag">{description}</p>
+          ) : (
+            <p className="bag-card__description text_bag">{title}</p>
+          )}
+
           <div className="bag-card__controllers-box">
             {' '}
             <BagDropdown title={`Qty ${quantity}`} classNameMod="bag">

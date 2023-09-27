@@ -79,29 +79,46 @@
 
 
 @media (max-width: 1050px) {
-.big-card {
-    width: calc(33.3% - 9px);
-    margin-left: 12px;
-}
-.big-card:nth-of-type(4n+1) {
-    margin-left: 12px;
+    .big-card {
+        width: calc(33.3% - 9px);
+        margin-left: 12px;
+    }
+
+    .big-card:nth-of-type(4n+1) {
+        margin-left: 12px;
+    }
+
+    .big-card:nth-of-type(3n+1) {
+        margin-left: 0px;
+    }
+
+    .big-card__img-container {
+        height: 230px;
+    }
+
+    .small-card {
+        width: calc(25% - 10px);
+        margin-left: 12px;
+    }
+
+    .small-card:nth-of-type(5n+1) {
+        margin-left: 12px;
+    }
+
+    .small-card:nth-of-type(4n+1) {
+        margin-left: 0;
+    }
 }
 
-.big-card:nth-of-type(3n+1) {
-    margin-left: 0px;
+
+@media (max-width: 555px) {
+    .big-card,  .small-card {
+        width: calc(50% - 6px);
+        margin: 12px 0 12px 12px;
+    }
+
+    .big-card:nth-of-type(odd),  .small-card:nth-of-type(odd) {
+        margin-left: 0;
+    }
 }
 
-
-.small-card {
-    width: calc(25% - 10px);
-    margin-left: 12px;
-}
-
-.small-card:nth-of-type(5n+1) {
-    margin-left: 12px;
-}
-
-.small-card:nth-of-type(4n+1) {
-    margin-left: 0;
-}
-}

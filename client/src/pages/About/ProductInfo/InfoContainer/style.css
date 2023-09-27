@@ -22,3 +22,9 @@
     margin-bottom: 20px;
 }
 
+@media (max-width: 905px) {
+    .poduct__info-container {
+        width: 100%;
+        padding: 0px;
+    }
+}

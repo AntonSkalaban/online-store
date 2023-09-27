@@ -33,3 +33,9 @@
     border: 1px solid #0770cf;
     padding: 0.688rem 11px;
 }
+
+@media (max-width: 555px) {
+    .form-input {
+        width: 270px;
+    }
+}

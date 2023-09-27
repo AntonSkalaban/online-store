@@ -29,3 +29,15 @@
         width: 700px;
     }
 }
+
+@media (max-width: 705px) {
+    .wrapper {
+        width: 550px;
+    }
+}
+
+@media (max-width: 555px) {
+    .wrapper {
+        width: 320px;
+    }
+}

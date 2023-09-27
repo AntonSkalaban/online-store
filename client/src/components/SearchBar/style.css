@@ -17,8 +17,9 @@
     background-position-x: 0.5rem;
     background-repeat: no-repeat;
     padding-left: 1.5rem;
+    
 }
-
+  
 .search-bar__btn {
     position: absolute;
     top: 50%;
@@ -26,4 +27,15 @@
     transform: translate(0, -50%);
 
     cursor: pointer;
+}
+
+
+@media (max-width: 555px) {
+    .search-bar {
+        width: 60%;
+    }
+
+    .search-bar__input {
+        padding-left: .5rem;
+    }
 }

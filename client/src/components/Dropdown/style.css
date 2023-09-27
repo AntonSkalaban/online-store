@@ -53,6 +53,8 @@
     background-color: white;
 }
 
+
+
 .dropdown__header_select {
     border-top: 2px solid  rgb(7, 112, 207);;
 }
@@ -81,9 +83,13 @@
   }
   
 
-    .dropdown-input-list_bag {
-        max-height: 200px;
-    }
+.dropdown-input-list_bag {
+    max-height: 200px;
+}
+
+.dropdown-input-list_bag input {
+    display: none;
+}
 
 .dropdown__header_quantity {
     width: 70px;
