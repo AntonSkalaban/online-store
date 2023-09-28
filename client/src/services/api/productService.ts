@@ -4,7 +4,7 @@ import { Product, ResponceData } from 'types';
 
 export const productAPI = createApi({
   reducerPath: 'productAPI',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://expensive-raincoat-hare.cyclic.cloud/' }),
   endpoints: (build) => ({
     getFilterdProducts: build.query<ResponceData, GlobalFilterValues>({
       query: (filterValues) => {
