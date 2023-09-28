@@ -35,6 +35,7 @@
 }
 
 @media (max-width: 555px) {
+    
     .form-input {
         width: 270px;
     }
