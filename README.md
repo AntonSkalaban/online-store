@@ -1,6 +1,6 @@
 # Online-Store
 
-![Uploading Снимок экрана 2023-09-28 в 22.31.04.png…]()
+<img width="1440" alt="image" src="https://github.com/AntonSkalaban/online-store/assets/112729189/7676d174-be63-48a7-a0a4-8b44162d10c8">
 
 
 Online-Store is an application for an online store developed using the following technologies:
