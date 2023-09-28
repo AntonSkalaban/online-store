@@ -18,3 +18,10 @@
 .arrow_open {
     transform: rotate(90deg);
 }
+
+@media (max-width: 555px) {
+    .checkout__promo-arrow {
+        top: 5px;
+        right: 8px;
+    }
+}
