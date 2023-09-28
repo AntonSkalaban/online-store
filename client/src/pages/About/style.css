@@ -9,3 +9,7 @@
     font-size: 16px;
     letter-spacing: .6px;
 }
+
+.about__loading-spinner-container {
+    min-height: calc(100vh - 120px);
+}
