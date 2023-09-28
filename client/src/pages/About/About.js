@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { productAPI } from '../../services/api/productService';
-import { Wrapper } from 'components/UI';
+import { LoadingSpinner, Wrapper } from 'components/UI';
 import { NavRow } from './NavRow/NavRow';
 import { ProductInfo } from './ProductInfo';
 import { AlsoLikeSection } from './AlsoLikeSection';
@@ -11,7 +11,8 @@ export const About = () => {
     const { id } = useParams();
     const { data, isFetching, error } = productAPI.useGetProductQuery(id ?? '');
     if (isFetching)
-        return React.createElement("div", null, "Loading...");
+        return (React.createElement("div", { className: "about__loading-spinner-container" },
+            React.createElement(LoadingSpinner, null)));
     if (!id || error || !data)
         return React.createElement("div", null, "Not found");
     const { title, category, brand } = data;
