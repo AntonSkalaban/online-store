@@ -1,0 +1,9 @@
+.dropdown-filter {
+    width: 200px;
+}
+
+@media (max-width: 905px) {
+    .dropdown-filter {
+        width: 100%;
+    }
+}

@@ -1,0 +1,28 @@
+.modal {
+    width: 600px;
+    height: fit-content;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: white;
+
+    padding: 15px;
+    border: 2px solid #999;
+}
+
+.modal__close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    cursor: pointer;
+}
+
+@media (max-width: 555px) {
+    .modal{
+        width: 300px;
+    }
+}

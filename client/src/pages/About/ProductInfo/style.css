@@ -1,0 +1,12 @@
+.about__main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+@media (max-width: 905px) {
+    .about__main {
+        flex-direction: column;
+    }
+}

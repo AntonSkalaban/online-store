@@ -1,0 +1,27 @@
+.carousel {
+    width: 100%;
+    position: relative;
+
+    margin: 0 auto;
+}
+
+.carousel__container {
+    width: 100%;
+    overflow: hidden;
+
+    margin: 0 auto;
+}
+
+.images__container {
+    width: max-content;
+    height: 100%;
+    position: relative;
+
+    display: flex;
+}
+
+/* @media (max-width: 2400px) {
+    .wrapper {
+        width: 1000px;
+    }
+} */

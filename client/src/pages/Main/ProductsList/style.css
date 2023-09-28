@@ -1,0 +1,22 @@
+
+.products-list {
+   display: flex;
+   flex-direction: column;
+}
+
+.products-list__text {
+
+    font-weight: 200;
+    
+   text-align: center;
+   
+   margin-top: 14px;
+   margin-bottom: 14px;
+}
+
+.pagination-wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

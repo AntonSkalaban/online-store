@@ -1,0 +1,17 @@
+.about-section {
+    margin-bottom: 30px;
+}
+
+.about-section__wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.about-section__title {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: .8px;
+    line-height: 24px;
+    color: #2d2d2d;
+}

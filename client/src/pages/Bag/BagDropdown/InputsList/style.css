@@ -1,0 +1,13 @@
+.bag-list__item {
+    width: 100%;
+    height: 2em;
+}
+
+.bag-list__item :hover {
+   color: #fff;
+   background-color: #5897fb;
+} 
+
+.bag-list__item_checked {
+    background-color: #666;
+}

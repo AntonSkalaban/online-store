@@ -1,0 +1,42 @@
+.checkout-card__image-container {
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+}
+
+.checkout-card__info-container {
+    width: calc(100% - 150px);
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.checkout-card__description {
+
+    max-height: 55px;
+    line-height: 1.125rem;
+    font-size: .8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+
+    margin-top: 5px;
+
+    color: #666;
+}
+
+.checkout-card__qty {
+    height: 55px;
+    line-height: 1.125rem;
+    font-size: .875rem;
+    overflow: hidden;
+}
+
+
+
+@media (max-width: 905px) {
+    .checkout-card__description {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+}

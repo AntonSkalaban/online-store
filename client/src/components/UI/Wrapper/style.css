@@ -1,0 +1,43 @@
+.wrapper {
+    width: 1600px;
+    position: relative;
+    align-items: center;
+    margin: 0 auto;
+
+}
+
+@media (max-width: 2390px) {
+    .wrapper {
+        width: 1100px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .wrapper {
+        width: 1000px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .wrapper {
+        width: 900px;
+    }
+}
+
+@media (max-width: 905px) {
+    .wrapper {
+        width: 700px;
+    }
+}
+
+@media (max-width: 705px) {
+    .wrapper {
+        width: 550px;
+    }
+}
+
+@media (max-width: 555px) {
+    .wrapper {
+        width: 320px;
+    }
+}
