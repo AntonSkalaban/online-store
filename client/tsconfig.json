@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "lib": ["dom", "esnext", "dom.iterable"],
+    "outDir": "dist",
     "jsx": "react",
     "module": "esnext",
     "moduleResolution": "node",
