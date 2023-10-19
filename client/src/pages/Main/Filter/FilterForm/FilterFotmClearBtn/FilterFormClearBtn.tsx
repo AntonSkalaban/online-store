@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { getFormFilterValues } from 'store/selectors';
 import { FormFilterValues } from 'store/slice';
-import { useActions } from 'hooks/useAction';
+import { useActions } from 'hooks';
 import './style.css';
 
 interface FilterFormClearBtnProps {

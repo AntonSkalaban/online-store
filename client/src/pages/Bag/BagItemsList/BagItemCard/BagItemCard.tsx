@@ -1,11 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { changeBagItemStoreState, checkoutOneItems, deleteBagItem } from 'store/slice';
-import { useGetWidth } from 'hooks';
-import { BagItem } from 'types/types';
+import { NavLink } from 'react-router-dom';
+import { useActions, useChangeUrlPath, useGetWidth } from 'hooks';
+import { BagItem } from 'types';
 import { Button } from 'components/UI';
-import { ProductCardPrice } from 'components/ProductCard/ProductCardPrice';
+import { ProductCardPrice } from 'components';
 import { QuantityList } from '../../BagDropdown/InputsList/QuantityList';
 import { BagDropdown } from '../../BagDropdown/BagDropdown';
 import CloseImg from 'assets/svg/close.svg';
@@ -28,22 +26,22 @@ export const BagItemCard: React.FC<BagItemProps> = ({ product }) => {
     isDeleted,
   } = product;
 
+  const { deleteBagItem, checkoutOneItem, changeBagItemStoreState } = useActions();
+  const { changeUrlPath } = useChangeUrlPath();
+
   const ref = useRef(null);
   const witdh = useGetWidth(ref);
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   useEffect(() => {
     return () => {
-      if (isDeleted) dispatch(deleteBagItem(_id));
+      if (isDeleted) deleteBagItem(_id);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const hanldeCheckoutClick = () => {
-    dispatch(checkoutOneItems(product));
-    navigate('/checkout');
+    checkoutOneItem(product);
+    changeUrlPath('/checkout');
   };
 
   return (
@@ -79,18 +77,11 @@ export const BagItemCard: React.FC<BagItemProps> = ({ product }) => {
       <div className="bag-card__delete">
         {' '}
         {isDeleted ? (
-          <p
-            className="delete-btn bag-section__text "
-            onClick={() => dispatch(changeBagItemStoreState(_id))}
-          >
+          <p className="delete-btn bag-section__text " onClick={() => changeBagItemStoreState(_id)}>
             Restore
           </p>
         ) : (
-          <img
-            className="delete-btn"
-            src={CloseImg}
-            onClick={() => dispatch(changeBagItemStoreState(_id))}
-          />
+          <img className="delete-btn" src={CloseImg} onClick={() => changeBagItemStoreState(_id)} />
         )}
       </div>
     </div>

@@ -1,5 +1,6 @@
 export * from './Header';
 export * from './ProductCard';
+export * from './ProductCard/ProductCardPrice';
 export * from './Caruosel';
 export * from './CardsList';
 export * from './PortalBanner';

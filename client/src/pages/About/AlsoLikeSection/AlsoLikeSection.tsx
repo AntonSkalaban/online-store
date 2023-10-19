@@ -1,6 +1,6 @@
 import React from 'react';
-import { CardsList } from '../../../components';
-import { useGetSameProducts } from '../../../hooks';
+import { CardsList } from 'components';
+import { useGetSameProducts } from 'hooks';
 import { AboutSection } from '../AboutSection';
 
 interface AlsoLikeParams {

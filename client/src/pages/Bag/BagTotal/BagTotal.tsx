@@ -1,27 +1,26 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { checkoutAllItems } from 'store/slice';
+import { useSelector } from 'react-redux';
 import { getBagItems, getBagItemsTotalPrice, getSelectDeliveryLabel } from 'store/selectors';
+import { useActions, useChangeUrlPath } from 'hooks';
 import { BagDropdown } from '../BagDropdown/BagDropdown';
 import { DeliveryList } from '../BagDropdown/InputsList/DeliveryList';
+import { WhiteSection, Button } from 'components/UI';
 import Visa from 'assets/svg/visa.svg';
 import Master from 'assets/svg/mastercard.svg';
 import Maestro from 'assets/svg/maestro.svg';
-import { WhiteSection, Button } from 'components/UI';
 import './style.css';
 
 export const BagTotal = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { checkoutAllItems } = useActions();
+  const { changeUrlPath } = useChangeUrlPath();
 
   const bagItems = useSelector(getBagItems);
   const totalPrice = useSelector(getBagItemsTotalPrice);
   const deliveryLabel = useSelector(getSelectDeliveryLabel);
 
   const hanldeCheckoutClick = () => {
-    dispatch(checkoutAllItems(bagItems));
-    navigate('/checkout');
+    checkoutAllItems(bagItems);
+    changeUrlPath('/checkout');
   };
 
   return (

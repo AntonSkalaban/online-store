@@ -9,7 +9,13 @@ import {
   updateGlobalState,
   updateSearchBarValue,
   addBagItem,
+  deleteBagItem,
+  changeBagItemQuantity,
+  changeDelivery,
+  changeBagItemStoreState,
   addResentlyViewedItem,
+  checkoutOneItem,
+  checkoutAllItems,
 } from 'store/slice';
 
 const actions = {
@@ -21,7 +27,13 @@ const actions = {
   initOpenPage,
   initFormState,
   addBagItem,
+  deleteBagItem,
+  changeBagItemQuantity,
+  changeDelivery,
+  changeBagItemStoreState,
   addResentlyViewedItem,
+  checkoutOneItem,
+  checkoutAllItems,
 };
 
 export const useActions = () => {

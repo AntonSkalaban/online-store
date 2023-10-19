@@ -1,18 +1,18 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeDelivery } from 'store/slice';
+import { useSelector } from 'react-redux';
 import { getDeliveryLabel, getSelectDeliveryLabel } from 'store/selectors';
+import { useActions } from 'hooks';
 import { delivery } from 'const';
 import './style.css';
 
 export const DeliveryList = () => {
-  const dispatch = useDispatch();
+  const { changeDelivery } = useActions();
   const selectedDelivery = useSelector(getSelectDeliveryLabel);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checkedDevilery = delivery.find((i) => i.name === e.target.value);
     if (!checkedDevilery) return;
-    dispatch(changeDelivery(checkedDevilery));
+    changeDelivery(checkedDevilery);
   };
 
   return (
