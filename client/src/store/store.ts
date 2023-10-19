@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { productAPI, categoryAPI } from '../services/api';
+import { productAPI, categoryAPI, filterAPI } from '../services/api';
 import {
-  ProductSlice,
   BagSlice,
   DeliverySlice,
   FormFilterSlice,
@@ -17,7 +16,6 @@ export const store = configureStore({
   reducer: {
     globalFilterValues: GlobalFilterSlice,
     formFilterValues: FormFilterSlice,
-    products: ProductSlice,
     BagItems: BagSlice,
     openPages: OpenPagesSlice,
     checkoutItems: CheckoutSlice,
@@ -27,9 +25,14 @@ export const store = configureStore({
     ResentlyVewedItems: ResentlyViewedSlice,
     [productAPI.reducerPath]: productAPI.reducer,
     [categoryAPI.reducerPath]: categoryAPI.reducer,
+    [filterAPI.reducerPath]: filterAPI.reducer,
   },
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat([productAPI.middleware, categoryAPI.middleware]);
+    return getDefaultMiddleware().concat([
+      productAPI.middleware,
+      categoryAPI.middleware,
+      filterAPI.middleware,
+    ]);
   },
 });
 

@@ -1,29 +1,27 @@
 import React from 'react';
-import { RadioBlock } from '../FilterInputsList/RadioList/RadioList';
 import { FilterDropdown } from '../FilterDropdown';
-import { FilterRange } from '../FilterInputsList/RangeSlider/RangeSlider';
-import { FilterList } from '../FilterInputsList/CheckboxesList/CheckboxesList';
+import { FilterList, FilterRange, RadioBlock } from '../FilterForm';
 
 export const LaptopFilter = () => {
   return (
     <div className="filter__dropdown-container filter__dropdown-container_laptop">
       <FilterDropdown title="sort" classNameMod="filter">
-        <RadioBlock title="sort" classMode="dropdown-input-list" />
+        <RadioBlock title="sort" classMode="filter__inputs-list_dropdown" />
       </FilterDropdown>
 
       <FilterDropdown title="category" classNameMod="filter">
-        <FilterList blockName={'category'} classMode="dropdown-input-list" />
+        <FilterList blockName={'category'} classMode="filter__inputs-list_dropdown" />
       </FilterDropdown>
 
       <FilterDropdown title="brand" classNameMod="filter">
-        <FilterList blockName={'brand'} classMode="dropdown-input-list" />
+        <FilterList blockName={'brand'} classMode="filter__inputs-list_dropdown" />
       </FilterDropdown>
 
       <FilterDropdown title="price" classNameMod="filter">
         <FilterRange
           blockName={'price'}
           additionalUrlParams={{ sort: 'discountPrice-ASC' }}
-          classMode="dropdown-input-list"
+          classMode="filter__inputs-list_dropdown"
         />
       </FilterDropdown>
     </div>

@@ -1,6 +1,4 @@
 export * from './Header';
-export * from './Nav';
-export * from './SearchBar';
 export * from './ProductCard';
 export * from './Caruosel';
 export * from './CardsList';

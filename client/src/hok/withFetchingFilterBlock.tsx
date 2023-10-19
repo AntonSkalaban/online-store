@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product } from 'types';
-import { productAPI } from 'services';
+import { filterAPI } from 'services/api';
 import { useSelector } from 'react-redux';
 import { getGlobalFilterValues } from 'store/selectors';
 import { FormFilterValues } from 'store/slice';
@@ -18,19 +18,29 @@ export const withFetchingFilterBlock = (
   return (props: withFetchingFilterBlockProps) => {
     const globalFilterValues = useSelector(getGlobalFilterValues);
 
-    const { data, isFetching } = productAPI.useGetFilterdProductsQuery({
-      ...globalFilterValues,
-      page: '',
-      [props.blockName]: [],
-      ...(props.additionalUrlParams && props.additionalUrlParams),
-    });
-
-    const availableNames = [
-      ...new Set(data?.products.map((product) => product[props.blockName as keyof Product])),
-    ] as string[];
+    const { filterData, isFetching } = filterAPI.useGetFilterdProductsQuery(
+      {
+        ...globalFilterValues,
+        page: '',
+        [props.blockName]: [],
+        ...(props.additionalUrlParams && props.additionalUrlParams),
+      },
+      {
+        selectFromResult: ({ data, isFetching }) => {
+          return {
+            filterData: [
+              ...new Set(
+                data?.products.map((product) => product[props.blockName as keyof Product])
+              ),
+            ] as string[],
+            isFetching,
+          };
+        },
+      }
+    );
 
     if (isFetching) return <LoadingSpinner />;
 
-    return <Component data={availableNames} {...props} />;
+    return <Component data={filterData} {...props} />;
   };
 };

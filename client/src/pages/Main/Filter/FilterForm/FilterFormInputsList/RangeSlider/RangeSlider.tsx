@@ -1,9 +1,10 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getFormFilterValues } from 'store/selectors';
-import { FormFilterValues, updateFormState } from 'store/slice';
+import { FormFilterValues } from 'store/slice';
 import { withFetchingFilterBlock } from 'hok';
 import './style.css';
+import { useActions } from 'hooks';
 
 interface RangeSliderProps {
   blockName: keyof FormFilterValues;
@@ -12,8 +13,7 @@ interface RangeSliderProps {
 }
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({ data, blockName, classMode = '' }) => {
-  const dispatch = useDispatch();
-
+  const { updateFormState } = useActions();
   const selectValues = useSelector(getFormFilterValues).price;
 
   const [min, max] = [data[0], data[data.length - 1]];
@@ -31,15 +31,15 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({ data, blockName, class
 
     if (name === 'min') {
       if (+value > +maxVal) return;
-      dispatch(updateFormState({ [blockName]: [newValue, maxVal] }));
+      updateFormState({ [blockName]: [newValue, maxVal] });
     } else {
       if (+value < +minVal) return;
-      dispatch(updateFormState({ [blockName]: [minVal, newValue] }));
+      updateFormState({ [blockName]: [minVal, newValue] });
     }
   };
 
   return (
-    <div className={'dual-range filter__inputs-list ' + classMode}>
+    <div className={'dual-range filter__inputs-list inputs-list' + classMode}>
       {' '}
       <div className={`range-${blockName}`}>
         <p className={`min-${blockName}`}>${minVal}</p>

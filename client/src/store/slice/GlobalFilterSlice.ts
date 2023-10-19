@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { FormFilterValues } from './FormFilterSlice';
+import { FormFilterValues, resetFilterValue, resetForm } from './FormFilterSlice';
+import { CustomObject } from 'helpers/index';
 
 interface SearchBarValue {
   searchValue?: string;
@@ -27,12 +28,26 @@ export const GlobalFilterSlice = createSlice({
   name: 'globalFilterValues',
   initialState,
   reducers: {
-    updateGlobalState: (state, action: PayloadAction<GlobalFilterValues>) => {
-      return { ...state, ...action.payload };
+    updateGlobalState: (state, { payload }: PayloadAction<GlobalFilterValues>) => {
+      if (!payload?.page) return { ...state, ...payload, page: '0' };
+      return { ...state, ...payload };
     },
+
+    updateSearchBarValue: (state, { payload }: PayloadAction<GlobalFilterValues>) => {
+      return { ...CustomObject.resetAllFields(state), ...payload };
+    },
+  },
+
+  extraReducers: (builder) => {
+    builder.addCase(resetForm, (state) => {
+      return { ...CustomObject.resetAllFields(state, ['searchValue']), page: '0' };
+    });
+    builder.addCase(resetFilterValue, (state, { payload }) => {
+      return { ...state, ...payload, page: '0' };
+    });
   },
 });
 
-export const { updateGlobalState } = GlobalFilterSlice.actions;
+export const { updateGlobalState, updateSearchBarValue } = GlobalFilterSlice.actions;
 
 export default GlobalFilterSlice.reducer;
