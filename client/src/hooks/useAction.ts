@@ -8,6 +8,8 @@ import {
   resetForm,
   updateGlobalState,
   updateSearchBarValue,
+  addBagItem,
+  addResentlyViewedItem,
 } from 'store/slice';
 
 const actions = {
@@ -18,6 +20,8 @@ const actions = {
   updateSearchBarValue,
   initOpenPage,
   initFormState,
+  addBagItem,
+  addResentlyViewedItem,
 };
 
 export const useActions = () => {

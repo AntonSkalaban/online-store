@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { InfinityCarousel } from '../../../../components';
+import { InfinityCarousel } from 'components';
 import { ShareDropdown } from './ShareDropdown/ShareDropdown';
 import './style.css';
 
@@ -9,8 +9,8 @@ interface ImagesContainerProps {
 }
 
 export const ImagesContainer = ({ images }: ImagesContainerProps) => {
-  const [activeImgIndex, setActiveImgIndex] = useState(0);
   const { id } = useParams();
+  const [activeImgIndex, setActiveImgIndex] = useState(0);
 
   useEffect(() => {
     setActiveImgIndex(0);

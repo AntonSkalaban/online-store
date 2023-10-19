@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addBagItem } from 'store/slice';
+import { useSelector } from 'react-redux';
 import { getBagItems } from 'store/selectors';
 import { LocalStorage } from 'services';
-import { Product } from 'types/types';
+import { useActions } from 'hooks';
+import { Product } from 'types';
 import { Rating } from './Rating/Rating';
 import { Price } from './Price/Price';
 import { Promo } from './Promo/Promo';
@@ -16,15 +16,16 @@ interface InfoContainerProps {
 }
 
 export const InfoContainer: React.FC<InfoContainerProps> = ({ product }) => {
-  const dispatch = useDispatch();
+  const { addBagItem } = useActions();
   const bagItems = useSelector(getBagItems);
 
   const [isAddedToBag, setIsAddedToBag] = useState(false);
+
   const { title, description, rating, discountPercentage, discountPrice, price } = product;
 
   const addToBag = () => {
     if (isAddedToBag) return;
-    dispatch(addBagItem(product));
+    addBagItem(product);
     setIsAddedToBag(true);
   };
 
