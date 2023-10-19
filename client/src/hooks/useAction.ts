@@ -16,6 +16,9 @@ import {
   addResentlyViewedItem,
   checkoutOneItem,
   checkoutAllItems,
+  enterAddress,
+  deletePurchasedItems,
+  applyPromo,
 } from 'store/slice';
 
 const actions = {
@@ -34,6 +37,9 @@ const actions = {
   addResentlyViewedItem,
   checkoutOneItem,
   checkoutAllItems,
+  enterAddress,
+  deletePurchasedItems,
+  applyPromo,
 };
 
 export const useActions = () => {
