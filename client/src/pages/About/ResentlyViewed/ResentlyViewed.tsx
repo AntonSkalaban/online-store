@@ -1,29 +1,27 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getResentlyVewedItems } from '../../../store/selectors';
-import { addResentlyViewedItem } from '../../../store/slice';
-import { LocalStorage } from '../../../services';
+import { useSelector } from 'react-redux';
+import { getResentlyVewedItems } from 'store/selectors';
+import { LocalStorage } from 'services';
+import { useActions } from 'hooks';
 import { FetchingResentlyViewedProduct } from './ResentlyViewedProduct/ResentlyViewedProduct';
-import { Carousel } from '../../../components';
 import { AboutSection } from '../AboutSection';
+import { Carousel } from 'components';
 
 interface ResentlyViewedProps {
   productId: string;
 }
 
 export const ResentlyViewed: React.FC<ResentlyViewedProps> = ({ productId }) => {
-  const dispatch = useDispatch();
+  const { addResentlyViewedItem } = useActions();
   const productIds = useSelector(getResentlyVewedItems);
 
   useEffect(() => {
     return () => {
-      dispatch(addResentlyViewedItem(productId));
+      addResentlyViewedItem(productId);
+      LocalStorage.setArray<string>('recentlyViewed', productIds);
     };
-  }, [dispatch, productId]);
-
-  useEffect(() => {
-    return () => LocalStorage.setArray<string>('recentlyViewed', productIds);
-  }, [productIds]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!productIds.length) return null;
   return (

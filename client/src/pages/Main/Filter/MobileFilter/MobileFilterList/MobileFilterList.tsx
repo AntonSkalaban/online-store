@@ -1,5 +1,5 @@
 import React from 'react';
-import { firstCharToUC } from 'helpers/firstCharToUC';
+import { firstCharToUC } from 'helpers';
 
 interface MobileFilterListProps {
   openFilterInputs: (name: string) => void;

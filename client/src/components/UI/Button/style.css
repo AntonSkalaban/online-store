@@ -13,18 +13,7 @@
     opacity: 0.8;
 }
 
-.filter-btn {
-    width: calc(100% - 20px);
-    background-color: black;
 
-    border: 2px solid black;
-    padding: 1em;
-    margin: .5em auto;
-}
-
-.filter-btn_big {
-    font-size: 16px;
-}
 
 .bag-btn {
     width: 100%;

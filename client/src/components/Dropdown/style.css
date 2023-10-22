@@ -77,19 +77,16 @@
     background-color:white;
 }
 
-.dropdown-input-list {
+/* .dropdown-input-list {
     max-height: 210px;
     overflow-y: scroll;
-  }
+  } */
   
-
-.dropdown-input-list_bag {
+/* .dropdown-input-list_bag {
     max-height: 200px;
-}
+} */
 
-.dropdown-input-list_bag input {
-    display: none;
-}
+
 
 .dropdown__header_quantity {
     width: 70px;

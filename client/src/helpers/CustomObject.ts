@@ -9,16 +9,19 @@ export class CustomObject {
     return clone;
   }
 
-  static resetAllFields = (obj: FormFilterValues): FormFilterValues => {
-    const clone = Object.fromEntries(
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      Object.entries(obj).map(([key, _]) => {
+  static resetAllFields = (obj: FormFilterValues, exceptFields?: string[]): FormFilterValues => {
+    const newObj = Object.fromEntries(
+      Object.entries(obj).map(([key, value]) => {
+        if (exceptFields?.includes(key)) return [key, value];
         if (Array.isArray(obj[key as keyof FormFilterValues])) {
           return [key, []];
+        }
+        if (typeof obj[key as keyof FormFilterValues] === 'number') {
+          return [key, 0];
         }
         return [key, ''];
       })
     );
-    return clone;
+    return newObj;
   };
 }

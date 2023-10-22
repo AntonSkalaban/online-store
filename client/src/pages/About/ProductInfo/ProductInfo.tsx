@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product } from '../../../types/types';
+import { Product } from 'types';
 import { ImagesContainer } from './ImagesContainer';
 import { InfoContainer } from './InfoContainer';
 import './style.css';

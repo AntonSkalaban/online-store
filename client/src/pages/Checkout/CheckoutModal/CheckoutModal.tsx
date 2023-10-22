@@ -1,29 +1,28 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getCheckoutItems } from 'store/selectors';
-import { deletePurchasedItems } from 'store/slice';
+import { useActions, useChangeUrlPath } from 'hooks';
 import {
   formatCVC,
   formatCreditCardImg,
   formatCreditCardNumber,
   formatExpirationDate,
 } from './InputController';
-import Card from 'assets/svg/card.svg';
 import { Button } from 'components/UI';
+import Card from 'assets/svg/card.svg';
 import './style.css';
 
 export const CheckoutModal = () => {
+  const { deletePurchasedItems } = useActions();
+  const { changeUrlPath } = useChangeUrlPath();
+
+  const checkoutItems = useSelector(getCheckoutItems);
+
   const [number, setNumber] = useState('');
   const [cardImg, setCardImg] = useState(Card);
   const [name, setName] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cvc, setCvc] = useState('');
-
-  const checkoutItems = useSelector(getCheckoutItems);
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target;
@@ -49,8 +48,8 @@ export const CheckoutModal = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert('You have finished payment!');
-    dispatch(deletePurchasedItems(checkoutItems));
-    setTimeout(() => navigate('/bag'), 1000);
+    deletePurchasedItems(checkoutItems);
+    setTimeout(() => changeUrlPath('/bag'), 1000);
   };
 
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { RadioBlock } from '../FilterInputsList/RadioList/RadioList';
 import { FilterDropdown } from '../FilterDropdown';
 import { MobileFilterPortal } from './MobileFilterPortal/MobileFilterPortal';
+import { RadioBlock } from '../FilterForm';
 import './style.css';
 
 export const MobileFilter = () => {

@@ -40,39 +40,22 @@
   display: none;
 }
   
-.filter-clear-btn {
-  width: fit-content;
-
-  cursor: pointer;
-  margin-top: 10px;
-  margin-left: calc(100% - 45px);
-}
-
-.filter-clear-btn_big {
-  font-size: 16px;
-  margin: 0px;
-  margin-right: 10px;
-}
-
   .input-list__item  {
     display: flex;
     align-items: center;
     justify-content: left;
   }
 
-  .filter__inputs-list input {
-    display: none;
-  
-  }
-
   .filter__inputs-list {
     padding: 10px;
   
-    overflow-y: scroll;
-   background-color: rgb(238, 238, 238);
+    background-color: rgb(238, 238, 238);
   }
-  
 
+  .filter__inputs-list_dropdown {
+    height: 210px;
+    overflow-y: scroll;
+  }
 
   .filter-list__item {
     height: 42px;

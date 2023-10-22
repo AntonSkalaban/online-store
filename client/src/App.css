@@ -59,6 +59,11 @@ input:focus {
     margin: 0 auto;
 }
 
+
+.inputs-list input {
+    display: none;
+  }
+  
 @media (max-width: 905px) {
     .page-section__container {
         gap: 0px;

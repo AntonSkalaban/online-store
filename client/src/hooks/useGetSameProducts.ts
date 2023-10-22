@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Product } from '../types/types';
-import { productAPI } from '../services';
-import { CustomArray } from '../helpers';
+import { Product } from 'types';
+import { productAPI } from 'services';
+import { CustomArray } from 'helpers';
 
 export const useGetSameProducts = (category: string[], brand: string[]) => {
   const [products, setProducts] = useState([] as Product[]);

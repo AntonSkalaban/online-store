@@ -14,7 +14,7 @@ export const CheckoutSlice = createSlice({
       state.items = existItems;
     },
 
-    checkoutOneItems: (state, action: PayloadAction<BagItem>) => {
+    checkoutOneItem: (state, action: PayloadAction<BagItem>) => {
       state.items = [action.payload];
     },
 
@@ -28,7 +28,7 @@ export const CheckoutSlice = createSlice({
   },
 });
 
-export const { checkoutAllItems, checkoutOneItems, deleteAllCheckoutItems, deleteOneCheckoutItem } =
+export const { checkoutAllItems, checkoutOneItem, deleteAllCheckoutItems, deleteOneCheckoutItem } =
   CheckoutSlice.actions;
 
 export default CheckoutSlice.reducer;

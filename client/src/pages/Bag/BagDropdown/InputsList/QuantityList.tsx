@@ -1,7 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { changeBagItemQuantity } from '../../../../store/slice';
-import { CustomArray } from '../../../../helpers';
+import { useActions } from 'hooks';
+import { CustomArray } from 'helpers';
 import './style.css';
 
 interface BagInputListProps {
@@ -10,16 +9,15 @@ interface BagInputListProps {
 }
 
 export const QuantityList: React.FC<BagInputListProps> = ({ productId, quantity }) => {
-  const dispatch = useDispatch();
-
+  const { changeBagItemQuantity } = useActions();
   const options = CustomArray.create(10, 1);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(changeBagItemQuantity({ id: productId, quantity: +e.target.value }));
+    changeBagItemQuantity({ id: productId, quantity: +e.target.value });
   };
 
   return (
-    <ul className="dropdown-input-list_bag dropdown-input-list input-list">
+    <ul className="dropdown-input-list_bag dropdown-input-list inputs-list">
       {options.map((num) => {
         const isChecked = quantity === num;
 

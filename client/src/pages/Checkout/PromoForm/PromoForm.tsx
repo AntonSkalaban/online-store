@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { applyPromo } from 'store/slice';
+import { useActions } from 'hooks';
 import { TextInput } from '../AddressForm/FormInput/TextInput';
 import { CheckoutFormValues, promoInput } from '../AddressForm/FormInput/const';
 import { PortalBanner } from 'components';
@@ -10,14 +9,15 @@ import Arrow from 'assets/svg/arrow-prev.svg';
 import './style.css';
 
 export const PromoForm = () => {
-  const dispatch = useDispatch();
   const { register, handleSubmit, formState } = useForm<CheckoutFormValues>();
+  const { applyPromo } = useActions();
+
   const [isOpen, setIsOpen] = useState(false);
   const [isPortalOpen, setIsPortalOpen] = useState(false);
 
   const onSubmit = () => {
     setIsPortalOpen(true);
-    dispatch(applyPromo());
+    applyPromo();
   };
 
   return (

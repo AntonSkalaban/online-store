@@ -1,12 +1,12 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { FormFilterValues } from 'store/slice';
 import { getFormFilterValues } from 'store/selectors';
-import { initOpenPage, updateGlobalState } from 'store/slice';
+import { useActions } from 'hooks';
 import { Dropdown } from 'components';
 import './style.css';
-
 interface FilterDropdownProps {
-  title: string;
+  title: keyof FormFilterValues;
   children: React.ReactNode;
   classNameMod: string;
 }
@@ -16,25 +16,20 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
   children,
   classNameMod,
 }) => {
-  const dispatch = useDispatch();
+  const { updateGlobalState } = useActions();
+
   const formFilterValues = useSelector(getFormFilterValues);
 
   const applyFilter = () => {
-    dispatch(
-      updateGlobalState({
-        ...formFilterValues,
-        page: '0',
-      })
-    );
-    dispatch(initOpenPage(0));
+    updateGlobalState({
+      ...formFilterValues,
+    });
   };
 
   return (
     <Dropdown classNameMod={classNameMod} refCallback={applyFilter}>
       <Dropdown.FilterHeader title={title} />
-      <Dropdown.FilterBody title={title} applyFilter={applyFilter}>
-        {children}
-      </Dropdown.FilterBody>
+      <Dropdown.FilterBody title={title}>{children}</Dropdown.FilterBody>
     </Dropdown>
   );
 };

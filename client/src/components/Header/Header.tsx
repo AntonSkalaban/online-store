@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Nav, SearchBar } from 'components';
 import { Wrapper } from 'components/UI';
+import { SearchBar } from './SearchBar';
+import { Nav } from './Nav';
 import './style.css';
 
 export const Header = () => {

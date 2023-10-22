@@ -6,16 +6,16 @@ import { Carousel, ProductCard } from 'components';
 import { WhiteSection } from 'components/UI';
 
 export const BagAlsoLike = () => {
-  const productsCategories = useSelector((state) => getBagItemKeys(state, 'category'));
-  const productsBrands = useSelector((state) => getBagItemKeys(state, 'brand'));
-  const productsIds = useSelector((state) => getBagItemKeys(state, '_id'));
+  const productCategoriesInBag = useSelector((state) => getBagItemKeys(state, 'category'));
+  const productBrandsInBag = useSelector((state) => getBagItemKeys(state, 'brand'));
+  const productIdssInBag = useSelector((state) => getBagItemKeys(state, '_id'));
 
-  const fetchingProducts = useGetSameProducts(productsCategories, productsBrands);
+  const fetchingProducts = useGetSameProducts(productCategoriesInBag, productBrandsInBag);
 
   if (!fetchingProducts.length) return null;
 
   const sameProducts = fetchingProducts.filter(({ _id }) => {
-    return !productsIds.includes(_id);
+    return !productIdssInBag.includes(_id);
   });
 
   return (

@@ -1,9 +1,10 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getFormFilterValues } from 'store/selectors';
-import { FormFilterValues, updateFormState } from 'store/slice';
+import { FormFilterValues } from 'store/slice';
 import { firstCharToUC } from 'helpers';
 import { withFetchingFilterBlock } from 'hok';
+import { useActions } from 'hooks';
 
 export interface CheckboxesListProps {
   blockName: keyof FormFilterValues;
@@ -16,25 +17,25 @@ export const CheckboxesList: React.FC<CheckboxesListProps> = ({
   data,
   classMode = '',
 }) => {
-  const dispatch = useDispatch();
+  const { updateFormState } = useActions();
 
   const checkedCheckboxes = useSelector(getFormFilterValues)[blockName] ?? [];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const itemIndex = checkedCheckboxes.indexOf(name);
-    const stateCopy = [...checkedCheckboxes];
 
+    const stateCopy = [...checkedCheckboxes];
     if (itemIndex === -1) {
       stateCopy.push(name);
     } else {
       stateCopy.splice(itemIndex, 1);
     }
-    dispatch(updateFormState({ [blockName]: stateCopy }));
+    updateFormState({ [blockName]: stateCopy });
   };
 
   return (
-    <ul className={'filter__inputs-list ' + classMode}>
+    <ul className={'filter__inputs-list inputs-list ' + classMode}>
       {data.sort().map((name) => {
         const isChecked = checkedCheckboxes.includes(name);
         return (
