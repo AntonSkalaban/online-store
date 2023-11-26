@@ -20,7 +20,7 @@ export const RadioBlock: React.FC<RadioBlockProps> = ({ title, classMode = '' })
   };
 
   return (
-    <ul className={'filter__inputs-list inputs-list' + classMode}>
+    <ul className={'filter__inputs-list inputs-list ' + classMode}>
       {options.map(({ value, label }) => {
         const isChecked = selectValue === value;
         return (
