@@ -5,7 +5,7 @@
 
 Online-Store is an application for an online store developed using the following technologies:
 
-Client-Side (https://skalaban-online-store.netlify.app): HTML, CSS, TypeScript, React, Redux Toolkit, and RTQ Query, Vite.
+Client-Side (https://skalaban-online-store.netlify.app): HTML, CSS, TypeScript, React, Redux Toolkit, and RTQ Query, Vite.</br>
 Server-Side (https://skalaban-online-store-server.cyclic.cloud): Node.js, Express.js, MongoDB.
 
 This application allows users to browse and purchase products from the online store.
@@ -18,9 +18,13 @@ This application allows users to browse and purchase products from the online st
 
 3. Product Details: Users can view detailed information about a selected product, including its description, specifications, and photos.
 
-4. Checkout: Users can place orders by providing their contact information and delivery address.
+4. Products Viewed History: Users can see the products they have viewd.
 
-5. Payment: Users can choose a payment method and complete the payment for their order.
+5. Selection of similar products: Users are offered similar products based on products they have already viewed.
+
+6. Checkout: Users can place orders by providing their contact information and delivery address.
+
+7. Payment: Users can choose a payment method and complete the payment for their order.
 
 The application has a simple and intuitive interface that ensures ease of use. It also delivers high performance thanks to the use of Redux Toolkit and RTQ Query.
 
